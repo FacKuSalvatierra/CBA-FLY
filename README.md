@@ -21,4 +21,4 @@ Integrantes:
 - _Giannantonio_, Elías
 - _Romero_, Lucas Emanuel
 - _Giannantonio_, Amadeo
-- _Colman_,Maximiliano
+- _Colman_, Maximiliano
