@@ -25,3 +25,10 @@ El equipo de trabajo es diverso tanto en género, edades y experiencia. Para muc
 * _Romero_, Lucas Emanuel (Developer)  
 * _Giannantonio_, Amadeo (Developer)  
 * _Colman_, Maximiliano (Developer)  
+
+## Tecnologías utilizadas
+* FrontEnd: Usará Angular, CSS, Javacript. Typescript, Bootstrap
+* Base de datos: MySQL
+* BackEnd: Python con el framework Django
+* VCS (control de versiones): Git
+* Repositorio subido en GitHub
