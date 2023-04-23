@@ -8,17 +8,27 @@ Lo que intentamos con este ejercicio, es adquirir experiencia en el desafiante a
 
 Video de presentacion del proyecto Aerolineas CBA FLY : 👉🏻👉🏻  https://www.youtube.com/watch?v=oawRUpWUl_g 👈🏻👈🏻
 
+Nuestro Trello: https://trello.com/b/jUuKw2yl/proyecto-integrador 
 
-## Quienes somos
+Pagina web del sitio (Temporal): https://fackusalvatierra.github.io/Aerolineas-ISPC/frontend/index.html
+
+
+## Quiénes somos
 El equipo de trabajo es diverso tanto en género, edades y experiencia. Para muchos de nosotros, este es nuestro primer contacto con un proyecto de este tipo. Aunque nuestro anhelo es que el resultado final sea bueno, nuestro foco principal está puesto en el _proceso de aprendizaje_, en el desarrollo de _competencias técnicas_, y fundamentalmente de _habilidades blandas_ como la empatía y el compromiso de equipo. 
 
-Integrantes:
+## Participantes del equipo de trabajo ✒️
+* _Rodriguez Moreau_, Romina (Developer)  
+* _Neil_, Candela Iara (Developer)  
+* _Salvatierra_, Walter Facundo (Developer y Scrum Master)  
+* _Cancinos_, Delfina Ivana (Developer)  
+* _Giannantonio_, Elías (Developer)  
+* _Romero_, Lucas Emanuel (Developer)  
+* _Giannantonio_, Amadeo (Developer)  
+* _Colman_, Maximiliano (Developer)  
 
-- _Rodriguez Moreau_, Romina
-- _Neil_, Candela Iara
-- _Salvatierra_, Walter Facundo
-- _Cancinos_, Delfina Ivana
-- _Giannantonio_, Elías
-- _Romero_, Lucas Emanuel
-- _Giannantonio_, Amadeo
-- _Colman_,Maximiliano
+## Tecnologías utilizadas
+* FrontEnd: Usará Angular, CSS, Javacript. Typescript, Bootstrap
+* Base de datos: MySQL
+* BackEnd: Python con el framework Django
+* VCS (control de versiones): Git
+* Repositorio subido en GitHub
