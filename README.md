@@ -20,7 +20,7 @@ El equipo de trabajo es diverso tanto en género, edades y experiencia. Para muc
 * _Rodriguez Moreau_, Romina (Developer)  
 * _Neil_, Candela Iara (Developer)  
 * _Salvatierra_, Walter Facundo (Developer y Scrum Master)  
-* _Cancinos_, Delfina Ivana (Developer)  
+* _Balduzzi, Lucas Nicolás(Developer)  
 * _Giannantonio_, Elías (Developer)  
 * _Romero_, Lucas Emanuel (Developer)  
 * _Giannantonio_, Amadeo (Developer)  
