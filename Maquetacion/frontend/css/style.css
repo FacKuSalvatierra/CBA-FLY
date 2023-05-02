@@ -243,7 +243,7 @@ header .barra_navegacion {
 }
 /*======= Inicio  =======*/
 .home {
-  min-height: 100vh;
+  min-height: 80vh ;  /*ajustado para achicar img slider (100vh)*/
 }
 
 .home:before {
@@ -262,18 +262,18 @@ header .barra_navegacion {
   z-index: 777;
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 80vh; /*ajustado para achicar img slider (100vh)*/
 }
 
 .bg-slider .swiper-slide {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 80vh; /*ajustado para achicar img slider (100vh)*/
 }
 
 .bg-slider .swiper-slide img {
   width: 100%;
-  height: 100vh;
+  height: 80vh; /*ajustado para achicar img slider (100vh)*/
   object-fit: cover;
   background-position: center;
   background-size: cover;
@@ -282,7 +282,7 @@ header .barra_navegacion {
 
 .swiper-slide .text-content {
   position: absolute;
-  top: 25%;
+  top: 18%; /*ajustado para achicar img slider (25%)*/
   color: var(--white-color);
   margin: 0 200px;
   transition: 0.3s ease;
@@ -365,7 +365,7 @@ header .barra_navegacion {
 }
 
 .swiper-slide .text-content .read-btn:hover i {
-  transform: translateX(5px);
+  transform: translateX(3px);
 }
 
 .dark-layer:before {
@@ -381,7 +381,7 @@ header .barra_navegacion {
 .bg-slider-thumbs {
   z-index: 777;
   position: absolute;
-  bottom: 7em;
+  bottom: 3em; /*ajustado para achicar img slider (7em)*/
   left: 50%;
   transform: translateX(-50%);
   transition: 0.3s ease;
