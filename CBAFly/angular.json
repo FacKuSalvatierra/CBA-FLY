@@ -22,15 +22,16 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/img"
             ],
             "styles": [
-              "CBAFly/node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": [
-              "CBAFly/node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "CBAFly/node_modules/swiper/swiper-element-bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/swiper/swiper-element-bundle.min.js"
             ]
           },
           "configurations": {
@@ -88,15 +89,16 @@
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/img"
             ],
             "styles": [
-              "CBAFly/node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": [
-              "CBAFly/node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "CBAFly/node_modules/swiper/swiper-element-bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/swiper/swiper-element-bundle.min.js"
             ]
           }
         }
