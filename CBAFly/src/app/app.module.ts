@@ -13,6 +13,8 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { ContactoComponent } from './components/shared/contacto/contacto.component';
 import { NosotrosComponent } from './components/shared/nosotros/nosotros.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,8 +32,10 @@ import { NosotrosComponent } from './components/shared/nosotros/nosotros.compone
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }
