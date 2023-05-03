@@ -25,9 +25,13 @@
               "src/assets"
             ],
             "styles": [
+              "CBAFly/node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "CBAFly/node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "CBAFly/node_modules/swiper/swiper-element-bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -87,9 +91,13 @@
               "src/assets"
             ],
             "styles": [
+              "CBAFly/node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "CBAFly/node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "CBAFly/node_modules/swiper/swiper-element-bundle.min.js"
+            ]
           }
         }
       }
