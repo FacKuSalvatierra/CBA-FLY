@@ -23,17 +23,16 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
+              "src/img",
               "src/img"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/swiper/swiper-bundle.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
-              "node_modules/swiper/swiper-bundle.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -94,12 +93,14 @@
               "src/img"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/swiper/swiper-bundle.min.css",
               "src/styles.css"
             ],
             "scripts": [
-              "node_modules/swiper/swiper-bundle.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/swiper/swiper-element-bundle.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           }
