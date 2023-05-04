@@ -12,7 +12,9 @@ import { InicioComponent } from './components/shared/inicio/inicio.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { ContactoComponent } from './components/shared/contacto/contacto.component';
 import { NosotrosComponent } from './components/shared/nosotros/nosotros.component';
+import { RegisterComponent } from './components/auth/login/register.component';
 
+import { register } from 'swiper/element/bundle';
 
 
 @NgModule({
@@ -25,13 +27,15 @@ import { NosotrosComponent } from './components/shared/nosotros/nosotros.compone
     InicioComponent,
     FooterComponent,
     ContactoComponent,
-    NosotrosComponent
+    NosotrosComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   
   ],
   providers: [],
@@ -39,3 +43,4 @@ import { NosotrosComponent } from './components/shared/nosotros/nosotros.compone
   
 })
 export class AppModule { }
+register();

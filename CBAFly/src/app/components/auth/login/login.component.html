@@ -1,1 +1,51 @@
-<p>login works!</p>
+<app-header></app-header>
+
+<body>
+    <main>
+
+    <div class="container">
+      <div class="forms">
+        <div class="form login">
+          <span class="title">Iniciar sesión</span>
+
+          <form action="#">
+            <div class="input-field">
+              <input type="text" placeholder="Ingresa tu correo electrónico" required id="email_login">
+              <i class="uil uil-envelope icon"></i>
+            </div>
+            <div class="input-field">
+              <input type="password" id="password_login" placeholder="Ingresa tu contraseña" required>
+              <i class="uil uil-lock icon"></i>
+              <i class="uil uil-eye-slash showHidePw"></i>
+            </div>
+
+            <div class="checkbox-text">
+              <div class="checkbox-content">
+                <input type="checkbox" id="logCheck">
+                <label for="logCheck" class="text">Recordarme</label>
+              </div>
+
+              <a href="#" class="text">Olvidé mi contraseña</a>
+            </div>
+
+            <div class="input-field button">
+              <input type="button" value="Iniciar sesión" onclick="validar_inicio()">
+            </div>
+          </form>
+
+          <div class="login-signup">
+            <span class="text">No tiene cuenta?
+              <a class="text signup-link" routerLink="/login/1">Regístrese ahora</a>
+            </span>
+          </div>
+        </div>
+
+        
+      </div>
+    </div>
+
+    </main>
+</body>
+
+<app-footer></app-footer>
+
