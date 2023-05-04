@@ -14,22 +14,6 @@
   --scroll-thumb-hover-color: #454f6b;
 }
 
-/*======= Scroll bar =======*/
-::-webkit-scrollbar {
-  width: 11px;
-  background: var(--scroll-bar-color);
-}
-
-::-webkit-scrollbar-thumb {
-  width: 100%;
-  background: var(--scroll-thumb-color);
-  border-radius: 2em;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--scroll-thumb-hover-color);
-}
-
 /*======= Main CSS =======*/
 * {
   margin: 0;
@@ -42,7 +26,7 @@
   color: rgb(253, 122, 0);
 }
 
-/*======= Inicio =======*/
+/*======= Nosotros =======*/
 .acercade {
   min-height: 100vh;
 }
