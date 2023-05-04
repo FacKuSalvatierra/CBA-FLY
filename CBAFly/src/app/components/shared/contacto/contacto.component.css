@@ -1,7 +1,8 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+section {
+    padding-top: 100px;
+    padding-bottom: 80px;
+    background-image: url(../../../../img/vueloContacto.jpg);
+    background-size: cover;
     font-family: "Poppins", sans-serif;
   }
 
@@ -11,10 +12,6 @@
     -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
     box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
     border-radius: 50px;
-  }
-
-  div {
-    display: block;
   }
 
   :root {
