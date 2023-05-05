@@ -23,16 +23,16 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
+              "src/img",
               "src/img"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/swiper/swiper-bundle.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/swiper/swiper-element-bundle.min.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -94,15 +94,21 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/swiper/swiper-bundle.min.css",
               "src/styles.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/swiper/swiper-element-bundle.min.js"
+              "node_modules/swiper/swiper-element-bundle.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "7fb7bdb6-5fbc-4ffc-a013-df84c5949559"
   }
 }
