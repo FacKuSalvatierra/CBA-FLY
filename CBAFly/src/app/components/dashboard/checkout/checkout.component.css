@@ -1,23 +1,26 @@
-section {
-    padding-top: 100px;
-    background-image: url(../../../../img/fondo3.jpg);
-    background-size: cover;
+* {
+  font-family: "Poppins", sans-serif;
 }
 
+section {
+  padding-top: 100px;
+  background-image: url(../../../../img/fondo3.jpg);
+  background-size: cover;
+}
 
 .card {
-    border: 1px solid #d9d9d9;
-    border-radius: 40px;
+  border: 1px solid #d9d9d9;
+  border-radius: 40px;
 }
 
 .mb-0 {
-    font-size: 13px;
+  font-size: 13px;
 }
 
 .mb-00 {
-    font-size: 11px;
+  font-size: 11px;
 }
 
 .mb-01 {
-    font-size: 20px;
+  font-size: 20px;
 }

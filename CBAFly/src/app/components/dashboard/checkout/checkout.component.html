@@ -18,11 +18,11 @@
                   <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
                       <p class="mb-1">Carrito de compras</p>
-                      <p class="mb-0">Tenés 4 items en tu carrito</p>
+                      <p class="mb-0">Tenés 2 items en tu carrito</p>
                     </div>
                     <div>
-                      <p class="mb-0"><span class="text-muted">Ordenado por:</span> <a href="#!"
-                          class="text-body">precio <i class="fas fa-angle-down mt-1"></i></a></p>
+                      <p class="mb-0"><span class="text-muted">Ordenado por: </span> <a href="#!"
+                          class="text-body">precio<i class="fas fa-angle-down mt-1"></i></a></p>
                     </div>
                   </div>
 
@@ -31,9 +31,8 @@
                       <div class="d-flex justify-content-between">
                         <div class="d-flex flex-row align-items-center">
                           <div>
-                            <img
-                              src="../../../../img/fondo1.jpg"
-                              class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                            <img src="../../../../img/fondo1.jpg" class="img-fluid rounded-3" alt="Shopping item"
+                              style="width: 65px;">
                           </div>
                           <div class="ms-3">
                             <h5>Vuelo a Paris</h5>
@@ -58,9 +57,8 @@
                       <div class="d-flex justify-content-between">
                         <div class="d-flex flex-row align-items-center">
                           <div>
-                            <img
-                              src="../../../../img/fondo2.jpg"
-                              class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                            <img src="../../../../img/fondo2.jpg" class="img-fluid rounded-3" alt="Shopping item"
+                              style="width: 65px;">
                           </div>
                           <div class="ms-3">
                             <h5> Vuelo a Dubai </h5>
@@ -99,13 +97,13 @@
 
                       <form class="mt-4">
                         <div class="form-outline form-white mb-4">
-                          <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
+                          <input type="text" id="typeName" class="form-control form-control-lg" size="17"
                             placeholder="Titular de la tarjeta" />
                           <label class="form-label" for="typeName">Titular de la tarjeta</label>
                         </div>
 
                         <div class="form-outline form-white mb-4">
-                          <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
+                          <input type="number" id="typeText" class="form-control form-control-lg" size="17"
                             placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
                           <label class="form-label" for="typeText">Número de la tarjeta</label>
                         </div>
@@ -113,16 +111,16 @@
                         <div class="row mb-4">
                           <div class="col-md-6">
                             <div class="form-outline form-white">
-                              <input type="text" id="typeExp" class="form-control form-control-lg" placeholder="MM/YYYY"
-                                size="7" id="exp" minlength="7" maxlength="7" />
+                              <input type="number" id="typeExp" class="form-control form-control-lg" placeholder="MM/YY"
+                                size="7" id="exp" minlength="4" maxlength="4" />
                               <label class="form-label" for="typeExp">Fecha de vencimiento</label>
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-outline form-white">
                               <input type="password" id="typeText" class="form-control form-control-lg"
-                                placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
-                              <label class="form-label" for="typeText">Cvv</label>
+                                placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="4" />
+                              <label class="form-label" for="typeText">CVV</label>
                             </div>
                           </div>
                         </div>
@@ -149,8 +147,9 @@
                       <div class="d-grid gap-2">
                         <button class="btn btn-info" type="button">
                           <div class="d-flex justify-content-between">
-                            <span>$904.750,00</span>
                             <span>COMPRAR</span>
+                            <span>|</span>
+                            <span>$904.750,00</span>
                           </div>
                         </button>
 

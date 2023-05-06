@@ -15,10 +15,8 @@ const routes: Routes = [
   {path: 'contacto', component:ContactoComponent},
   {path: 'checkout', component:CheckoutComponent},
   {path: 'config', component:ConfigComponent},
-  {path: '', redirectTo:'inicio', pathMatch:'full'},
-
-  {path: 'login/:id', component:RegisterComponent}
-
+  {path: 'login/:id', component:RegisterComponent},
+  {path: '', redirectTo:'inicio', pathMatch:'full'}
 ];
 
 @NgModule({
