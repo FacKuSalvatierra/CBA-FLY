@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Carrito de compras</h1>
+  <hr>
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Vuelo</th>
+            <th>Cantidad de asientos</th>
+            <th>Precio unitario</th>
+            <th>Total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in carrito_items %}
+            <tr>
+              <td>{{ item.vuelo.numero_vuelo }}</td>
+              <td>{{ item.cantidad_asientos }}</td>
+              <td>{{ item.vuelo.precio }}</td>
+              <td>{{ item.cantidad_asientos * item.vuelo.precio }}</td>
+              <td>
+                <form action="{% url 'eliminar_carrito' item.id %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                </form>
+              </td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="5">No hay vuelos en el carrito</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+      <h3>Resumen del carrito</h3>
+      <hr>
+      <p>Total de asientos: {{ carrito_items|length }}</p>
+      <p>Total a pagar: {{ carrito_items|total_carrito }}</p>
+      <hr>
+      <form action="{% url 'confirmar_compra' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success btn-block">Confirmar compra</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
