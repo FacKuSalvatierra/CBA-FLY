@@ -1,27 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
+
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent {}
-window.onload = function () {
-  const menuBtn = document.querySelector('.nav-menu-btn');
-  const closeBtn = document.querySelector('.nav-close-btn');
-  const navigation = document.querySelector('.navegacion');
+export class HeaderComponent implements OnInit {
 
-  menuBtn.addEventListener('click', () => {
-    navigation.classList.add('active');
-  });
+  constructor(private renderer: Renderer2) { }
 
-  closeBtn.addEventListener('click', () => {
-    navigation.classList.remove('active');
-  });
+  ngOnInit(): void {
+    const menuBtns = document.querySelectorAll(".nav-menu-btn");
+    const closeBtn = document.querySelector(".nav-close-btn");
+    const navigation = document.querySelector(".navegacion");
 
-  //Efectos de la barra de navegacion al scrollear
-  window.onscroll = function () {
-    const header = document.querySelector('header');
-    header.classList.toggle('sticky', window.scrollY > 0);
-  };
-};
+    menuBtns.forEach((menuBtn) => {
+      menuBtn.addEventListener("click", () => {
+        this.renderer.addClass(navigation, "active");
+      });
+    });
+
+    closeBtn.addEventListener("click", () => {
+      this.renderer.removeClass(navigation, "active");
+    });
+  }
+}
+
+

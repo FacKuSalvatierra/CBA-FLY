@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import Swiper from 'swiper';
 
 @Component({
@@ -6,8 +6,19 @@ import Swiper from 'swiper';
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css'],
 })
-export class InicioComponent {}
+export class InicioComponent implements AfterViewInit {
 
+  @ViewChild('swiperContainer') swiperContainer: any;
+
+  constructor() { }
+
+  ngAfterViewInit() {
+    const swiper = new Swiper(this.swiperContainer.nativeElement, {
+      // opciones del swiper
+    });
+  }
+
+}
 window.onload = function () {
   var swiper = new Swiper('.bg-slider-thumbs', {
     loop: true,

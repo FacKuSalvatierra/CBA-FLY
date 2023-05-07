@@ -17,17 +17,17 @@
 /*======= Scroll bar =======*/
 ::-webkit-scrollbar {
   width: 11px;
-  background: var(--scroll-bar-color);
+  background: #ffffff;
 }
 
 ::-webkit-scrollbar-thumb {
   width: 100%;
-  background: var(--scroll-thumb-color);
+  background: #282f4e;
   border-radius: 2em;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--scroll-thumb-hover-color);
+  background: #454f6b;
 }
 
 /*======= Main CSS =======*/
@@ -75,7 +75,7 @@ header .nav-bar {
 }
 
 .nav-bar .logo {
-  color: var(--dark-color);
+  color: #ffffff;
   font-size: 1.8em;
   font-weight: 600;
   letter-spacing: 2px;
@@ -85,7 +85,7 @@ header .nav-bar {
 }
 
 .navegacion .nav-items a {
-  color: var(--dark-color);
+  color: #ffffff;
   font-size: 1em;
   text-decoration: none;
   text-shadow: var(--text-shadow);
@@ -99,11 +99,11 @@ header .nav-bar {
   margin-right: 45px;
 }
 
-.navegacion .nav-items a:nth-child(4) {
+.nav-link-active {
   background-color: #ffffff;
   padding: 3px 10px 3px 10px;
   border-radius: 50px;
-  color: black;
+  color: #000000 !important;
 }
 
 .nav-link {
@@ -188,7 +188,7 @@ nav {
   /*======= Navigation menu =======*/
   .nav-menu-btn {
     display: block;
-    color: var(--dark-color);
+    color: #ffffff;
     font-size: 1.5em;
     cursor: pointer;
   }
@@ -212,7 +212,7 @@ nav {
     height: 100vh;
     top: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.25);
+    background: rgb(16 41 46 / 78%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -239,6 +239,7 @@ nav {
     box-shadow: var(--box-shadow);
     transform: translateY(-200px);
     transition: 0.3s ease;
+    color: #ffffff;
   }
 
   .navegacion.active .nav-items {

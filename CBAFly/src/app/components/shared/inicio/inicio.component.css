@@ -19,7 +19,7 @@ section {
 }
 
 .section {
-  color: var(--white-color);
+  color: #ffffff;
   background: var(--section-bg-color);
   padding: 35px 200px;
   transition: 0.3s ease;
@@ -67,7 +67,7 @@ section {
 .swiper-slide .text-content {
   position: absolute;
   top: 18%; /*ajustado para achicar img slider (25%)*/
-  color: var(--white-color);
+  color: #ffffff;
   margin: 0 200px;
   transition: 0.3s ease;
 }
@@ -108,6 +108,7 @@ section {
   transform: translateX(-80px);
   opacity: 0;
   text-align: center;
+  color: black;
 }
 
 .swiper-slide-active .text-content p {
@@ -133,6 +134,7 @@ section {
   cursor: pointer;
   transform: translateX(50px);
   opacity: 0;
+  color: #101010;
 }
 
 .swiper-slide-active .text-content .read-btn {
