@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +16,6 @@ import { NosotrosComponent } from './components/shared/nosotros/nosotros.compone
 import { RegisterComponent } from './components/auth/login/register.component';
 
 import { register } from 'swiper/element/bundle';
-
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { register } from 'swiper/element/bundle';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-
+    HttpClientModule
   
   ],
   providers: [],
