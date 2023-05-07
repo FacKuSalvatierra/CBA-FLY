@@ -14,11 +14,6 @@
   --scroll-thumb-color: #282f4e;
   --scroll-thumb-hover-color: #454f6b;
 }
-
-[data-theme="dark"] {
-  background-color: #111 !important;
-  color: rgb(253, 122, 0);
-}
 /*======= Scroll  =======*/
 ::-webkit-scrollbar {
   width: 11px;

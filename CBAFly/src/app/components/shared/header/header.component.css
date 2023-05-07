@@ -37,10 +37,6 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-[data-theme="dark"] {
-  background-color: #111 !important;
-  color: rgb(253, 122, 0);
-}
 
 /*======= Header =======*/
 header {
@@ -79,7 +75,7 @@ header .nav-bar {
 }
 
 .nav-bar .logo {
-  color: var(--white-color);
+  color: var(--dark-color);
   font-size: 1.8em;
   font-weight: 600;
   letter-spacing: 2px;
@@ -89,7 +85,7 @@ header .nav-bar {
 }
 
 .navegacion .nav-items a {
-  color: var(--white-color);
+  color: var(--dark-color);
   font-size: 1em;
   text-decoration: none;
   text-shadow: var(--text-shadow);
@@ -111,7 +107,7 @@ header .nav-bar {
 }
 
 .nav-link {
-  color: white;
+  color: rgb(255, 255, 255);
   position: relative;
   left: 119px;
   bottom: -2px;
@@ -192,7 +188,7 @@ nav {
   /*======= Navigation menu =======*/
   .nav-menu-btn {
     display: block;
-    color: var(--white-color);
+    color: var(--dark-color);
     font-size: 1.5em;
     cursor: pointer;
   }
