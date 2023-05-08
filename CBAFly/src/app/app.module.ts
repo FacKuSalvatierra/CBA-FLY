@@ -16,6 +16,8 @@ import { NosotrosComponent } from './components/shared/nosotros/nosotros.compone
 import { RegisterComponent } from './components/auth/login/register.component';
 
 import { register } from 'swiper/element/bundle';
+import { StickyHeaderDirective } from './sticky-header.directive';
+import { NavToggleDirective } from './nav-toggle-directive.directive';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { register } from 'swiper/element/bundle';
     FooterComponent,
     ContactoComponent,
     NosotrosComponent,
-    RegisterComponent
+    RegisterComponent,
+    StickyHeaderDirective,
+    NavToggleDirective,
   ],
   imports: [
     BrowserModule,

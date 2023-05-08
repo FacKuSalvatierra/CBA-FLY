@@ -1,36 +1,21 @@
-/*======= CSS variables =======*/
 :root {
   --white-color: #fff;
   --dark-color: #222;
   --body-bg-color: #fff;
   --section-bg-color: #202834;
   --navigation-item-hover-color: #3b5378;
-
   --text-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
   --box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
-
-  --scroll-bar-color: #fff;
-  --scroll-thumb-color: #282f4e;
-  --scroll-thumb-hover-color: #454f6b;
 }
-
-/*======= Main CSS =======*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-[data-theme="dark"] {
-  background-color: #111 !important;
-  color: rgb(253, 122, 0);
-}
-
-/*======= Nosotros =======*/
 .acercade {
   min-height: 100vh;
 }
-
 .home:before {
   z-index: 888;
   content: "";
@@ -41,7 +26,6 @@
   left: 0;
   background: linear-gradient(transparent, var(--section-bg-color));
 }
-
 .acercade {
   display: flex;
   justify-content: space-around;
@@ -54,7 +38,6 @@
   );
   flex-wrap: wrap;
 }
-
 .acercade .lema {
   max-width: 500px;
   font-size: 1.2rem;
@@ -69,19 +52,16 @@
   box-shadow: var(--box-shadow);
   text-align: center;
 }
-
 .acercade .avion {
   max-width: 500px;
   filter: brightness(0.9);
   filter: blur(0.6px);
 }
-
 .fondo_nosotros h1 {
   padding-bottom: 20px;
   padding-top: 20px;
   font-size: 1.7rem;
 }
-
 .tarjetas {
   background: rgb(6, 24, 59);
   background: linear-gradient(
@@ -100,11 +80,9 @@
   justify-content: space-between;
   padding-bottom: 20px;
 }
-
 .tarjeta_integrante:hover {
   transition: 2s ease;
 }
-
 .tarjeta_integrante {
   display: grid;
   border-radius: 31px;
@@ -123,193 +101,45 @@
   align-items: center;
   justify-items: center;
 }
-
 .tarjeta_integrante .foto_perfil {
   width: 60%;
   border-radius: 50%;
   align-self: center;
   justify-self: center;
 }
-
 .linkedin {
   width: 10%;
 }
-
 .tarjeta_integrante a {
   display: flex;
   justify-content: center;
 }
-
 .rol {
   font-weight: 400;
 }
-
 .tarjeta_integrante .nombre {
   max-height: 35px;
   max-width: 300px;
 }
-
 .tarjeta_integrante img {
   position: relative;
 }
-
-/*======= Media queries (max-width: 1100px) =======*/
 @media screen and (max-width: 1100px) {
-  header .nav-bar {
-    padding: 0 50px;
-  }
-
-  .section {
-    padding: 25px 50px;
-  }
-
-  .media-icons {
-    right: 0;
-    margin-right: 50px;
-  }
-
-  .swiper-slide .text-content {
-    margin: 0 120px 0 50px;
-  }
-
-  .bg-slider-thumbs {
-    bottom: 3em;
-  }
-
   .avion {
     width: 300px;
   }
 }
-
-/*======= Media queries (max-width: 785px) =======*/
 @media screen and (max-width: 785px) {
-  header .nav-bar {
-    padding: 25px 20px;
-  }
-
-  .section {
-    padding: 25px 20px;
-  }
-
-  .media-icons {
-    margin-right: 20px;
-  }
-
-  .media-icons a {
-    font-size: 1.5em;
-  }
-
-  .swiper-slide .text-content {
-    margin: 0 70px 0 20px;
-  }
-
-  .swiper-slide .text-content .title {
-    font-size: 3em;
-  }
-
-  .swiper-slide .text-content .title span {
-    font-size: 0.35em;
-  }
-
-  .swiper-slide .text-content p {
-    font-size: 0.9em;
-  }
-
   .avion {
     position: relative;
     top: 40px;
   }
-
-  /*======= Navigation menu =======*/
-  .nav-menu-btn {
-    display: block;
-    color: var(--white-color);
-    font-size: 1.5em;
-    cursor: pointer;
-  }
-
-  .nav-close-btn {
-    display: block;
-    color: var(--dark-color);
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 1.3em;
-    margin: 10px;
-    cursor: pointer;
-    transition: 0.3s ease;
-  }
-
-  .navegacion {
-    z-index: 9999999;
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.25);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.3s ease;
-  }
-
-  .navegacion.active {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  .navegacion .nav-items {
-    position: relative;
-    background: var(--white-color);
-    width: 400px;
-    max-width: 400px;
-    display: grid;
-    place-content: center;
-    margin: 20px;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: var(--box-shadow);
-    transform: translateY(-200px);
-    transition: 0.3s ease;
-  }
-
-  .navegacion.active .nav-items {
-    transform: translateY(0);
-  }
-
-  .navegacion .nav-items a {
-    color: var(--dark-color);
-    font-size: 1em;
-    margin: 15px 50px;
-    transition: 0.3s ease;
-  }
-
-  .navegacion .nav-items a:hover {
-    color: var(--navigation-item-hover-color);
-  }
-
-  .navegacion .nav-items > a > i {
-    display: inline-block;
-    font-size: 1.3em;
-    margin-right: 5px;
-  }
-
-  .swiper-slide .text-content .read-btn {
-    font-size: 0.9em;
-    padding: 5px 15px;
-  }
-
   .about h2 {
     font-size: 2.5em;
   }
-
   .about p {
     font-size: 0.9em;
   }
-
   .tarjetas {
     background: rgb(6, 24, 59);
     background: linear-gradient(

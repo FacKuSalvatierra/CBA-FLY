@@ -1,4 +1,3 @@
-/*======= Main CSS =======*/
 * {
   margin: 0;
   padding: 0;
@@ -19,7 +18,7 @@ section {
 }
 
 .section {
-  color: var(--white-color);
+  color: #ffffff;
   background: var(--section-bg-color);
   padding: 35px 200px;
   transition: 0.3s ease;
@@ -48,13 +47,11 @@ section {
   width: 100%;
   min-height: 80vh; /*ajustado para achicar img slider (100vh)*/
 }
-
 .bg-slider .swiper-slide {
   position: relative;
   width: 100%;
   height: 80vh; /*ajustado para achicar img slider (100vh)*/
 }
-
 .bg-slider .swiper-slide img {
   width: 100%;
   height: 80vh; /*ajustado para achicar img slider (100vh)*/
@@ -63,15 +60,13 @@ section {
   background-size: cover;
   pointer-events: none;
 }
-
 .swiper-slide .text-content {
   position: absolute;
   top: 18%; /*ajustado para achicar img slider (25%)*/
-  color: var(--white-color);
+  color: #ffffff;
   margin: 0 200px;
   transition: 0.3s ease;
 }
-
 .swiper-slide .text-content .titulo {
   font-size: 4em;
   font-weight: 700;
@@ -80,7 +75,6 @@ section {
   transform: translateY(-50px);
   opacity: 0;
 }
-
 .swiper-slide-active .text-content .titulo {
   transform: translateY(0);
   opacity: 1;
@@ -89,12 +83,10 @@ section {
   transition-property: transform, opacity;
   text-shadow: 0px 0px 10px #0000007e;
 }
-
 .swiper-slide .text-content .titulo span {
   font-size: 0.3em;
   font-weight: 300;
 }
-
 .swiper-slide .text-content p {
   max-width: 500px;
   background: rgba(255, 255, 255, 0.1);
@@ -108,8 +100,8 @@ section {
   transform: translateX(-80px);
   opacity: 0;
   text-align: center;
+  color: black;
 }
-
 .swiper-slide-active .text-content p {
   transform: translateX(0);
   opacity: 1;
@@ -117,7 +109,6 @@ section {
   transition-delay: 0.3s;
   transition-property: transform, opacity;
 }
-
 .swiper-slide .text-content .read-btn {
   border: none;
   outline: none;
@@ -133,8 +124,8 @@ section {
   cursor: pointer;
   transform: translateX(50px);
   opacity: 0;
+  color: #101010;
 }
-
 .swiper-slide-active .text-content .read-btn {
   transform: translateX(0);
   opacity: 1;
@@ -142,16 +133,13 @@ section {
   transition-delay: 0.3s;
   transition-property: transform, opacity;
 }
-
 .swiper-slide .text-content .read-btn i {
   font-size: 1.6em;
   transition: 0.3s ease;
 }
-
 .swiper-slide .text-content .read-btn:hover i {
   transform: translateX(3px);
 }
-
 .dark-layer:before {
   content: "";
   position: absolute;
@@ -161,7 +149,6 @@ section {
   left: 0;
   background: rgba(0, 0, 0, 0.1);
 }
-
 .bg-slider-thumbs {
   z-index: 777;
   position: absolute;
@@ -170,7 +157,6 @@ section {
   transform: translateX(-50%);
   transition: 0.3s ease;
 }
-
 .thumbs-container {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
@@ -180,7 +166,6 @@ section {
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: var(--box-shadow);
 }
-
 .thumbs-container img {
   width: 50px;
   height: 35px;
@@ -188,11 +173,9 @@ section {
   border-radius: 5px;
   cursor: pointer;
 }
-
 .swiper-slide-thumb-active {
   border: 1px solid var(--white-color);
 }
-
 /*======= Iconos =======*/
 .media-icons {
   z-index: 999;
@@ -215,11 +198,9 @@ section {
   font-size: 3em;
   font-weight: 600;
 }
-
 .about p {
   margin: 25px 0;
 }
-
 main {
   background: rgb(250, 255, 198);
   background: linear-gradient(
@@ -229,7 +210,6 @@ main {
     rgba(12, 12, 62, 1) 100%
   );
 }
-
 .contenedor {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -251,23 +231,17 @@ main {
   margin-right: auto;
   padding-bottom: 10px;
 }
-
 .sidebar {
   grid-area: sidebar;
   padding-top: 50px;
 }
-
 .btn-group > .btn:first-child {
   background-color: azure;
 }
-
 .selectpicker option {
   border: none;
   background-color: white;
   outline: none;
-  appearance: auto;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   color: #14b1b2;
   font-weight: bold;
   font-size: 15px;
@@ -276,15 +250,11 @@ main {
   margin-top: -20px;
   background: none;
 }
-
 .selectpicker {
   border: "";
   background-color: rgba(255, 177, 177, 0.786);
   outline: "";
   text-align: center;
-  appearance: auto;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   color: #f8fafa;
   font-weight: bold;
   font-size: 15px;
@@ -293,21 +263,17 @@ main {
   margin-top: -20px;
   background: none;
 }
-
 .sidebar p {
   padding: 20px;
 }
-
 .sidebar > .calendario {
   color: #101010;
 }
-
 .busqueda {
   grid-area: busqueda;
   width: 100%;
   height: 55px;
 }
-
 .busqueda i {
   position: relative;
   left: 43%;
@@ -315,7 +281,6 @@ main {
   top: 34px;
   color: rgb(255, 255, 255);
 }
-
 .busqueda input {
   color: rgb(255, 255, 255);
   width: 100%;
@@ -325,31 +290,24 @@ main {
   border-radius: 50px;
   text-align: center;
 }
-
 .card1 {
   grid-area: card1;
 }
-
 .card2 {
   grid-area: card2;
 }
-
 .card3 {
   grid-area: card3;
 }
-
 .card4 {
   grid-area: card4;
 }
-
 .card5 {
   grid-area: card5;
 }
-
 .card6 {
   grid-area: card6;
 }
-
 .card1,
 .card2,
 .card3,
@@ -359,7 +317,6 @@ main {
   background-color: rgba(30, 35, 67, 0.5);
   border-radius: 50px;
 }
-
 .foto_lugar {
   box-shadow: var(--box-shadow);
   width: 100%;
@@ -368,13 +325,11 @@ main {
   border-radius: 30px;
   cursor: pointer;
 }
-
 .ciudad {
   font-weight: 600;
   font-size: 1.2rem;
   margin-top: 5px;
 }
-
 .precio {
   text-align: center;
   background-color: rgb(255, 118, 13);
@@ -387,73 +342,50 @@ main {
   position: relative;
   top: 9px;
 }
-
 .reveal {
   position: relative;
   transform: translateX(50px);
   opacity: 0;
   transition: 1s all ease;
 }
-
 .reveal.active {
   transform: translateX(0);
   opacity: 1;
 }
-
-/*======= Media queries (max-width: 1100px) =======*/
 @media screen and (max-width: 1100px) {
-  header .barra_navegacion {
-    padding: 0 50px;
-  }
-
   .section {
     padding: 25px 50px;
   }
-
   .media-icons {
     right: 0;
     margin-right: 50px;
   }
-
   .swiper-slide .text-content {
     margin: 0 120px 0 50px;
   }
-
   .bg-slider-thumbs {
     bottom: 3em;
   }
 }
-
-/*======= Media queries (max-width: 786px) =======*/
 @media screen and (max-width: 786px) {
-  header .barra_navegacion {
-    padding: 25px 20px;
-  }
-
   .section {
     padding: 25px 20px;
   }
-
   .media-icons {
     margin-right: 20px;
   }
-
   .media-icons a {
     font-size: 1.5em;
   }
-
   .swiper-slide .text-content {
     margin: 0 70px 0 20px;
   }
-
   .swiper-slide .text-content .titulo {
     font-size: 3em;
   }
-
   .swiper-slide .text-content .titulo span {
     font-size: 0.35em;
   }
-
   .swiper-slide .text-content p {
     font-size: 0.9em;
   }
