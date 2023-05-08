@@ -1,43 +1,18 @@
-/*======= CSS variables =======*/
 :root {
   --white-color: #fff;
   --dark-color: #222;
   --body-bg-color: #fff;
   --section-bg-color: #202834;
   --navigation-item-hover-color: #3b5378;
-
   --text-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
   --box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
-
-  --scroll-bar-color: #fff;
-  --scroll-thumb-color: #282f4e;
-  --scroll-thumb-hover-color: #454f6b;
 }
-
-/*======= Scroll  =======*/
-::-webkit-scrollbar {
-  width: 11px;
-  background: var(--scroll-bar-color);
-}
-
-::-webkit-scrollbar-thumb {
-  width: 100%;
-  background: var(--scroll-thumb-color);
-  border-radius: 2em;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--scroll-thumb-hover-color);
-}
-
-/*======= CSS Principal =======*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-
 main {
   display: flex;
   justify-content: center;
@@ -45,7 +20,6 @@ main {
   margin-top: 70px;
   margin-bottom: 70px;
 }
-
 body::before {
   content: " ";
   position: absolute;
@@ -60,9 +34,7 @@ body::before {
   background-size: cover;
   background-repeat: no-repeat;
 }
-
 /*--Login y registro--*/
-
 .container2 {
   z-index: 888;
   position: a;
@@ -76,7 +48,6 @@ body::before {
   padding: 25px;
   margin-top: 30px;
 }
-
 .container .forms2 {
   display: flex;
   align-items: center;
@@ -88,27 +59,22 @@ body::before {
   flex-direction: row;
   align-content: space-around;
 }
-
 .container.active .login {
   margin-left: -50%;
   opacity: 0;
   transition: margin-left 0.18s ease, opacity 0.15s ease;
 }
-
 .container .signup2 {
   opacity: 0;
   transition: opacity 0.09s ease;
 }
-
 .container.active .signup2 {
   opacity: 1;
   transition: opacity 0.2s ease;
 }
-
 .container.active .forms2 {
   height: 463px;
 }
-
 .container2 .forms2 .title2 {
   position: relative;
   font-size: 23px;
@@ -116,7 +82,6 @@ body::before {
   top: 3px;
   font-weight: 600;
 }
-
 .forms2 .title2::before {
   content: "";
   position: absolute;
@@ -127,14 +92,12 @@ body::before {
   background-color: #4070f4;
   border-radius: 25px;
 }
-
 .form .input-field {
   position: relative;
   height: 44px;
   width: 100%;
   margin-top: 14px;
 }
-
 .input-field input {
   position: absolute;
   height: 100%;
@@ -147,11 +110,9 @@ body::before {
   border-top: 2px solid transparent;
   transition: all 0.2s ease;
 }
-
 .input-field input:is(:focus, :valid) {
   border-bottom-color: #4070f4;
 }
-
 .input-field i {
   position: absolute;
   top: 50%;
@@ -160,56 +121,45 @@ body::before {
   font-size: 19px;
   transition: all 0.2s ease;
 }
-
 .input-field input:is(:focus, :valid) ~ i {
   color: #4070f4;
 }
-
 .input-field i.icon {
   left: 0;
 }
-
 .input-field i.showHidePw {
   right: 0;
   cursor: pointer;
   padding: 10px;
 }
-
 .form .checkbox-text {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 20px;
 }
-
 .checkbox-text .checkbox-content {
   display: flex;
   align-items: center;
 }
-
 .checkbox-content input {
   margin: 0 8px -2px 4px;
   accent-color: #4070f4;
 }
-
 .form .text {
   color: #333;
   font-size: 0.79em;
 }
-
 .form a.text {
   color: #4070f4;
   text-decoration: none;
 }
-
 .form a:hover {
   text-decoration: underline;
 }
-
 .form .button {
   margin-top: 18px;
 }
-
 .form .button input {
   border: none;
   color: #fff;
@@ -221,137 +171,18 @@ body::before {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
 .button input:hover {
   background-color: #265df2;
 }
-
 .form .login-signup {
   margin-top: 11px;
   text-align: center;
 }
-
-/*======= Media queries (max-width: 1100px) =======*/
-@media screen and (max-width: 1100px) {
-  header .barra_navegacion {
-    padding: 0 50px;
-  }
-
-  .section {
-    padding: 25px 50px;
-  }
-}
-
-/*======= Media queries (max-width: 785px) =======*/
 @media screen and (max-width: 785px) {
-  header .barra_navegacion {
-    padding: 25px 20px;
-  }
-
-  /*======= menu navegacion =======*/
-  .nav-menu-btn {
-    display: block;
-    color: var(--white-color);
-    font-size: 1.5em;
-    cursor: pointer;
-  }
-
-  .nav-close-btn {
-    display: block;
-    color: var(--dark-color);
-    position: absolute;
-    top: 0;
-    right: 0;
-    font-size: 1.3em;
-    margin: 10px;
-    cursor: pointer;
-    transition: 0.3s ease;
-  }
-
-  .navegacion {
-    z-index: 9999999;
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.25);
+  .container-body {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.3s ease;
-  }
-
-  .navegacion.active {
-    visibility: visible;
-    opacity: 1;
-  }
-
-  .navegacion .nav-items {
-    position: relative;
-    z-index: 1000000;
-    background: var(--white-color);
-    width: 400px;
-    max-width: 400px;
-    display: grid;
-    place-content: center;
-    margin: 20px;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: var(--box-shadow);
-    transform: translateY(-200px);
-    transition: 0.3s ease;
-  }
-
-  .navegacion.active .nav-items {
-    transform: translateY(0);
-  }
-
-  .navegacion .nav-items a {
-    color: var(--dark-color);
-    font-size: 1em;
-    margin: 15px 50px;
-    transition: 0.3s ease;
-  }
-
-  .navegacion .nav-items a:hover {
-    color: var(--navigation-item-hover-color);
-  }
-
-  .navegacion .nav-items > a > i {
-    display: inline-block;
-    font-size: 1.3em;
-    margin-right: 5px;
-  }
-}
-
-/*contendor de las columnas*/
-.container-body {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  align-content: center;
-}
-/*======= Media queries (max-width: 1100px) =======*/
-@media screen and (max-width: 1100px) {
-  header .barra_navegacion {
-    padding: 0 50px;
-  }
-
-  .section {
-    padding: 25px 50px;
-  }
-}
-
-/*======= Media queries (max-width: 785px) =======*/
-@media screen and (max-width: 785px) {
-  header .barra_navegacion {
-    padding: 25px 20px;
-  }
-
-  .section {
-    padding: 25px 20px;
+    align-content: center;
   }
 }
