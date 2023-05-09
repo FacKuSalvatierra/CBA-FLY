@@ -71,18 +71,20 @@ header .nav-bar {
   text-shadow: var(--text-shadow);
 }
 .navegacion .nav-items a {
+  display: inline-flex;
   color: #ffffff;
   font-size: 1em;
   text-decoration: none;
   text-shadow: var(--text-shadow);
 }
 .navegacion .nav-items a i {
-  display: none;
+  display: inline-flex;
 }
 .navegacion .nav-items a:not(:last-child) {
   margin-right: 45px;
 }
 .nav-link-active {
+  display: inline-flex;
   background-color: #ffffff;
   padding: 3px 10px 3px 10px;
   border-radius: 50px;
