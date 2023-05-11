@@ -1,42 +1,30 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {}
-const pwShowHide = document.querySelectorAll('.showHidePw'),
-  pwFields = document.querySelectorAll('.password');
+export class LoginComponent {
+  password: string;
+  passwordVisible: boolean = false;
+  constructor(private router: Router) {}
 
-//Mostrar u ocultar contraseña
-pwShowHide.forEach((eyeIcon) => {
-  eyeIcon.addEventListener('click', () => {
-    pwFields.forEach((pwField) => {
-      if (pwField === pwField) {
-        pwField = this;
-
-        pwShowHide.forEach((icon) => {
-          icon.classList.replace('uil-eye-slash', 'uil-eye');
-        });
-      } else {
-        pwField = this;
-
-        pwShowHide.forEach((icon) => {
-          icon.classList.replace('uil-eye', 'uil-eye-slash');
-        });
-      }
-    });
-  });
-});
-
-// Validar inicio sesión
-function validar_inicio() {
-  let email = document.getElementById('email_login').innerText;
-  let pass = document.getElementById('password_login').innerText;
-  if (email == '') {
-    alert('Debe ingresar su correo electrónico');
-  } else if (pass == '') {
-    alert('Debe ingresar su contraseña');
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
+    const passwordField = document.getElementById('password') as HTMLInputElement;
+    passwordField.type = this.passwordVisible ? 'text' : 'password';
+  }
+  validar_inicio() {
+    const email = (document.getElementById('email_login') as HTMLInputElement).value;
+    const password = this.password;
+    // Validar credenciales del usuario aquí
+    if (email === 'usuario@example.com' && password === '12345') {
+      // Redirigir al usuario a la página correspondiente después de iniciar sesión
+      this.router.navigate(['/home']);
+    } else {
+      // Mostrar un mensaje de error
+      alert('Correo electrónico o contraseña incorrectos');
+    }
   }
 }

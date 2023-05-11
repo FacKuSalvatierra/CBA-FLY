@@ -13,9 +13,9 @@
               <i class="uil uil-envelope icon"></i>
             </div>
             <div class="input-field">
-              <input type="password" id="password_login" placeholder="Ingresa tu contraseña" required>
+              <input type="password" id="password" [(ngModel)]="password" placeholder="Ingresa tu contraseña" required [type]="passwordVisible ? 'text' : 'password'">
               <i class="uil uil-lock icon"></i>
-              <i class="uil uil-eye-slash showHidePw"></i>
+              <i class="uil showHidePw" [ngClass]="passwordVisible ? 'uil-eye' : 'uil-eye-slash'" (click)="togglePasswordVisibility()"></i>
             </div>
 
             <div class="checkbox-text">
@@ -28,7 +28,7 @@
             </div>
 
             <div class="input-field button">
-              <input type="button" value="Iniciar sesión" onclick="validar_inicio()">
+              <input type="button" value="Iniciar sesión" (click)="validar_inicio()">
             </div>
           </form>
 
