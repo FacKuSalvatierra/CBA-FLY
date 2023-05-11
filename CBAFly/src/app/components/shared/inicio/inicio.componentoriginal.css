@@ -192,58 +192,15 @@ section {
   font-size: 1.7em;
   margin: 10px 0;
 }
-/* Barra Busqueda*/
-.busqueda {
-  grid-column: 1;
-  grid-row: 1;
-  column-span: 1;
-  left:48%;
-  top:45%;
-  transform: translate(-50%,-50%);
-  padding: 10px;
-}
-.busqueda input {
-  outline: none;
-  box-sizing: border-box;
-  height: 60px;
-  width: 0;
-  padding: 0 20px;
-  color: #000;
-  border: 1px solid #000099;
-  transition: all .7s ease;
-}
-::placeholder {
-  color: grey;
-}
-.btnsearch {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 80px;
-  height: 80px;
-  background: #000099;
-  line-height: 80px;
-  border-radius: 50%;
-  text-align: center;
-  cursor: pointer;
-  transition: .5s;
-}
-.btnsearch i {
-  font-size: 25px;
-  color: white;
-  line-height: 80px;
-  transition: all .7s ease;
-}
-.busqueda:hover input {
-  width:350px;
-}
-.busqueda:hover i {
-  transform: rotate(-360deg);
-}
-.btnsearch:hover {
-  background: #000099;
-}
+
 /*======= Seccion fecha de salida =======*/
+.about h2 {
+  font-size: 3em;
+  font-weight: 600;
+}
+.about p {
+  margin: 25px 0;
+}
 main {
   background: rgb(250, 255, 198);
   background: linear-gradient(
@@ -253,18 +210,32 @@ main {
     rgba(12, 12, 62, 1) 100%
   );
 }
-.busqueda_selectiva {
-  grid-row: 2;
-  resize: horizontal;
+.contenedor {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  /*grid-template-rows: 0.1fr 1fr 1fr 1fr;*/
+  grid-auto-columns: 1fr;
+  gap: 10px 10px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "sidebar busqueda busqueda busqueda"
+    "sidebar card1 card2 card3"
+    "sidebar card4 card5 card6";
+  color: #ffffff;
+  text-align: center;
+  column-gap: 43px;
+  row-gap: 30px;
+  padding-top: 20px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 10px;
 }
-.about h2 {
-  font-size: 3em;
-  font-weight: 600;
+.sidebar {
+  grid-area: sidebar;
+  padding-top: 50px;
 }
-.about p {
-  margin: 25px 0;
-}
-.busquedaselectiva .btn-group > .btn:first-child {
+.btn-group > .btn:first-child {
   background-color: azure;
 }
 .selectpicker option {
@@ -298,120 +269,124 @@ main {
 .sidebar > .calendario {
   color: #101010;
 }
-/* Font */
-@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
-
-/* Design */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-.tarjetas {
-  grid-column: 2;
-  grid-row: 2;
-  color: #272727;
-  font-family: 'Quicksand', serif;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0;
-  padding: 1rem;
-  position: right;
-}
-
-.tarjetas{
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-h1 {
-    font-size: 24px;
-    font-weight: 400;
-    text-align: center;
-}
-
-img {
-  height: 250px;
-  width: 350px;
-  vertical-align: middle;
-}
-
-.btn {
-  color: #ffffff;
-  padding: 0.8rem;
-  font-size: 14px;
-  text-transform: uppercase;
-  border-radius: 4px;
-  font-weight: 400;
-  display: block;
+.busqueda {
+  grid-area: busqueda;
   width: 100%;
+  height: 55px;
+}
+.busqueda i {
+  position: relative;
+  left: 43%;
+  height: 50px;
+  top: 34px;
+  color: rgb(255, 255, 255);
+}
+.busqueda input {
+  color: rgb(255, 255, 255);
+  width: 100%;
+  height: 40px;
+  text-decoration: none;
+  background: #ff8400;
+  border-radius: 50px;
+  text-align: center;
+}
+.card1 {
+  grid-area: card1;
+}
+.card2 {
+  grid-area: card2;
+}
+.card3 {
+  grid-area: card3;
+}
+.card4 {
+  grid-area: card4;
+}
+.card5 {
+  grid-area: card5;
+}
+.card6 {
+  grid-area: card6;
+}
+.card1,
+.card2,
+.card3,
+.card4,
+.card5,
+.card6 {
+  background-color: rgba(30, 35, 67, 0.5);
+  border-radius: 50px;
+}
+.foto_lugar {
+  box-shadow: var(--box-shadow);
+  width: 100%;
+  height: 10em;
+  object-fit: cover;
+  border-radius: 30px;
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: transparent;
 }
-
-.btn:hover {
-  background-color: rgba(255, 255, 255, 0.12);
+.ciudad {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-top: 5px;
 }
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.precio {
+  text-align: center;
+  background-color: rgb(255, 118, 13);
+  color: #fff;
+  justify-content: space-around;
+  border-radius: 200px;
+  cursor: pointer;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  position: relative;
+  top: 9px;
 }
-
-.cards_item {
-  display: flex;
-  padding: 1rem;
+.reveal {
+  position: relative;
+  transform: translateX(50px);
+  opacity: 0;
+  transition: 1s all ease;
 }
-
-@media (min-width: 40rem) {
-  .cards_item {
-    width: 50%;
+.reveal.active {
+  transform: translateX(0);
+  opacity: 1;
+}
+@media screen and (max-width: 1100px) {
+  .section {
+    padding: 25px 50px;
+  }
+  .media-icons {
+    right: 0;
+    margin-right: 50px;
+  }
+  .swiper-slide .text-content {
+    margin: 0 120px 0 50px;
+  }
+  .bg-slider-thumbs {
+    bottom: 3em;
   }
 }
-
-@media (min-width: 56rem) {
-  .cards_item {
-    width: 33.3333%;
+@media screen and (max-width: 786px) {
+  .section {
+    padding: 25px 20px;
   }
-}
-
-.card {
-  background-color: white;
-  border-radius: 0.25rem;
-  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.card_content {
-  padding: 1rem;
-  background: linear-gradient(to bottom left, #000099 40%, #FFC39E 100%);
-}
-
-.card_title {
-  color: #ffffff;
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: capitalize;
-  margin: 0px;
-}
-
-.card_text {
-  color: #ffffff;
-  font-size: 0.875rem;
-  line-height: 1.5;
-  margin-bottom: 1.25rem;    
-  font-weight: 400;
-}
-
-main .tarjetas, .busqueda, .busquedaselecttiva {
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 20px 980px;
-  
+  .media-icons {
+    margin-right: 20px;
+  }
+  .media-icons a {
+    font-size: 1.5em;
+  }
+  .swiper-slide .text-content {
+    margin: 0 70px 0 20px;
+  }
+  .swiper-slide .text-content .titulo {
+    font-size: 3em;
+  }
+  .swiper-slide .text-content .titulo span {
+    font-size: 0.35em;
+  }
+  .swiper-slide .text-content p {
+    font-size: 0.9em;
+  }
 }

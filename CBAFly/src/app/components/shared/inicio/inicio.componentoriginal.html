@@ -1,70 +1,64 @@
 <app-header></app-header>
 
 <body>
-  <main>
-    <section class="home">
-      <div class="swiper bg-slider" id="swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="../../../.././img/fondo1.jpg" alt="" style="filter: brightness(0.9)" />
-            <div class="text-content">
-              <h2 class="titulo">Miami <span>ARS 300.600</span></h2>
-              <p class="fecha_carrusel">Viaja el 01/11</p>
-              <button class="read-btn">
-                Comprar <i class="uil uil-plane"></i>
-              </button>
-            </div>
-          </div>
-          <div class="swiper-slide dark-layer">
-            <img src="../../../../img/fondo2.jpg" alt="" style="filter: brightness(0.8)" />
-            <div class="text-content">
-              <h2 class="titulo">Madrid <span>ARS 300.800</span></h2>
-              <p class="fecha_carrusel">Viaja el 02/11</p>
-              <button class="read-btn">
-                Comprar <i class="uil uil-plane"></i>
-              </button>
-            </div>
-          </div>
-          <div class="swiper-slide dark-layer">
-            <img src="../../../../img/fondo3.jpg" alt="" style="filter: brightness(0.9)" />
-            <div class="text-content">
-              <h2 class="titulo">Tokio <span>ARS 520.600</span></h2>
-              <p class="fecha_carrusel">Viaja el 03/11</p>
-              <button class="read-btn">
-                Comprar <i class="uil uil-plane"></i>
-              </button>
-            </div>
-          </div>
-          <div class="swiper-slide">
-            <img src="../../../../img/fondo4.jpg" alt="" style="filter: brightness(0.9)" />
-            <div class="text-content">
-              <h2 class="titulo">Amsterdam <span>ARS 520.600</span></h2>
-              <p class="fecha_carrusel">Viaja el 04/11</p>
-              <button class="read-btn">
-                Comprar <i class="uil uil-plane"></i>
-              </button>
-            </div>
+<section class="home">
+    <div class="swiper bg-slider" id="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="../../../.././img/fondo1.jpg" alt="" style="filter: brightness(0.9)" />
+          <div class="text-content">
+            <h2 class="titulo">Miami <span>ARS 300.600</span></h2>
+            <p class="fecha_carrusel">Viaja el 01/11</p>
+            <button class="read-btn">
+              Comprar <i class="uil uil-plane"></i>
+            </button>
           </div>
         </div>
-      </div>
-  
-      <div class="bg-slider-thumbs">
-        <div class="swiper-wrapper thumbs-container">
-          <img src="../../../../img/fondo1.jpg" class="swiper-slide" alt="" />
-          <img src="../../../../img/fondo2.jpg" class="swiper-slide" alt="" />
-          <img src="../../../../img/fondo3.jpg" class="swiper-slide" alt="" />
-          <img src="../../../../img/fondo4.jpg" class="swiper-slide" alt="" />
+        <div class="swiper-slide dark-layer">
+          <img src="../../../../img/fondo2.jpg" alt="" style="filter: brightness(0.8)" />
+          <div class="text-content">
+            <h2 class="titulo">Madrid <span>ARS 300.800</span></h2>
+            <p class="fecha_carrusel">Viaja el 02/11</p>
+            <button class="read-btn">
+              Comprar <i class="uil uil-plane"></i>
+            </button>
+          </div>
         </div>
-      </div>
-    </section>
-    <div class="busqueda">
-      <input type="text" placeholder="Buscar">
-      <div class="btn_search">
-        <i class="fa fa-search"></i>
+        <div class="swiper-slide dark-layer">
+          <img src="../../../../img/fondo3.jpg" alt="" style="filter: brightness(0.9)" />
+          <div class="text-content">
+            <h2 class="titulo">Tokio <span>ARS 520.600</span></h2>
+            <p class="fecha_carrusel">Viaja el 03/11</p>
+            <button class="read-btn">
+              Comprar <i class="uil uil-plane"></i>
+            </button>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="../../../../img/fondo4.jpg" alt="" style="filter: brightness(0.9)" />
+          <div class="text-content">
+            <h2 class="titulo">Amsterdam <span>ARS 520.600</span></h2>
+            <p class="fecha_carrusel">Viaja el 04/11</p>
+            <button class="read-btn">
+              Comprar <i class="uil uil-plane"></i>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  
-    <aside class="busquedaselectiva">
+
+    <div class="bg-slider-thumbs">
+      <div class="swiper-wrapper thumbs-container">
+        <img src="../../../../img/fondo1.jpg" class="swiper-slide" alt="" />
+        <img src="../../../../img/fondo2.jpg" class="swiper-slide" alt="" />
+        <img src="../../../../img/fondo3.jpg" class="swiper-slide" alt="" />
+        <img src="../../../../img/fondo4.jpg" class="swiper-slide" alt="" />
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <div class="contenedor">
       <div class="sidebar">
         <p>Indique su lugar de orígen</p>
         <select class="selectpicker des" data-show-subtext="false" data-live-search="true"
@@ -662,79 +656,52 @@
         <p>Fecha de Vuelta</p>
         <input type="date" class="calendario" name="" id="" />
       </div>
-    </aside>
-    
-    
-    <div class="tarjetas">
-      <h1>Vuelos destacados!</h1>
-      <ul class="cards">
-        <li class="cards_item">
-          <div class="card">
-            <div class="card_image"><img src="../../../../img/paris.jpg"></div>
-            <div class="card_content">
-              <h2 class="card_title">París</h2>
-              <h3 class="ida"><i class="uil uil-info-circle"></i> Solo ida</h3>
-              <p class="card_text">Viajes disponibles el día 27/11</p>
-              <button class="btn card_btn">ARS$ 300.500</button>
-            </div>
-          </div>
-        </li>
-        <li class="cards_item">
-          <div class="card">
-            <div class="card_image"><img src="../../../../img/dubai.jpg"></div>
-            <div class="card_content">
-              <h2 class="card_title">Dubái</h2>
-              <h3 class="ida"><i class="uil uil-info-circle"></i> Solo ida</h3>
-              <p class="card_text">Viajes disponibles el día 28/11</p>
-              <button class="btn card_btn">ARS$ 300.500</button>
-            </div>
-          </div>
-        </li>
-        <li class="cards_item">
-          <div class="card">
-            <div class="card_image"><img src="../../../../img/bangkok.jpg"></div>
-            <div class="card_content">
-              <h2 class="card_title">Bangkok</h2>
-              <h3 class="ida"><i class="uil uil-info-circle"></i> Solo ida</h3>
-              <p class="card_text">Viajes disponibles el día 29/11</p>
-              <button class="btn card_btn">ARS$ 300.500</button>
-            </div>
-          </div>
-        </li>
-        <li class="cards_item">
-          <div class="card">
-            <div class="card_image"><img src="../../../../img/singapur.jpg"></div>
-            <div class="card_content">
-              <h2 class="card_title">Singapur</h2>
-              <h3 class="ida"><i class="uil uil-info-circle"></i> Solo ida</h3>
-              <p class="card_text">Viajes disponibles el día 30/11</p>
-              <button class="btn card_btn">ARS$ 300.500</button>
-            </div>
-          </div>
-        </li>
-        <li class="cards_item">
-          <div class="card">
-            <div class="card_image"><img src="../../../../img/hongkong.jpg"></div>
-            <div class="card_content">
-              <h2 class="card_title">Hong Kong</h2>
-              <h3 class="ida"><i class="uil uil-info-circle"></i> Solo ida</h3>
-              <p class="card_text">Viajes disponibles el día 01/12</p>
-              <button class="btn card_btn">ARS$ 300.500</button>
-            </div>
-          </div>
-        </li>
-        <li class="cards_item">
-          <div class="card">
-            <div class="card_image"><img src="../../../../img/berlin.jpg"></div>
-            <div class="card_content">
-              <h2 class="card_title">Berlín</h2>
-              <h3 class="ida"><i class="uil uil-info-circle"></i> Solo ida</h3>
-              <p class="card_text">Viajes disponibles el día 02/12</p>
-              <button class="btn card_btn">ARS$ 300.500</button>
-            </div>
-          </div>
-        </li>
-      </ul>
+      <div class="busqueda">
+        <i class="uil uil-search"></i>
+        <input type="text" />
+      </div>
+      <div class="card1">
+        <img class="foto_lugar" src="../../../../img/paris.jpg" alt="" />
+        <p class="ciudad">Paris</p>
+        <p class="ida"><i class="uil uil-info-circle"></i> Solo ida</p>
+        <p class="fecha_disp">Viaja el 27/11</p>
+        <p class="precio">ARS 300.500</p>
+      </div>
+      <div class="card2">
+        <img class="foto_lugar" src="../../../../img/dubai.jpg" alt="" />
+        <p class="ciudad">Dubai</p>
+        <p class="ida"><i class="uil uil-info-circle"></i> Solo ida</p>
+        <p class="fecha_disp">Viaja el 28/11</p>
+        <p class="precio">ARS 300.500</p>
+      </div>
+      <div class="card3">
+        <img class="foto_lugar" src="../../../../img/bangkok.jpg" alt="" />
+        <p class="ciudad">Bangkok</p>
+        <p class="ida"><i class="uil uil-info-circle"></i> Solo ida</p>
+        <p class="fecha_disp">Viaja el 29/11</p>
+        <p class="precio">ARS 300.500</p>
+      </div>
+      <div class="card4">
+        <img class="foto_lugar" src="../../../../img/singapur.jpg" alt="" />
+        <p class="ciudad">Singapur</p>
+        <p class="ida"><i class="uil uil-info-circle"></i> Solo ida</p>
+        <p class="fecha_disp">Viaja el 30/11</p>
+        <p class="precio">ARS 300.500</p>
+      </div>
+      <div class="card5">
+        <img class="foto_lugar" src="../../../../img/hongkong.jpg" alt="" />
+        <p class="ciudad">Hong Kong</p>
+        <p class="ida"><i class="uil uil-info-circle"></i> Solo ida</p>
+        <p class="fecha_disp">Viaja el 01/12</p>
+        <p class="precio">ARS 300.500</p>
+      </div>
+      <div class="card6">
+        <img class="foto_lugar" src="../../../../img/berlin.jpg" alt="" />
+        <p class="ciudad">Berlín</p>
+        <p class="ida"><i class="uil uil-info-circle"></i> Solo ida</p>
+        <p class="fecha_disp">Viaja el 02/12</p>
+        <p class="precio">ARS 300.500</p>
+      </div>
     </div>
   </main>
 </body> 
