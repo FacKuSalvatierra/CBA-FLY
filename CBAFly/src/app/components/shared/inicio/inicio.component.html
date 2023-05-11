@@ -1,75 +1,76 @@
 <app-header></app-header>
 
 <body>
-  <main>
-    <section class="home">
-      <div class="swiper bg-slider" id="swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="../../../.././img/fondo1.jpg" alt="" style="filter: brightness(0.9)" />
-            <div class="text-content">
-              <h2 class="titulo">Miami <span>ARS 300.600</span></h2>
-              <p class="fecha_carrusel">Viaja el 01/11</p>
-              <button class="read-btn">
-                Comprar <i class="uil uil-plane"></i>
-              </button>
-            </div>
+  <section class="home">
+    <div class="swiper bg-slider" id="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="../../../.././img/fondo1.jpg" alt="" style="filter: brightness(0.9)" />
+          <div class="text-content">
+            <h2 class="titulo">Miami <span>ARS 300.600</span></h2>
+            <p class="fecha_carrusel">Viaja el 01/11</p>
+            <button class="read-btn">
+              Comprar <i class="uil uil-plane"></i>
+            </button>
           </div>
-          <div class="swiper-slide dark-layer">
-            <img src="../../../../img/fondo2.jpg" alt="" style="filter: brightness(0.8)" />
-            <div class="text-content">
-              <h2 class="titulo">Madrid <span>ARS 300.800</span></h2>
-              <p class="fecha_carrusel">Viaja el 02/11</p>
-              <button class="read-btn">
-                Comprar <i class="uil uil-plane"></i>
-              </button>
-            </div>
+        </div>
+        <div class="swiper-slide dark-layer">
+          <img src="../../../../img/fondo2.jpg" alt="" style="filter: brightness(0.8)" />
+          <div class="text-content">
+            <h2 class="titulo">Madrid <span>ARS 300.800</span></h2>
+            <p class="fecha_carrusel">Viaja el 02/11</p>
+            <button class="read-btn">
+              Comprar <i class="uil uil-plane"></i>
+            </button>
           </div>
-          <div class="swiper-slide dark-layer">
-            <img src="../../../../img/fondo3.jpg" alt="" style="filter: brightness(0.9)" />
-            <div class="text-content">
-              <h2 class="titulo">Tokio <span>ARS 520.600</span></h2>
-              <p class="fecha_carrusel">Viaja el 03/11</p>
-              <button class="read-btn">
-                Comprar <i class="uil uil-plane"></i>
-              </button>
-            </div>
+        </div>
+        <div class="swiper-slide dark-layer">
+          <img src="../../../../img/fondo3.jpg" alt="" style="filter: brightness(0.9)" />
+          <div class="text-content">
+            <h2 class="titulo">Tokio <span>ARS 520.600</span></h2>
+            <p class="fecha_carrusel">Viaja el 03/11</p>
+            <button class="read-btn">
+              Comprar <i class="uil uil-plane"></i>
+            </button>
           </div>
-          <div class="swiper-slide">
-            <img src="../../../../img/fondo4.jpg" alt="" style="filter: brightness(0.9)" />
-            <div class="text-content">
-              <h2 class="titulo">Amsterdam <span>ARS 520.600</span></h2>
-              <p class="fecha_carrusel">Viaja el 04/11</p>
-              <button class="read-btn">
-                Comprar <i class="uil uil-plane"></i>
-              </button>
-            </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="../../../../img/fondo4.jpg" alt="" style="filter: brightness(0.9)" />
+          <div class="text-content">
+            <h2 class="titulo">Amsterdam <span>ARS 520.600</span></h2>
+            <p class="fecha_carrusel">Viaja el 04/11</p>
+            <button class="read-btn">
+              Comprar <i class="uil uil-plane"></i>
+            </button>
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="bg-slider-thumbs">
+      <div class="swiper-wrapper thumbs-container">
+        <img src="../../../../img/fondo1.jpg" class="swiper-slide" alt="" />
+        <img src="../../../../img/fondo2.jpg" class="swiper-slide" alt="" />
+        <img src="../../../../img/fondo3.jpg" class="swiper-slide" alt="" />
+        <img src="../../../../img/fondo4.jpg" class="swiper-slide" alt="" />
+      </div>
+    </div>
+  </section>
   
-      <div class="bg-slider-thumbs">
-        <div class="swiper-wrapper thumbs-container">
-          <img src="../../../../img/fondo1.jpg" class="swiper-slide" alt="" />
-          <img src="../../../../img/fondo2.jpg" class="swiper-slide" alt="" />
-          <img src="../../../../img/fondo3.jpg" class="swiper-slide" alt="" />
-          <img src="../../../../img/fondo4.jpg" class="swiper-slide" alt="" />
-        </div>
-      </div>
-    </section>
+  <main>
     <div class="busqueda">
-      <input type="text" placeholder="Buscar">
-      <div class="btn_search">
+      <input type="text" placeholder="Que estas buscando?">
+      <div class="btn">
         <i class="fa fa-search"></i>
       </div>
     </div>
   
-    <aside class="busquedaselectiva">
-      <div class="sidebar">
-        <p>Indique su lugar de orígen</p>
-        <select class="selectpicker des" data-show-subtext="false" data-live-search="true"
+    <aside class="busquedaSelectiva">
+      <h1>Calendario de Vuelos!</h1>
+      <h2>Vea aquí los viajes disponibles</h2>
+      <select class="lugarorigen" data-show-subtext="false" data-live-search="true"
           style="appearance:auto">
-          <option value="Elegir" id="AF">Elegir opción</option>
+          <option value="Elegir" id="">Seleccione lugar de origen</option>
           <option value="Afganistán" id="AF">Afganistán</option>
           <option value="Albania" id="AL">Albania</option>
           <option value="Alemania" id="DE">Alemania</option>
@@ -354,9 +355,8 @@
           <option value="Zambia" id="ZM">Zambia</option>
           <option value="Zimbabue" id="ZW">Zimbabue</option>
           </select>
-        <p>Indique su lugar de destino</p>
-          <select class="selectpicker des" data-show-subtext="false" data-live-search="true" style="appearance:auto">
-          <option value="Elegir" id="AF">Elegir opción</option>
+          <select class="lugardestino" data-show-subtext="false" data-live-search="true" style="appearance:auto">
+          <option value="Elegir" id="">Indique su lugar de destino</option>
           <option value="Afganistán" id="AF">Afganistán</option>
           <option value="Albania" id="AL">Albania</option>
           <option value="Alemania" id="DE">Alemania</option>
@@ -647,8 +647,9 @@
           <option value="Zambia" id="ZM">Zambia</option>
           <option value="Zimbabue" id="ZW">Zimbabue</option>
         </select>
-        <p>Numero de pasajeros</p>
-        <select class="selectpicker" id="">
+        <select class="pasajes" id="">
+          <option value="Elegir" id="">Número de pasajes</option>
+          <option value="1">1</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -657,13 +658,11 @@
           <option value="6">6</option>
           <option value="7">7</option>
         </select>
-        <p>Fecha de Ida</p>
+        <h1>Fecha de Ida</h1>
         <input type="date" class="calendario" name="" id="" />
-        <p>Fecha de Vuelta</p>
+        <h1>Fecha de Vuelta</h1>
         <input type="date" class="calendario" name="" id="" />
-      </div>
     </aside>
-    
     
     <div class="tarjetas">
       <h1>Vuelos destacados!</h1>

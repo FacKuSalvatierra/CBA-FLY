@@ -193,58 +193,45 @@ section {
   margin: 10px 0;
 }
 /* Barra Busqueda*/
+@import url('https://kit.fontawesome.com/712575d4a5.js');
 .busqueda {
-  grid-column: 1;
-  grid-row: 1;
-  column-span: 1;
-  left:48%;
-  top:45%;
-  transform: translate(-50%,-50%);
-  padding: 10px;
+  position: absolute;
+  padding: 5px;
 }
 .busqueda input {
-  outline: none;
-  box-sizing: border-box;
-  height: 60px;
-  width: 0;
-  padding: 0 20px;
+  width: 0px;
+  height: 40px;
+  padding: 0 40px;
   color: #000;
-  border: 1px solid #000099;
-  transition: all .7s ease;
+  outline: none;
+  border: 1px solid silver;
+  border-radius: 30px;
+  transition: all 0.6s ease;
 }
-::placeholder {
-  color: grey;
-}
-.btnsearch {
+.busqueda .btn i{
   position: absolute;
+  top:0;
   right: 0;
-  top: 0;
-  width: 80px;
-  height: 80px;
-  background: #000099;
-  line-height: 80px;
-  border-radius: 50%;
+  background: #440080;
+  width: 55px;
+  height: 55px;
+  line-height: 55px;
   text-align: center;
+  color: grey;
+  font-size: 20px;
+  border-radius: 50%;
   cursor: pointer;
-  transition: .5s;
 }
-.btnsearch i {
-  font-size: 25px;
-  color: white;
-  line-height: 80px;
-  transition: all .7s ease;
+.busqueda:hover input{
+  width: 800px;
 }
-.busqueda:hover input {
-  width:350px;
-}
-.busqueda:hover i {
-  transform: rotate(-360deg);
-}
-.btnsearch:hover {
-  background: #000099;
+.busqueda input:focus {
+  width: 800px;
 }
 /*======= Seccion fecha de salida =======*/
 main {
+  display: grid;
+  grid-template-columns: 2;
   background: rgb(250, 255, 198);
   background: linear-gradient(
     0deg,
@@ -253,52 +240,57 @@ main {
     rgba(12, 12, 62, 1) 100%
   );
 }
-.busqueda_selectiva {
-  grid-row: 2;
-  resize: horizontal;
+main {
+  display: flex;
+  flex-wrap: wrap;
+  }
+  .busqueda {
+  width: 100%;
+  }
+  @media (min-width: 768PX) {
+  .busqueda {
+  width: 50%;
+  }
+  }
+  @media (min-width: 1024PX) {
+  .busqueda {
+  width: 33.33%;
+  }
+  }
+aside div{
+  display: flex;
+  position:static;
 }
-.about h2 {
-  font-size: 3em;
-  font-weight: 600;
-}
-.about p {
-  margin: 25px 0;
-}
-.busquedaselectiva .btn-group > .btn:first-child {
-  background-color: azure;
-}
-.selectpicker option {
-  border: none;
-  background-color: white;
-  outline: none;
-  color: #14b1b2;
-  font-weight: bold;
-  font-size: 15px;
-  margin: 0;
-  padding-left: 0;
-  margin-top: -20px;
-  background: none;
-}
-.selectpicker {
-  border: "";
-  background-color: rgba(255, 177, 177, 0.786);
-  outline: "";
+aside h1{
   text-align: center;
-  color: #f8fafa;
-  font-weight: bold;
-  font-size: 15px;
-  margin: 0;
-  padding-left: 0;
-  margin-top: -20px;
-  background: none;
+  padding-top: 60px;
+  padding-bottom: 5px;
 }
-.sidebar p {
-  padding: 20px;
+aside select {
+  margin-left: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
-.sidebar > .calendario {
-  color: #101010;
+aside p {
+  padding-top: 30px;
 }
-/* Font */
+.busquedaSelectiva {
+  margin-top: 5px;
+  background-image:url(../../../../../src/img/vueloContacto.jpg);
+  background-size: 800px 800px;
+  width: 500px;
+  max-height: 600px;
+}
+.pasajes p {
+  margin-left: 150px;
+}
+.busquedaSelectiva > .calendario {
+  color: #165377;
+  margin-left: 150px;
+  margin-bottom: 20px
+}
+
+/* Tarjetas */
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
 
 /* Design */
@@ -307,9 +299,14 @@ main {
 *::after {
   box-sizing: border-box;
 }
+.tarjetas h1 {
+  color: silver;
+  size: 60px;
+}
 .tarjetas {
   grid-column: 2;
-  grid-row: 2;
+}
+.tarjetas {
   color: #272727;
   font-family: 'Quicksand', serif;
   font-style: normal;
@@ -408,10 +405,4 @@ img {
   line-height: 1.5;
   margin-bottom: 1.25rem;    
   font-weight: 400;
-}
-
-main .tarjetas, .busqueda, .busquedaselecttiva {
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 20px 980px;
-  
 }
