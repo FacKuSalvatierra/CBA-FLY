@@ -10,6 +10,8 @@ Video de presentacion del proyecto Aerolineas CBA FLY : 👉🏻👉🏻  https:
 
 Nuestro Trello: https://trello.com/b/jUuKw2yl/proyecto-integrador 
 
+Pagina web del sitio : https://cbafly-3f52e.web.app/inicio
+
 Pagina web del sitio (Temporal): https://fackusalvatierra.github.io/Aerolineas-ISPC/frontend/index.html
 
 
