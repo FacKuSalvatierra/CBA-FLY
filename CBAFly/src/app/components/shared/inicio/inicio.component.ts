@@ -1,6 +1,6 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import Swiper from 'swiper';
-
+declare var $: any;
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
@@ -13,6 +13,7 @@ export class InicioComponent implements AfterViewInit {
   constructor() { }
 
   ngAfterViewInit() {
+    $('.selectpicker').selectpicker();
     const swiper = new Swiper('.bg-slider-thumbs', {
       loop: true,
       spaceBetween: 0,
