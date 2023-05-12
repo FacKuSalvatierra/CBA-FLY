@@ -19,7 +19,6 @@ class AsientoSerializer(serializers.ModelSerializer):
         fields = ('id', 'numero_asiento', 'clase', 'precio', 'disponible', 'vuelo')
 
 class PagoSerializer(serializers.ModelSerializer):
-    usuario = UsuarioSerializer()
 
     class Meta:
         model = Pago
