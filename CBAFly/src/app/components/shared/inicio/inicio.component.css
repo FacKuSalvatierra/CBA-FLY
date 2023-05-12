@@ -201,7 +201,8 @@ section {
 .busqueda input {
   width: 0px;
   height: 40px;
-  padding: 0 40px;
+  padding: 0 20px;
+  font-size: 18px;
   color: #000;
   outline: none;
   border: 1px solid silver;
@@ -212,21 +213,21 @@ section {
   position: absolute;
   top:0;
   right: 0;
-  background: #440080;
+  background: #0078c9;
   width: 55px;
   height: 55px;
   line-height: 55px;
   text-align: center;
-  color: grey;
+  color: white;
   font-size: 20px;
   border-radius: 50%;
   cursor: pointer;
 }
 .busqueda:hover input{
-  width: 800px;
+  width: 240px;
 }
 .busqueda input:focus {
-  width: 800px;
+  width: 240px;
 }
 /*======= Seccion fecha de salida =======*/
 main {
@@ -240,23 +241,6 @@ main {
     rgba(12, 12, 62, 1) 100%
   );
 }
-main {
-  display: flex;
-  flex-wrap: wrap;
-  }
-  .busqueda {
-  width: 100%;
-  }
-  @media (min-width: 768PX) {
-  .busqueda {
-  width: 50%;
-  }
-  }
-  @media (min-width: 1024PX) {
-  .busqueda {
-  width: 33.33%;
-  }
-  }
 aside div{
   display: flex;
   position:static;
@@ -277,7 +261,7 @@ aside p {
 .busquedaSelectiva {
   margin-top: 5px;
   background-image:url(../../../../../src/img/vueloContacto.jpg);
-  background-size: 800px 800px;
+  background-size: x= 200, y= 100;
   width: 500px;
   max-height: 600px;
 }
@@ -302,9 +286,6 @@ aside p {
 .tarjetas h1 {
   color: silver;
   size: 60px;
-}
-.tarjetas {
-  grid-column: 2;
 }
 .tarjetas {
   color: #272727;
