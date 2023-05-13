@@ -254,18 +254,6 @@ section {
   width: 240px;
 }
 /*======= Seccion fecha de salida =======*/
-<<<<<<< HEAD
-=======
-.about h2 {
-  font-size: 3em;
-  font-weight: 600;
-}
-
-.about p {
-  margin: 25px 0;
-}
-
->>>>>>> Feature
 main {
   display: grid;
   grid-template-columns: 2;
@@ -275,32 +263,15 @@ main {
       rgba(84, 159, 175, 1) 52%,
       rgba(12, 12, 62, 1) 100%);
 }
-<<<<<<< HEAD
 aside div{
   display: flex;
   position:static;
 }
 aside h1{
-=======
-
-.contenedor {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  /*grid-template-rows: 0.1fr 1fr 1fr 1fr;*/
-  grid-auto-columns: 1fr;
-  gap: 10px 10px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "sidebar busqueda busqueda busqueda"
-    "sidebar card1 card2 card3"
-    "sidebar card4 card5 card6";
-  color: #ffffff;
->>>>>>> Feature
   text-align: center;
   padding-top: 60px;
   padding-bottom: 5px;
 }
-<<<<<<< HEAD
 aside select {
   margin-left: 30px;
   margin-top: 10px;
@@ -310,130 +281,12 @@ aside p {
   padding-top: 30px;
 }
 .busquedaSelectiva {
-=======
-
-.sidebar {
-  grid-area: sidebar;
-  padding-top: 50px;
-}
-
-.btn-group>.btn:first-child {
-  background-color: azure;
-}
-
-.selectpicker option {
-  border: none;
-  background-color: white;
-  outline: none;
-  color: #14b1b2;
-  font-weight: bold;
-  font-size: 15px;
-  margin: 0;
-  padding-left: 0;
-  margin-top: -20px;
-  background: none;
-}
-
-.selectpicker {
-  border: "";
-  background-color: rgba(255, 177, 177, 0.786);
-  outline: "";
-  text-align: center;
-  color: #f8fafa;
-  font-weight: bold;
-  font-size: 15px;
-  margin: 0;
-  padding-left: 0;
-  margin-top: -20px;
-  background: none;
-}
-
-.sidebar p {
-  padding: 20px;
-}
-
-.sidebar>.calendario {
-  color: #101010;
-}
-
-.busqueda {
-  grid-area: busqueda;
-  width: 100%;
-  height: 55px;
-}
-
-.busqueda i {
-  position: relative;
-  left: 43%;
-  height: 50px;
-  top: 34px;
-  color: rgb(255, 255, 255);
-}
-
-.busqueda input {
-  color: rgb(255, 255, 255);
-  width: 100%;
-  height: 40px;
-  text-decoration: none;
-  background: #ff8400;
-  border-radius: 50px;
-  text-align: center;
-}
-
-.card1 {
-  grid-area: card1;
-}
-
-.card2 {
-  grid-area: card2;
-}
-
-.card3 {
-  grid-area: card3;
-}
-
-.card4 {
-  grid-area: card4;
-}
-
-.card5 {
-  grid-area: card5;
-}
-
-.card6 {
-  grid-area: card6;
-}
-
-.card1,
-.card2,
-.card3,
-.card4,
-.card5,
-.card6 {
-  background-color: rgba(30, 35, 67, 0.5);
-  border-radius: 50px;
-}
-
-.foto_lugar {
-  box-shadow: var(--box-shadow);
-  width: 100%;
-  height: 10em;
-  object-fit: cover;
-  border-radius: 30px;
-  cursor: pointer;
-}
-
-.ciudad {
-  font-weight: 600;
-  font-size: 1.2rem;
->>>>>>> Feature
   margin-top: 5px;
   background-image:url(../../../../../src/img/vueloContacto.jpg);
   background-size: x= 200, y= 100;
   width: 500px;
   max-height: 600px;
 }
-<<<<<<< HEAD
 .pasajes p {
   margin-left: 150px;
 }
@@ -492,21 +345,11 @@ img {
   font-weight: 400;
   display: block;
   width: 100%;
-=======
-
-.precio {
-  text-align: center;
-  background-color: rgb(255, 118, 13);
-  color: #fff;
-  justify-content: space-around;
-  border-radius: 200px;
->>>>>>> Feature
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: transparent;
 }
 
-<<<<<<< HEAD
 .btn:hover {
   background-color: rgba(255, 255, 255, 0.12);
 }
@@ -565,82 +408,4 @@ img {
   line-height: 1.5;
   margin-bottom: 1.25rem;    
   font-weight: 400;
-=======
-.reveal {
-  position: relative;
-  transform: translateX(50px);
-  opacity: 0;
-  transition: 1s all ease;
-}
-
-.reveal.active {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-@media screen and (max-width: 1100px) {
-  .section {
-    padding: 25px 50px;
-  }
-
-  .media-icons {
-    right: 0;
-    margin-right: 50px;
-  }
-
-  .swiper-slide .text-content {
-    margin: 0 120px 0 50px;
-  }
-
-  .bg-slider-thumbs {
-    bottom: 3em;
-  }
-}
-
-@media screen and (max-width: 786px) {
-  .section {
-    padding: 25px 20px;
-  }
-
-  .media-icons {
-    margin-right: 20px;
-  }
-
-  .media-icons a {
-    font-size: 1.5em;
-  }
-
-  .swiper-slide .text-content {
-    margin: 0 70px 0 20px;
-  }
-
-  .swiper-slide .text-content .titulo {
-    font-size: 3em;
-  }
-
-  .swiper-slide .text-content .titulo span {
-    font-size: 0.35em;
-  }
-
-  .swiper-slide .text-content p {
-    font-size: 0.9em;
-  }
-}
-
-
-@media only screen and (max-width: 715px) {
-  .contenedor {
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.05fr 0.4fr 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr;
-    grid-template-areas:
-      "busqueda"
-      "sidebar"
-      "card1"
-      "card2"
-      "card3"
-      "card4"
-      "card5"
-      "card6";
-  }
->>>>>>> Feature
 }
