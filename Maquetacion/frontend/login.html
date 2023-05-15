@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CBA FLY l Iniciar Sesión</title>
+  <link rel="stylesheet" href="./css/login_register.css">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css" />
+
+
+</head>
+
+<body>
+
+  <header>
+    <div class="barra_navegacion">
+      <a href="" class="logo">CBA FLY <i class="uil uil-plane-departure"></i></a>
+      <div class="navegacion">
+        <div class="nav-items">
+          <i class="uil uil-times nav-close-btn"></i>
+          <a href="./index.html"><i class="uil uil-home"></i> Inicio</a>
+          <a href="./contacto.html"><i class="uil uil-comment"></i> Contacto</a>
+          <a href="./nosotros.html"><i class="uil uil-users-alt"></i> Sobre nosotros</a>
+          <a href="./login.html"><i class="uil uil-signin"></i> Iniciar sesion</a>
+
+          <button class="switchDark active" id="switch" style="display:none ;">
+            <span> <i class="fa-solid fa-sun"></i></span>
+            <span> <i class="fa-solid fa-moon"></i></span>
+          </button>
+        </div>
+      </div>
+      <i class="uil uil-apps nav-menu-btn"></i>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="container">
+      <div class="forms">
+        <div class="form login">
+          <span class="title">Iniciar sesión</span>
+
+          <form action="#">
+            <div class="input-field">
+              <input type="text" placeholder="Ingresa tu correo electrónico" required id="email_login">
+              <i class="uil uil-envelope icon"></i>
+            </div>
+            <div class="input-field">
+              <input type="password" id="password_login" placeholder="Ingresa tu contraseña" required>
+              <i class="uil uil-lock icon"></i>
+              <i class="uil uil-eye-slash showHidePw"></i>
+            </div>
+
+            <div class="checkbox-text">
+              <div class="checkbox-content">
+                <input type="checkbox" id="logCheck">
+                <label for="logCheck" class="text">Recordarme</label>
+              </div>
+
+              <a href="#" class="text">Olvidé mi contraseña</a>
+            </div>
+
+            <div class="input-field button">
+              <input type="button" value="Iniciar sesión" onclick="validar_inicio()">
+            </div>
+          </form>
+
+          <div class="login-signup">
+            <span class="text">No tiene cuenta?
+              <a href="#" class="text signup-link">Regístrese ahora</a>
+            </span>
+          </div>
+        </div>
+
+        <!-- Registration Form -->
+        <div class="form signup">
+          <span class="title">Registro</span>
+
+          <form action="#">
+            <div class="input-field">
+              <input type="text" placeholder="Ingresa tu nombre y apellido" required minlength="3" maxlength="30"
+                id="name_register">
+              <i class="uil uil-user"></i>
+            </div>
+            <div class="input-field">
+              <input type="email" placeholder="Ingresa tu correo electrónico" required id="email_register">
+              <i class="uil uil-envelope icon"></i>
+            </div>
+            <div class="input-field">
+              <input type="password" placeholder="Crea una contraseña" required minlength="5" maxlength="14"
+                id="password_register">
+              <i class="uil uil-lock icon"></i>
+            </div>
+            <div class="input-field">
+              <input type="password" placeholder="Confirmar contraseña" required minlength="5" maxlength="14"
+                id="password_register_conf">
+              <i class="uil uil-lock icon"></i>
+              <i class="uil uil-eye-slash showHidePw"></i>
+            </div>
+
+            <div class="checkbox-text">
+              <div class="checkbox-content">
+                <input type="checkbox" id="term" required>
+                <label for="termCon" class="text">Acepto los términos y condiciones</label>
+              </div>
+            </div>
+            <div class="checkbox-text">
+              <div class="checkbox-content">
+                <input type="checkbox" id="termCon">
+                <label for="termCon" class="text">Quiero recibir novedades y promociones especiales por correo
+                  electrónico</label>
+              </div>
+            </div>
+
+            <div class="input-field button">
+              <input type="button" value="Crear cuenta" onclick="validar_registro()">
+            </div>
+          </form>
+
+          <div class="login-signup">
+            <span class="text">Ya tienes una cuenta?
+              <a href="#" class="text login-link">Inicia sesión</a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="container-footer-all">
+      <div class="container-body">
+        <div class="column1">
+          <h1>CBA FLY <i class="uil uil-plane-departure"></i></h1>
+        </div>
+
+        <div class="column2">
+          <h1>Medios de Pago</h1>
+          <div class="tarjetas">
+            <img
+              src="https://assets-us-01.kc-usercontent.com:443/b2956330-c34f-0064-2c6f-27bd5c0147fc/3b33db5e-30fe-4b4d-b1d7-b22bbe49c748/cabal.png"
+              class="img-fluid webpay-redcompra d-inline-block p-2" />
+            <img
+              src="https://assets-us-01.kc-usercontent.com:443/b2956330-c34f-0064-2c6f-27bd5c0147fc/c68b2132-552b-4832-afd5-6cec38d7026c/Naranja-49x30.png"
+              class="img-fluid webpay-redcompra d-inline-block p-2" />
+            <img
+              src="https://assets-us-01.kc-usercontent.com:443/b2956330-c34f-0064-2c6f-27bd5c0147fc/5ebaa267-d492-43aa-8f3b-94912eb8e917/visa.svg"
+              class="img-fluid webpay-redcompra d-inline-block p-2" />
+            <img
+              src="https://assets-us-01.kc-usercontent.com:443/b2956330-c34f-0064-2c6f-27bd5c0147fc/7dda8f22-4b28-4bfd-813e-c8e92de01b11/mc_symbol_opt_45_1x.png"
+              class="img-fluid webpay-redcompra d-inline-block p-2" />
+          </div>
+        </div>
+
+        <div class="column3">
+          <h1>Síguenos en</h1>
+          <div class="redes">
+            <ul class="icono navbar-nav">
+              <li>
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <label>Facebook</label>
+              </li>
+
+              <li>
+                <a href="#"><i class="bi bi-twitter"></i></a>
+                <label>Twitter</label>
+              </li>
+
+              <li>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <label>Instagram</label>
+              </li>
+
+              <li>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+                <label>Linkedin</label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-footer">
+      <div class="footer1">
+        <div class="copyright">
+          <p>&#9400; 2022 CBA-FLY Argentina. Todos los Derechos Reservados</p>
+        </div>
+
+        <div class="information">
+          <a href="#"> Política y Privacidad</a> |
+          <a href="#">Términos y Condiciones</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="./js/modo-oscuro.js"></script>
+  <script src="./js/swiper-bundle.min.js"></script>
+  <script src="./js/login_register.js"></script>
+  <script src="./js/barra_navegacion.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
+</body>
+
+</html>
