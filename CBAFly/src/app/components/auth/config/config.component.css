@@ -1,0 +1,181 @@
+/* Config para ajustes del perfil*/
+
+main {
+  padding-top: 100px;
+  padding-bottom: 80px;
+  background-image: url(../../../../img/vueloContacto.jpg);
+  background-size: cover;
+  font-family: "Poppins", sans-serif;
+}
+
+.box {
+  padding: 25px 70px;
+  background: rgba(255, 255, 255, 0.905);
+  -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+}
+
+:root {
+  --white-color: #fff;
+  --dark-color: #222;
+  --body-bg-color: #fff;
+  --section-bg-color: #202834;
+  --navigation-item-hover-color: #3b5378;
+
+  --text-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
+
+  --scroll-bar-color: #fff;
+  --scroll-thumb-color: #282f4e;
+  --scroll-thumb-hover-color: #454f6b;
+}
+
+a {
+  -webkit-transition: 0.3s all ease;
+  -o-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+
+a,
+a:hover {
+  text-decoration: none !important;
+}
+
+.text-black {
+  color: #000;
+}
+
+.content {
+  padding-top: 7rem;
+}
+
+h2 {
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.form-control {
+  border: 1px solid #d9d9d9;
+  border-radius: 7px;
+}
+
+.form-control:active,
+.form-control:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-color: #000;
+}
+
+.col-form-label {
+  color: #000;
+}
+
+.btn,
+.form-control {
+  height: 55px;
+}
+
+.heading {
+  color: #888;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.btn {
+  color: #fff;
+  border: none;
+  border-radius: 4px !important;
+  -webkit-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+.btn:hover {
+  color: #fff;
+}
+
+.btn:active,
+.btn:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.box {
+  padding: 25px 70px;
+  background: rgba(255, 255, 255, 0.905);
+  -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 50px;
+}
+
+.box h3 {
+  font-size: 14px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+label.error {
+  font-size: 12px;
+  color: red;
+}
+
+#message {
+  resize: vertical;
+}
+
+#form-message-warning,
+#form-message-success {
+  display: none;
+}
+
+#form-message-warning {
+  color: #b90b0b;
+}
+
+#form-message-success {
+  color: #55a44e;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.submitting {
+  text-align: center;
+  float: left;
+  width: 100%;
+  padding: 10px 0;
+  display: none;
+  font-weight: bold;
+  font-size: 12px;
+  color: #000;
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  left: 126px;
+  bottom: -10px;
+}
+
+label {
+  display: inline-block;
+}
+
+.icon-edit {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+.icon-edit i {
+  font-size: 50px;
+  padding: 0;
+  color: #89f7fe;
+}
