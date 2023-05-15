@@ -54,7 +54,7 @@ class Compra(models.Model):
 class CarritoCompra(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     vuelo = models.ForeignKey(Vuelo, on_delete=models.CASCADE)
-    numero_asientos = models.ForeignKey(Asiento, on_delete=models.CASCADE)
+    cantidad_asientos = models.PositiveIntegerField()
 
     class Meta:
         unique_together = [("usuario", "vuelo")]
