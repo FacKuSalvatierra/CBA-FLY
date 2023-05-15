@@ -1,0 +1,81 @@
+<app-header></app-header>
+<main>
+    <div class="content">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-10">
+                    <div class="box">
+                        <h3 class="heading">Editar información</h3>
+                        <div class="icon-edit">
+                            <a href="#">Cambiar avatar <i class="bi bi-person-fill"></i></a>
+                        </div>
+
+                        <form class="mb-5" method="post" id="contactForm" name="contactForm">
+                            <div class="row justify-content-center">
+                                <div class="col-md-10">
+                                    <div class="p-2 py-8">
+                                        <div class="row mt-4">
+                                            <div class="col-md-6"><label class="labels">Nombre</label><input type="text"
+                                                    class="form-control" placeholder="Juana" value=""></div>
+                                            <div class="col-md-6"><label class="labels">Apellido</label><input
+                                                    type="text" class="form-control" value="" placeholder="Romero">
+                                            </div>
+                                        </div>
+                                        <div class="row mt-4">
+                                            <div class="col-md-12">
+                                                <label class="labels">E-Mail</label>
+                                                <input type="email" required class="form-control"
+                                                    placeholder="example@email.com" value="">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="labels">Teléfono</label>
+                                                <input type="tel" required class="form-control"
+                                                    placeholder="+5403511234567" value="">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="labels">Dirección</label>
+                                                <input type="text" required class="form-control"
+                                                    placeholder="Lirios 2034" value="">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="labels">DNI</label>
+                                                <input type="number" required class="form-control" placeholder="9999999"
+                                                    value="">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="labels">Código postal</label>
+                                                <input type="number" required class="form-control" placeholder="3050"
+                                                    value="">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="labels">País</label>
+                                                <input type="text" required class="form-control" placeholder="País"
+                                                    value="">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="labels">Ciudad</label>
+                                                <input type="text" required class="form-control" value=""
+                                                    placeholder="Ciudad">
+                                            </div>
+
+                                            <div class="col-md-6 mt-5 text-center">
+                                                <button class="btn btn-primary profile-button" type="submit">Guardar
+                                                    Información</button>
+                                            </div>
+
+                                            <div class="col-md-6 mt-5 text-center">
+                                                <button class="btn btn-secondary profile-button"
+                                                    type="button">Cancelar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<app-footer></app-footer>

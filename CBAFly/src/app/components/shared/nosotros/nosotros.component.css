@@ -1,0 +1,160 @@
+:root {
+  --white-color: #fff;
+  --dark-color: #222;
+  --body-bg-color: #fff;
+  --section-bg-color: #202834;
+  --navigation-item-hover-color: #3b5378;
+  --text-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+.acercade {
+  min-height: 100vh;
+}
+.home:before {
+  z-index: 888;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(transparent, var(--section-bg-color));
+}
+.acercade {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgb(96, 136, 231);
+  background: linear-gradient(
+    142deg,
+    rgba(96, 136, 231, 1) 0%,
+    rgba(6, 24, 59, 1) 66%
+  );
+  flex-wrap: wrap;
+}
+.acercade .lema {
+  max-width: 500px;
+  font-size: 1.2rem;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  text-shadow: var(--text-shadow);
+  padding: 10px;
+  border-radius: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+}
+.acercade .avion {
+  max-width: 500px;
+  filter: brightness(0.9);
+  filter: blur(0.6px);
+}
+.fondo_nosotros h1 {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  font-size: 1.7rem;
+}
+.tarjetas {
+  background: rgb(6, 24, 59);
+  background: linear-gradient(
+    225deg,
+    rgba(6, 24, 59, 1) 0%,
+    rgba(43, 70, 129, 1) 100%
+  );
+  color: white;
+  text-align: center;
+  display: grid;
+  gap: 17px;
+  column-gap: 21px;
+  grid-auto-rows: 17rem;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  align-content: space-around;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+.tarjeta_integrante:hover {
+  transition: 2s ease;
+}
+.tarjeta_integrante {
+  display: grid;
+  border-radius: 31px;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  padding-bottom: 20px;
+  background: linear-gradient(
+    90deg,
+    rgba(33, 22, 212, 1) 0%,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(237, 241, 255, 1) 100%
+  );
+  color: black;
+  padding-top: 20px;
+  align-items: center;
+  justify-items: center;
+}
+.tarjeta_integrante .foto_perfil {
+  width: 60%;
+  border-radius: 50%;
+  align-self: center;
+  justify-self: center;
+}
+.linkedin {
+  width: 10%;
+}
+.tarjeta_integrante a {
+  display: flex;
+  justify-content: center;
+}
+.rol {
+  font-weight: 400;
+}
+.tarjeta_integrante .nombre {
+  max-height: 35px;
+  max-width: 300px;
+}
+.tarjeta_integrante img {
+  position: relative;
+}
+@media screen and (max-width: 1100px) {
+  .avion {
+    width: 300px;
+  }
+}
+@media screen and (max-width: 785px) {
+  .avion {
+    position: relative;
+    top: 40px;
+  }
+  .about h2 {
+    font-size: 2.5em;
+  }
+  .about p {
+    font-size: 0.9em;
+  }
+  .tarjetas {
+    background: rgb(6, 24, 59);
+    background: linear-gradient(
+      225deg,
+      rgba(6, 24, 59, 1) 0%,
+      rgba(43, 70, 129, 1) 100%
+    );
+    color: white;
+    text-align: center;
+    display: grid;
+    gap: 17px;
+    column-gap: 21px;
+    grid-auto-rows: 14rem;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    align-content: space-around;
+    justify-content: space-between;
+  }
+}
