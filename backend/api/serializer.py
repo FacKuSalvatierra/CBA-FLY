@@ -35,7 +35,6 @@ class CompraSerializer(serializers.ModelSerializer):
 class CarritoCompraSerializer(serializers.ModelSerializer):
     usuario = UsuarioSerializer()
     vuelo = VueloSerializer()
-
     class Meta:
         model = CarritoCompra
         fields = ('id', 'usuario', 'vuelo', 'cantidad_asientos')
