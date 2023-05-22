@@ -61,3 +61,4 @@ class CarritoCompra(models.Model):
 
     def __str__(self):
         return f"{self.usuario.nombre_completo} - {self.vuelo.numero_vuelo}"
+
