@@ -6,7 +6,7 @@ import { CheckoutComponent } from './components/dashboard/checkout/checkout.comp
 import { ContactoComponent } from './components/shared/contacto/contacto.component';
 import { InicioComponent } from './components/shared/inicio/inicio.component';
 import { NosotrosComponent } from './components/shared/nosotros/nosotros.component';
-
+import { RegisterComponent } from './components/auth/login/register.component';
 
 const routes: Routes = [
   {path: 'inicio', component:InicioComponent},
@@ -15,6 +15,7 @@ const routes: Routes = [
   {path: 'contacto', component:ContactoComponent},
   {path: 'checkout', component:CheckoutComponent},
   {path: 'config', component:ConfigComponent},
+  {path: 'login/:id', component:RegisterComponent},
   {path: '', redirectTo:'inicio', pathMatch:'full'}
 ];
 
