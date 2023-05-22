@@ -6,11 +6,6 @@ class Usuario(models.Model):
     correo_electronico = models.EmailField(max_length=100, unique=True)
     contrasena = models.CharField(max_length=100)
 
-    class Meta:
-        db_table = "usuario"
-        verbose_name = "Usuario"
-        verbose_name_plural = "Usuarios"
-
     def __str__(self):
         return self.nombre_completo
 
@@ -23,11 +18,6 @@ class Vuelo(models.Model):
     numero_vuelo = models.CharField(max_length=100)
     tipo_avion = models.CharField(max_length=100)
 
-    class Meta:
-        db_table = "vuelo"
-        verbose_name = "Vuelo"
-        verbose_name_plural = "Vuelos"
-
     def __str__(self):
         return f"{self.numero_vuelo}: {self.origen} -> {self.destino}"
 
@@ -38,11 +28,6 @@ class Asiento(models.Model):
     disponible = models.BooleanField(default=True)
     vuelo = models.ForeignKey(Vuelo, on_delete=models.CASCADE)
 
-    class Meta:
-        db_table = "asiento"
-        verbose_name = "Asiento"
-        verbose_name_plural = "Asientos"
-
     def __str__(self):
         return f"Asiento {self.numero_asiento} ({self.clase}) - Vuelo {self.vuelo.numero_vuelo}"
 
@@ -51,11 +36,6 @@ class Pago(models.Model):
     numero_tarjeta = models.CharField(max_length=16)
     fecha_expiracion = models.DateField()
     codigo_seguridad = models.CharField(max_length=4)
-
-    class Meta:
-        db_table = "pago"
-        verbose_name = "Pago"
-        verbose_name_plural = "Pagos"
 
     def __str__(self):
         return f"{self.usuario.nombre_completo} - {self.numero_tarjeta}"
@@ -68,11 +48,6 @@ class Compra(models.Model):
     fecha_compra = models.DateTimeField(auto_now_add=True)
     numero_tarjeta = models.CharField(max_length=16)
 
-    class Meta:
-        db_table = "compra"
-        verbose_name = "Compra"
-        verbose_name_plural = "Compras"
-
     def __str__(self):
         return f"{self.usuario.nombre_completo} - {self.vuelo.numero_vuelo}"
 
@@ -82,9 +57,6 @@ class CarritoCompra(models.Model):
     cantidad_asientos = models.PositiveIntegerField()
 
     class Meta:
-        db_table = "carritocompra"
-        verbose_name = "Carrito de compra"
-        verbose_name_plural = "CarritoCompras"
         unique_together = [("usuario", "vuelo")]
 
     def __str__(self):

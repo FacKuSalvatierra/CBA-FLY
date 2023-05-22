@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .serializer import UsuarioSerializer, PagoSerializer,VueloSerializer, AsientoSerializer,CompraSerializer
-from .models import Usuario, Pago, Vuelo, Asiento, Compra
+from .serializer import UsuarioSerializer, PagoSerializer,VueloSerializer, AsientoSerializer,CarritoCompraSerializer
+from .models import Usuario, Pago, Vuelo, Asiento, CarritoCompra
 
 class UsuarioViewSet(viewsets.ModelViewSet):
     queryset=Usuario.objects.all()
@@ -22,8 +22,7 @@ class VueloViewSet(viewsets.ModelViewSet):
 class AsientoViewSet(viewsets.ModelViewSet):
     queryset=Asiento.objects.all()
     serializer_class=AsientoSerializer
-    
-    
-class Compra(viewsets.ModelViewSet):
-    queryset=Compra.objects.all()
-    serializer_class=CompraSerializer
+
+class CarritoCompraViewSet(viewsets.ModelViewSet):
+    queryset=CarritoCompra.objects.all()
+    serializer_class=CarritoCompraSerializer
