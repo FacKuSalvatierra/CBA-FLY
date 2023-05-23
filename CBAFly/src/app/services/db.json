@@ -1,0 +1,41 @@
+{
+  "characters": [
+    {
+      "id": 1,
+      "img": "https://static1.e621.net/data/sample/da/83/da8390b8220a3b975269af0c6a3a29c7.jpg",
+      "nombre": "Geo",
+      "apellido": "Stelar",
+      "edad": 18,
+      "poder": "transformarse en EM",
+      "tieneCompañero": true,
+      "compañero": {
+        "color": "azul",
+        "elemento": "no",
+        "alineacion": "heroe",
+        "habilidades": [
+          "Wave Conversion",
+          "EM Wave Change",
+          "Anti-Hypnosis",
+          "Beast Slap",
+          "Area Eater",
+          "Double Eater"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "img": "https://static.wikia.nocookie.net/megaman/images/b/b1/Rockman_Unity_Wallpaper_2017_11.png",
+      "nombre": "Luna",
+      "apellido": "Platz",
+      "edad": 18,
+      "poder": "mandar sobre los demás",
+      "tieneCompañero": false
+    }
+  ],
+  "users": [
+    {
+      "email": "admin@geek.com",
+      "password": 1234
+    }
+  ]
+}
