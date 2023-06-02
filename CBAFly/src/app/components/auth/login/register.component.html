@@ -27,9 +27,9 @@
             </div>
             <div class="input-field">
               <input type="password" placeholder="Confirmar contraseña" required minlength="5" maxlength="14"
-                id="password_register_conf">
+                id="password" [(ngModel)]="password" [type]="passwordVisible ? 'text' : 'password'">
               <i class="uil uil-lock icon"></i>
-              <i class="uil uil-eye-slash showHidePw"></i>
+              <i class="uil showHidePw" [ngClass]="passwordVisible ? 'uil-eye' : 'uil-eye-slash'" (click)="togglePasswordVisibility()"></i>
             </div>
 
             <div class="checkbox-text">
@@ -47,7 +47,7 @@
             </div>
 
             <div class="input-field button">
-              <input type="button" value="Crear cuenta" onclick="validar_registro()">
+              <input type="button" value="Crear cuenta" (click)="validar_registro()">
             </div>
           </form>
 
