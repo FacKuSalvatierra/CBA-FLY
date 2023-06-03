@@ -5,28 +5,28 @@
 
     <!-- Registration Form -->
 
-    <div div *ngSwitchCase="1" class="container2">
+    <div *ngSwitchCase="1" class="container2">
       <div class="forms2">
         <div class="form signup2">
           <span class="title2">Registro</span>
 
           <form action="#">
             <div class="input-field">
-              <input type="text" placeholder="Ingresá tu nombre y apellido" required minlength="3" maxlength="30"
-                id="name_register">
+              <input type="text" name="name" placeholder="Ingresá tu nombre y apellido" required minlength="3" maxlength="30"
+                id="name_register" [(ngModel)]="name">
               <i class="uil uil-user"></i>
             </div>
             <div class="input-field">
-              <input type="email" placeholder="Ingresá tu correo electrónico" required id="email_register">
+              <input type="email" name="email" placeholder="Ingresá tu correo electrónico" required id="email_register" [(ngModel)]="email">
               <i class="uil uil-envelope icon"></i>
             </div>
             <div class="input-field">
-              <input type="password" placeholder="Crea una contraseña" required minlength="5" maxlength="14"
-                id="password_register">
+              <input type="password" name="password" placeholder="Crea una contraseña" required minlength="5" maxlength="14"
+                id="password_register" [(ngModel)]="confirmPassword">
               <i class="uil uil-lock icon"></i>
             </div>
             <div class="input-field">
-              <input type="password" placeholder="Confirmar contraseña" required minlength="5" maxlength="14"
+              <input type="password" name="confirmPassword" placeholder="Confirmar contraseña" required minlength="5" maxlength="14"
                 id="password" [(ngModel)]="password" [type]="passwordVisible ? 'text' : 'password'">
               <i class="uil uil-lock icon"></i>
               <i class="uil showHidePw" [ngClass]="passwordVisible ? 'uil-eye' : 'uil-eye-slash'" (click)="togglePasswordVisibility()"></i>
