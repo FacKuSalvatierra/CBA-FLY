@@ -1,5 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/authentication.service';
+import { TokenService } from 'src/app/services/token.service';
+import { Usuario } from 'src/app/model/usuario';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -8,23 +13,60 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   password: string;
   passwordVisible: boolean = false;
-  constructor(private router: Router) {}
+
+  isLogged = false;
+  isLogginFail = false;
+  loginUsuario!: Usuario;
+  nombreCompleto!: string;
+  correoElectronico!: string;
+  contrasena!: string;
+  errMsj!: string;
+  form: FormGroup;
+
+  constructor(
+    private tokenService: TokenService,
+    private authService: AuthService,
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {
+    this.form = this.formBuilder.group({
+      nombreCompleto: ['', [Validators.required, Validators.minLength(1)]],
+      correoElectronico: [
+        '',
+        [Validators.required, Validators.email, Validators.minLength(3)],
+      ],
+      contrasena: ['', [Validators.required, Validators.minLength(4)]],
+    });
+  }
+
+  submit() {
+    if (this.form.valid) {
+      alert(
+        'Por favor, verificá los campos requeridos y completalos según corresponda.'
+      );
+      return;
+    }
+    alert('Te has logeado correctamente.');
+    console.log(this.form.value);
+  }
+
+  get NombreCompleto() {
+    return this.form.get('nombreCompleto');
+  }
+
+  get Email() {
+    return this.form.get('correoElectronico');
+  }
+
+  get Password() {
+    return this.form.get('contrasena');
+  }
 
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
-    const passwordField = document.getElementById('password') as HTMLInputElement;
+    const passwordField = document.getElementById(
+      'contrasena'
+    ) as HTMLInputElement;
     passwordField.type = this.passwordVisible ? 'text' : 'password';
-  }
-  validar_inicio() {
-    const email = (document.getElementById('email_login') as HTMLInputElement).value;
-    const password = this.password;
-    // Validar credenciales del usuario aquí
-    if (email === 'usuario@example.com' && password === '12345') {
-      // Redirigir al usuario a la página correspondiente después de iniciar sesión
-      this.router.navigate(['/home']);
-    } else {
-      // Mostrar un mensaje de error
-      alert('Correo electrónico o contraseña incorrectos');
-    }
   }
 }

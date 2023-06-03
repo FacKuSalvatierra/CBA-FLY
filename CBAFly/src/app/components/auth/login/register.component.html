@@ -10,7 +10,7 @@
         <div class="form signup2">
           <span class="title2">Registro</span>
 
-          <form action="#">
+          <form [formGroup]="form" #f="ngForm" (ngSubmit)="submit()">
             <div class="input-field">
               <input type="text" placeholder="Ingresá tu nombre y apellido" required minlength="3" maxlength="30"
                 id="name_register">
@@ -22,14 +22,17 @@
             </div>
             <div class="input-field">
               <input type="password" placeholder="Crea una contraseña" required minlength="5" maxlength="14"
-                id="password_register">
+                id="password_register" [(ngModel)]="password" [type]="passwordVisible ? 'text' : 'password'">
               <i class="uil uil-lock icon"></i>
+              <i class="uil showHidePw" [ngClass]="passwordVisible ? 'uil-eye' : 'uil-eye-slash'"
+                (click)="togglePasswordVisibility()"></i>
             </div>
             <div class="input-field">
               <input type="password" placeholder="Confirmar contraseña" required minlength="5" maxlength="14"
                 id="password" [(ngModel)]="password" [type]="passwordVisible ? 'text' : 'password'">
               <i class="uil uil-lock icon"></i>
-              <i class="uil showHidePw" [ngClass]="passwordVisible ? 'uil-eye' : 'uil-eye-slash'" (click)="togglePasswordVisibility()"></i>
+              <i class="uil showHidePw" [ngClass]="passwordVisible ? 'uil-eye' : 'uil-eye-slash'"
+                (click)="togglePasswordVisibility()"></i>
             </div>
 
             <div class="checkbox-text">
@@ -47,7 +50,7 @@
             </div>
 
             <div class="input-field button">
-              <input type="button" value="Crear cuenta" (click)="validar_registro()">
+              <input type="submit" value="Crear cuenta">
             </div>
           </form>
 
