@@ -10,26 +10,47 @@
         <div class="form signup2">
           <span class="title2">Registro</span>
 
-          <form action="#">
+          <form [formGroup]="form" #f="ngForm" (ngSubmit)="submit()">
+
             <div class="input-field">
-              <input type="text" placeholder="Ingresá tu nombre y apellido" required minlength="3" maxlength="30"
-                id="name_register">
+              <input type="text" formControlName="nombreCompleto" placeholder="Ingresá tu nombre y apellido"
+                id="name_register" name="nombreCompleto" aria-describedby="NombreyApellidoHelp" required>
               <i class="uil uil-user"></i>
             </div>
+
+            <div *ngIf="NombreCompleto.errors && NombreCompleto.touched" class="alert alert-danger">
+              <p *ngIf="NombreCompleto.hasError('required')">Tu nombre completo es requerido.</p>
+              <p *ngIf="NombreCompleto.errors?.['minlength']">Tu nombre completo debe ser de 2
+                o más caracteres.</p>
+              <p *ngIf="NombreCompleto.errors?.['maxlength']">Tu nombre completo debe tener menos de 80 caracteres.</p>
+            </div>
+
             <div class="input-field">
-              <input type="email" placeholder="Ingresá tu correo electrónico" required id="email_register">
+              <input type="email" formControlName="correoElectronico" placeholder="Ingresá tu correo electrónico"
+                required name="correoElectronico" aria-describedby="EmailHelp" id="correoElectronico_register">
               <i class="uil uil-envelope icon"></i>
             </div>
-            <div class="input-field">
-              <input type="password" placeholder="Crea una contraseña" required minlength="5" maxlength="14"
-                id="password_register">
-              <i class="uil uil-lock icon"></i>
+
+            <div *ngIf="Email.errors && Email.touched" class="alert alert-danger">
+              <p *ngIf="Email.hasError('required')">El Correo Electrónico es requerido.</p>
+              <p *ngIf="Email.errors?.['minlength']">El Correo Electrónico debe ser de 3
+                o más caracteres.</p>
+              <p *ngIf="Email.errors?.['email']"> Ingrese un e-mail con formato válido.</p>
             </div>
+
+
             <div class="input-field">
-              <input type="password" placeholder="Confirmar contraseña" required minlength="5" maxlength="14"
-                id="password" [(ngModel)]="password" [type]="passwordVisible ? 'text' : 'password'">
+              <input type="password" formControlName="contrasena" id="contrasena" name="contrasena"
+                placeholder="Crea una contraseña" required [type]="passwordVisible ? 'text' : 'password'">
               <i class="uil uil-lock icon"></i>
-              <i class="uil showHidePw" [ngClass]="passwordVisible ? 'uil-eye' : 'uil-eye-slash'" (click)="togglePasswordVisibility()"></i>
+              <i class="uil showHidePw" [ngClass]="passwordVisible ? 'uil-eye' : 'uil-eye-slash'"
+                (click)="togglePasswordVisibility()"></i>
+            </div>
+
+            <div *ngIf="Password.errors && Password.touched" class="alert alert-danger">
+              <div *ngIf="Password.hasError('required')">La contraseña es requerida.</div>
+              <div *ngIf="Password.errors?.['minlength']">La contraseña debe ser de 5 o más
+                caracteres</div>
             </div>
 
             <div class="checkbox-text">
@@ -47,7 +68,7 @@
             </div>
 
             <div class="input-field button">
-              <input type="button" value="Crear cuenta" (click)="validar_registro()">
+              <input type="submit" value="Crear cuenta">
             </div>
           </form>
 
