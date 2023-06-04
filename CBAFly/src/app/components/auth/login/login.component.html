@@ -32,7 +32,7 @@
 
             <div *ngIf="Password.errors && Password.touched" class="alert alert-danger">
               <div *ngIf="Password.hasError('required')">La contraseña es requerida.</div>
-              <div *ngIf="Password.errors?.['minlength']">La contraseña debe ser de 4 o más
+              <div *ngIf="Password.errors?.['minlength']">La contraseña debe ser de 5 o más
                 caracteres</div>
             </div>
 

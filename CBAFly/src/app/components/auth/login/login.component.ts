@@ -30,12 +30,12 @@ export class LoginComponent {
     private formBuilder: FormBuilder
   ) {
     this.form = this.formBuilder.group({
-      nombreCompleto: ['', [Validators.required, Validators.minLength(1)]],
+      nombreCompleto: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(80)]],
       correoElectronico: [
         '',
         [Validators.required, Validators.email, Validators.minLength(3)],
       ],
-      contrasena: ['', [Validators.required, Validators.minLength(4)]],
+      contrasena: ['', [Validators.required, Validators.minLength(5)]],
     });
   }
 
