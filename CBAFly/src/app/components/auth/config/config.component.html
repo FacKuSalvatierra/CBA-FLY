@@ -6,26 +6,31 @@
                 <div class="col-lg-10">
                     <div class="box">
                         <h3 class="heading">Editar información</h3>
-                        <div class="icon-edit">
-                            <a href="#">Cambiar avatar <i class="bi bi-person-fill"></i></a>
-                        </div>
 
-                        <form class="mb-5" method="post" id="contactForm" name="contactForm">
+                        <form class="mb-5" method="post" id="contactForm" name="contactForm" [formGroup]="form"
+                            #f="ngForm" (ngSubmit)="submit()">
                             <div class="row justify-content-center">
                                 <div class="col-md-10">
                                     <div class="p-2 py-8">
                                         <div class="row mt-4">
-                                            <div class="col-md-6"><label class="labels">Nombre</label><input type="text"
-                                                    class="form-control" placeholder="Juana" value=""></div>
-                                            <div class="col-md-6"><label class="labels">Apellido</label><input
-                                                    type="text" class="form-control" value="" placeholder="Romero">
+                                            <div class="col-md-12">
+                                                <label class="labels">Nombre completo</label>
+                                                <input type="text" class="form-control" placeholder="Juana Romero"
+                                                    value="">
                                             </div>
+
+                                            <div *ngIf="NombreCompleto.errors && NombreCompleto.touched" class="alert alert-danger">
+                                                <p *ngIf="NombreCompleto.hasError('required')">Tu nombre completo es requerido.</p>
+                                                <p *ngIf="NombreCompleto.errors?.['minlength']">Tu nombre completo debe ser de 2
+                                                  o más caracteres.</p>
+                                                <p *ngIf="NombreCompleto.errors?.['maxlength']">Tu nombre completo debe tener menos de 80 caracteres.</p>
+                                              </div>
                                         </div>
                                         <div class="row mt-4">
                                             <div class="col-md-12">
                                                 <label class="labels">E-Mail</label>
                                                 <input type="email" required class="form-control"
-                                                    placeholder="example@email.com" value="">
+                                                    placeholder="xentoasfi@email.com" value="">
                                             </div>
                                             <div class="col-md-12">
                                                 <label class="labels">Teléfono</label>
@@ -33,12 +38,7 @@
                                                     placeholder="+5403511234567" value="">
                                             </div>
                                             <div class="col-md-12">
-                                                <label class="labels">Dirección</label>
-                                                <input type="text" required class="form-control"
-                                                    placeholder="Lirios 2034" value="">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label class="labels">DNI</label>
+                                                <label class="labels">DNI o ID</label>
                                                 <input type="number" required class="form-control" placeholder="9999999"
                                                     value="">
                                             </div>
@@ -64,7 +64,7 @@
                                             </div>
 
                                             <div class="col-md-6 mt-5 text-center">
-                                                <button class="btn btn-secondary profile-button"
+                                                <button class="btn btn-secondary profile-button" routerLink="/inicio"
                                                     type="button">Cancelar</button>
                                             </div>
                                         </div>
