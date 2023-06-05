@@ -50,6 +50,11 @@ export class ConfigComponent {
         [Validators.required, Validators.email, Validators.minLength(3)],
       ],
       contrasena: ['', [Validators.required, Validators.minLength(5)]],
+      telefono: ['', [Validators.required, Validators.minLength(6)]],
+      dni: ['', [Validators.required, Validators.minLength(4)]],
+      codigoPostal: ['', [Validators.required, Validators.minLength(2)]],
+      pais: ['', [Validators.required, Validators.minLength(1)]],
+      ciudad: ['', [Validators.required, Validators.minLength(1)]],
     });
   }
 
@@ -77,23 +82,23 @@ export class ConfigComponent {
   }
 
   get Telefono() {
-    return this.form.get('contrasena');
+    return this.form.get('telefono');
   }
 
   get Dni() {
-    return this.form.get('contrasena');
+    return this.form.get('dni');
   }
 
   get CodigoPostal() {
-    return this.form.get('contrasena');
+    return this.form.get('codigoPostal');
   }
 
   get Pais() {
-    return this.form.get('contrasena');
+    return this.form.get('pais');
   }
 
   get Ciudad() {
-    return this.form.get('contrasena');
+    return this.form.get('ciudad');
   }
 
   togglePasswordVisibility() {

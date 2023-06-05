@@ -10,6 +10,7 @@
         <div class="form signup2">
           <span class="title2">Registro</span>
 
+
           <form [formGroup]="registrationForm" (ngSubmit)="validar_registro()">
             <div class="input-field">
               <input type="text" formControlName="name" placeholder="Ingresá tu nombre y apellido" required minlength="3" maxlength="30" id="name_register">
@@ -31,6 +32,8 @@
                 o más caracteres.</p>
               <p *ngIf="registrationForm.get('email').errors?.['email']"> Ingrese un e-mail con formato válido.</p>
             </div>
+
+
             <div class="input-field">
               <input type="password" formControlName="password" placeholder="Crea una contraseña" required minlength="5" maxlength="14" id="password_register">
               <i class="uil uil-lock icon"></i>
@@ -43,23 +46,28 @@
             <div class="input-field">
               <input type="password" formControlName="confirmPassword" placeholder="Confirmar contraseña" required minlength="5" maxlength="14" id="password" [type]="passwordVisible ? 'text' : 'password'">
               <i class="uil uil-lock icon"></i>
-              <i class="uil showHidePw" [ngClass]="passwordVisible ? 'uil-eye' : 'uil-eye-slash'" (click)="togglePasswordVisibility()"></i>
+              <i class="uil showHidePw" [ngClass]="passwordVisible ? 'uil-eye' : 'uil-eye-slash'"
+                (click)="togglePasswordVisibility()"></i>
             </div>
-
             <div>
               <p *ngIf="registrationForm.get('confirmPassword').invalid && (registrationForm.get('confirmPassword').dirty || registrationForm.get('confirmPassword').touched)" class="alert alert-danger">La contraseña de confirmación no coincide.</p>
             </div>
 
             <div class="checkbox-text">
               <div class="checkbox-content">
-                <input type="checkbox" formControlName="term" id="term" required>
-                <label for="termCon" class="text">Acepto los términos y condiciones</label>
+                <input type="checkbox" id="term" formControlName="term" required name="term" aria-describedby="TermHelp">
+                <label for="term" class="text">Acepto los términos y condiciones</label>
               </div>
+              <div *ngIf="registrationForm.get('term').errors" class="alert alert-danger">
+                <div *ngIf="registrationForm.get('term').hasError('required')">Por favor, confirmá haber leído los términos y condiciones.</div>
+              </div>
+
             </div>
             <div class="checkbox-text">
               <div class="checkbox-content">
-                <input type="checkbox" formControlName="termCon" id="termCon">
-                <label for="termCon" class="text">Quiero recibir novedades y promociones especiales por correo electrónico</label>
+                <input type="checkbox" id="termPromo">
+                <label for="termPromo" class="text">Quiero recibir novedades y promociones especiales por correo
+                  electrónico</label>
               </div>
             </div>
 
@@ -71,6 +79,11 @@
           <div class="login-signup">
             <span class="text">¿Ya tenés una cuenta?
               <a class="text login-link" routerLink="/login">¡Inicia sesión!</a>
+            </span>
+          </div>
+          <div class="login-signup">
+            <span class="text">¿Ya iniciaste sesión?
+              <a class="text signup-link" routerLink="/config">¡Editá tus datos acá!</a>
             </span>
           </div>
         </div>

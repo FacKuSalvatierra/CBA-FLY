@@ -1,5 +1,8 @@
 from rest_framework import serializers
+from django.contrib.auth import get_user_model
 from .models import Usuario, Vuelo, Asiento, Pago, Compra, CarritoCompra
+from django.contrib.auth.hashers import make_password
+
 
 
 

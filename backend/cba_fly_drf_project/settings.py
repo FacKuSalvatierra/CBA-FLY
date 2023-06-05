@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'api',
+    
 ]
 
 MIDDLEWARE = [
@@ -68,12 +69,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
 ]
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:4200',
     # Otros dominios permitidos...
+
+
 ]
 
 ROOT_URLCONF = 'cba_fly_drf_project.urls'
@@ -149,4 +151,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
 DEFAULT_AUTHENTICATION_CLASSES = 'rest_framework_simplejwt.authentication.JWTAuthentication'
+
+

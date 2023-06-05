@@ -1,9 +1,6 @@
 from django.db import models
-# from django.contrib.auth.models import AbstractUser  ##creacion EndPoints :registro y login
 
 
-
-# Create your models here.
 class Usuario(models.Model):
     nombre_completo = models.CharField(max_length=100)
     correo_electronico = models.EmailField(max_length=100, unique=True)
