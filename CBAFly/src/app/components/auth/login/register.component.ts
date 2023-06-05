@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
   contrasena!: string;
   errMsj!: string;
   form: FormGroup;
+  term: boolean = false;
 
   constructor(
     private tokenService: TokenService,
@@ -40,6 +41,7 @@ export class RegisterComponent implements OnInit {
         [Validators.required, Validators.email, Validators.minLength(3)],
       ],
       contrasena: ['', [Validators.required, Validators.minLength(5)]],
+      term: ['', [Validators.requiredTrue]],
     });
   }
 
@@ -65,6 +67,10 @@ export class RegisterComponent implements OnInit {
 
   get Password() {
     return this.form.get('contrasena');
+  }
+
+  get Term() {
+    return this.form.get('term');
   }
 
   togglePasswordVisibility() {

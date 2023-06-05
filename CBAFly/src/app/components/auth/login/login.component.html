@@ -10,11 +10,10 @@
           <form [formGroup]="form" #f="ngForm" (ngSubmit)="submit()">
             <div class="input-field">
               <input type="email" formControlName="correoElectronico" placeholder="xentoasfi@gmail.com"
-                name="correoElectronico" aria-describedby="EmailHelp" required
-                id="correoElectronico_login">
+                name="correoElectronico" aria-describedby="EmailHelp" required id="correoElectronico_login">
               <i class="uil uil-envelope icon"></i>
             </div>
-            
+
             <div *ngIf="Email.errors && Email.touched" class="alert alert-danger">
               <p *ngIf="Email.hasError('required')">El Correo Electrónico es requerido.</p>
               <p *ngIf="Email.errors?.['minlength']">El Correo Electrónico debe ser de 3
@@ -23,8 +22,8 @@
             </div>
 
             <div class="input-field">
-                 <input type="password" formControlName="contrasena" id="contrasena" name="contrasena" placeholder="********" required
-                  [type]="passwordVisible ? 'text' : 'password'">
+              <input type="password" formControlName="contrasena" id="contrasena" name="contrasena"
+                placeholder="********" required [type]="passwordVisible ? 'text' : 'password'">
               <i class="uil uil-lock icon"></i>
               <i class="uil showHidePw" [ngClass]="passwordVisible ? 'uil-eye' : 'uil-eye-slash'"
                 (click)="togglePasswordVisibility()"></i>
@@ -53,6 +52,11 @@
           <div class="login-signup">
             <span class="text">¿No tenés cuenta?
               <a class="text signup-link" routerLink="/login/1">¡Registrate ahora!</a>
+            </span>
+          </div>
+          <div class="login-signup">
+            <span class="text">¿Ya iniciaste sesión?
+              <a class="text signup-link" routerLink="/config">¡Editá tus datos acá!</a>
             </span>
           </div>
         </div>
