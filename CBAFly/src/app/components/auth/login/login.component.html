@@ -10,10 +10,12 @@
           <form [formGroup]="form" #f="ngForm" (ngSubmit)="submit()">
             <div class="input-field">
               <input type="email" formControlName="correoElectronico" placeholder="xentoasfi@gmail.com"
-                name="correoElectronico" aria-describedby="EmailHelp" required id="correoElectronico_login">
+
+                name="correoElectronico" aria-describedby="EmailHelp" required
+                id="correoElectronico_login">
               <i class="uil uil-envelope icon"></i>
             </div>
-
+            
             <div *ngIf="Email.errors && Email.touched" class="alert alert-danger">
               <p *ngIf="Email.hasError('required')">El Correo Electrónico es requerido.</p>
               <p *ngIf="Email.errors?.['minlength']">El Correo Electrónico debe ser de 3

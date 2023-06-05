@@ -16,6 +16,7 @@
                                             <div class="col-md-12">
                                                 <label class="labels">Nombre completo</label>
                                                 <input type="text" class="form-control" placeholder="Juana Romero"
+
                                                     formControlName="nombreCompleto" value="" id="name_config"
                                                     name="nombreCompleto" aria-describedby="NombreyApellidoHelp">
                                             </div>
@@ -30,6 +31,13 @@
                                                 <p *ngIf="NombreCompleto.errors?.['maxlength']">Tu nombre completo debe
                                                     tener menos de 80 caracteres.</p>
                                             </div>
+
+                                            <div *ngIf="NombreCompleto.errors && NombreCompleto.touched" class="alert alert-danger">
+                                                <p *ngIf="NombreCompleto.hasError('required')">Tu nombre completo es requerido.</p>
+                                                <p *ngIf="NombreCompleto.errors?.['minlength']">Tu nombre completo debe ser de 2
+                                                  o más caracteres.</p>
+                                                <p *ngIf="NombreCompleto.errors?.['maxlength']">Tu nombre completo debe tener menos de 80 caracteres.</p>
+                                              </div>
                                         </div>
 
                                         <div class="row mt-4">
