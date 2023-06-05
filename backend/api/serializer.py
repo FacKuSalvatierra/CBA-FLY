@@ -1,11 +1,14 @@
 from rest_framework import serializers
 from .models import Usuario, Vuelo, Asiento, Pago, Compra, CarritoCompra
 
+
+
 class UsuarioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Usuario
         fields = ('id', 'nombre_completo', 'correo_electronico', 'contrasena')
-
+        
+        
 class VueloSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vuelo
@@ -39,3 +42,5 @@ class CarritoCompraSerializer(serializers.ModelSerializer):
     class Meta:
         model = CarritoCompra
         fields = ('id', 'usuario', 'vuelo', 'cantidad_asientos')
+        
+        

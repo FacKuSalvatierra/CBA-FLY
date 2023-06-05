@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -6,62 +7,68 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   id: number = 1;
-  password: string;
+  registrationForm: FormGroup;
   passwordVisible: boolean = false;
-  name: string;
-  email: string;
-  confirmPassword: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
+
+  ngOnInit(): void {
+    this.registrationForm = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(14)]],
+      confirmPassword: ['', [Validators.required]],
+      term: [false, Validators.requiredTrue],
+      termCon: [false],
+    });
+  }
 
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
   }
 
   register(): void {
+    if (this.registrationForm.invalid) {
+      
+      alert('Por favor, completa correctamente todos los campos.');
+      return;
+    }
+
     const url = 'http://127.0.0.1:8000/api/register/';
-    const body = { nombre_completo: this.name, correo_electronico: this.email, contrasena: this.password };
+    const body = {
+      nombre_completo: this.registrationForm.value.name,
+      correo_electronico: this.registrationForm.value.email,
+      contrasena: this.registrationForm.value.password,
+    };
 
     this.http.post(url, body).subscribe(
       (response: any) => {
-        // Registro exitoso, puedes redirigir al usuario a otra página si es necesario
+
         alert('Registro exitoso. Por favor inicia sesión.');
       },
       (error: any) => {
         console.error('Error al registrar:', error);
-        // Muestra un mensaje de error
+
         alert('Error al registrar. Por favor inténtalo nuevamente.');
       }
     );
   }
 
   validar_registro() {
-    // Validar que todos los campos estén completos
-    if (!this.name || !this.email || !this.password || !this.confirmPassword) {
+
+    if (this.registrationForm.invalid) {
       alert('Por favor completa todos los campos y acepta los términos y condiciones.');
       return;
     }
 
-    // Validar que la contraseña y su confirmación coincidan
-    if (this.password !== this.confirmPassword) {
+    if (this.registrationForm.value.password !== this.registrationForm.value.confirmPassword) {
       alert('Las contraseñas no coinciden.');
       return;
     }
 
-    // Validar que el correo electrónico sea válido
-    if (!this.validarEmail(this.email)) {
-      alert('Por favor ingresa un correo electrónico válido.');
-      return;
-    }
 
-    // Si se pasaron todas las validaciones, entonces se puede enviar el formulario de registro
     this.register();
-  }
-
-  validarEmail(email: string): boolean {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
   }
 }

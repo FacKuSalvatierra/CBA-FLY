@@ -30,7 +30,7 @@ export class ContactoComponent {
 
   submit() {
     if (!this.contactoForm.valid) {
-      alert('Por favor, verificá los campos requeridos y completalos según corresponda');
+      alert('Por favor, verificá los campos requeridos y completalos según corresponda.');
       return;
     }
     

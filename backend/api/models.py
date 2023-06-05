@@ -1,4 +1,7 @@
 from django.db import models
+# from django.contrib.auth.models import AbstractUser  ##creacion EndPoints :registro y login
+
+
 
 # Create your models here.
 class Usuario(models.Model):
@@ -61,4 +64,5 @@ class CarritoCompra(models.Model):
 
     def __str__(self):
         return f"{self.usuario.nombre_completo} - {self.vuelo.numero_vuelo}"
+
 

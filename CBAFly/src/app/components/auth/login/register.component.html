@@ -10,44 +10,61 @@
         <div class="form signup2">
           <span class="title2">Registro</span>
 
-          <form action="#">
+          <form [formGroup]="registrationForm" (ngSubmit)="validar_registro()">
             <div class="input-field">
-              <input type="text" name="name" placeholder="Ingresá tu nombre y apellido" required minlength="3" maxlength="30"
-                id="name_register" [(ngModel)]="name">
+              <input type="text" formControlName="name" placeholder="Ingresá tu nombre y apellido" required minlength="3" maxlength="30" id="name_register">
               <i class="uil uil-user"></i>
             </div>
+            <div *ngIf="registrationForm.get('name').errors && registrationForm.get('name').touched" class="alert alert-danger">
+              <p *ngIf="registrationForm.get('name').hasError('required')">Tu nombre completo es requerido.</p>
+              <p *ngIf="registrationForm.get('name').errors?.['minlength']">Tu nombre completo debe ser de 2
+                o más caracteres.</p>
+              <p *ngIf="registrationForm.get('name').errors?.['maxlength']">Tu nombre completo debe tener menos de 80 caracteres.</p>
+            </div>
             <div class="input-field">
-              <input type="email" name="email" placeholder="Ingresá tu correo electrónico" required id="email_register" [(ngModel)]="email">
+              <input type="email" formControlName="email" placeholder="Ingresá tu correo electrónico" required id="email_register">
               <i class="uil uil-envelope icon"></i>
             </div>
-            <div class="input-field">
-              <input type="password" name="password" placeholder="Crea una contraseña" required minlength="5" maxlength="14"
-                id="password_register" [(ngModel)]="confirmPassword">
-              <i class="uil uil-lock icon"></i>
+            <div *ngIf="registrationForm.get('email').errors && registrationForm.get('email').touched" class="alert alert-danger">
+              <p *ngIf="registrationForm.get('email').hasError('required')">El Correo Electrónico es requerido.</p>
+              <p *ngIf="registrationForm.get('email').errors?.['minlength']">El Correo Electrónico debe ser de 3
+                o más caracteres.</p>
+              <p *ngIf="registrationForm.get('email').errors?.['email']"> Ingrese un e-mail con formato válido.</p>
             </div>
             <div class="input-field">
-              <input type="password" name="confirmPassword" placeholder="Confirmar contraseña" required minlength="5" maxlength="14"
-                id="password" [(ngModel)]="password" [type]="passwordVisible ? 'text' : 'password'">
+              <input type="password" formControlName="password" placeholder="Crea una contraseña" required minlength="5" maxlength="14" id="password_register">
+              <i class="uil uil-lock icon"></i>
+            </div>
+            <div *ngIf="registrationForm.get('password').errors && registrationForm.get('password').touched" class="alert alert-danger">
+              <div *ngIf="registrationForm.get('password').hasError('required')">La contraseña es requerida.</div>
+              <div *ngIf="registrationForm.get('password').errors?.['minlength']">La contraseña debe ser de 5 o más
+                caracteres</div>
+            </div>
+            <div class="input-field">
+              <input type="password" formControlName="confirmPassword" placeholder="Confirmar contraseña" required minlength="5" maxlength="14" id="password" [type]="passwordVisible ? 'text' : 'password'">
               <i class="uil uil-lock icon"></i>
               <i class="uil showHidePw" [ngClass]="passwordVisible ? 'uil-eye' : 'uil-eye-slash'" (click)="togglePasswordVisibility()"></i>
             </div>
 
+            <div>
+              <p *ngIf="registrationForm.get('confirmPassword').invalid && (registrationForm.get('confirmPassword').dirty || registrationForm.get('confirmPassword').touched)" class="alert alert-danger">La contraseña de confirmación no coincide.</p>
+            </div>
+
             <div class="checkbox-text">
               <div class="checkbox-content">
-                <input type="checkbox" id="term" required>
+                <input type="checkbox" formControlName="term" id="term" required>
                 <label for="termCon" class="text">Acepto los términos y condiciones</label>
               </div>
             </div>
             <div class="checkbox-text">
               <div class="checkbox-content">
-                <input type="checkbox" id="termCon">
-                <label for="termCon" class="text">Quiero recibir novedades y promociones especiales por correo
-                  electrónico</label>
+                <input type="checkbox" formControlName="termCon" id="termCon">
+                <label for="termCon" class="text">Quiero recibir novedades y promociones especiales por correo electrónico</label>
               </div>
             </div>
 
             <div class="input-field button">
-              <input type="button" value="Crear cuenta" (click)="validar_registro()">
+              <input type="submit" value="Crear cuenta">
             </div>
           </form>
 

@@ -5,9 +5,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth.models import User
-# En tu código Python del servidor backend (ejemplo usando Django)
 from django.middleware import csrf
 from django.http import HttpResponse
+
 
 
 def my_view(request):
@@ -21,6 +21,18 @@ def my_view(request):
     # Resto del código de tu vista
 
     return response
+
+
+
+class RegisterUserView(APIView):
+    def post(self, request):
+        serializer = UsuarioSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()
+            if user:
+                return Response(status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class UsuarioViewSet(viewsets.ModelViewSet):
     queryset=Usuario.objects.all()
@@ -46,12 +58,3 @@ class AsientoViewSet(viewsets.ModelViewSet):
 class CarritoCompraViewSet(viewsets.ModelViewSet):
     queryset=CarritoCompra.objects.all()
     serializer_class=CarritoCompraSerializer
-
-class RegisterUserView(APIView):
-    def post(self, request):
-        serializer = UsuarioSerializer(data=request.data)
-        if serializer.is_valid():
-            user = serializer.save()
-            if user:
-                return Response(status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
