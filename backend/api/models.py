@@ -1,13 +1,23 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-
-class Usuario(models.Model):
-    nombre_completo = models.CharField(max_length=100)
-    correo_electronico = models.EmailField(max_length=100, unique=True)
-    contrasena = models.CharField(max_length=100)
+class CustomUser(AbstractUser):
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username', 'password']
+    email = models.EmailField(max_length=150, unique=True)
 
     def __str__(self):
-        return self.nombre_completo
+        return self.username
+
+
+
+# class Usuario(models.Model):
+#     nombre_completo = models.CharField(max_length=100)
+#     correo_electronico = models.EmailField(max_length=100, unique=True)
+#     contrasena = models.CharField(max_length=100)
+
+#     def __str__(self):
+#         return self.nombre_completo
 
 class Vuelo(models.Model):
     origen = models.CharField(max_length=100)
@@ -32,7 +42,7 @@ class Asiento(models.Model):
         return f"Asiento {self.numero_asiento} ({self.clase}) - Vuelo {self.vuelo.numero_vuelo}"
 
 class Pago(models.Model):
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     numero_tarjeta = models.CharField(max_length=16)
     fecha_expiracion = models.DateField()
     codigo_seguridad = models.CharField(max_length=4)
@@ -41,7 +51,7 @@ class Pago(models.Model):
         return f"{self.usuario.nombre_completo} - {self.numero_tarjeta}"
 
 class Compra(models.Model):
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     vuelo = models.ForeignKey(Vuelo, on_delete=models.CASCADE)
     cantidad_asientos = models.PositiveIntegerField()
     precio_total = models.DecimalField(max_digits=10, decimal_places=2)
@@ -52,7 +62,7 @@ class Compra(models.Model):
         return f"{self.usuario.nombre_completo} - {self.vuelo.numero_vuelo}"
 
 class CarritoCompra(models.Model):
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     vuelo = models.ForeignKey(Vuelo, on_delete=models.CASCADE)
     cantidad_asientos = models.PositiveIntegerField()
 

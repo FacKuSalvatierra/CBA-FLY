@@ -3,31 +3,54 @@ from django.contrib.auth.models import User
 from rest_framework import status , generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializer import UsuarioSerializer, PagoSerializer,VueloSerializer, AsientoSerializer, CarritoCompraSerializer
-from .models import Usuario, Pago, Vuelo, Asiento, CarritoCompra
+from .serializer import UserSerializer, PagoSerializer,VueloSerializer, AsientoSerializer, CarritoCompraSerializer
+from .models import CustomUser, Pago, Vuelo, Asiento, CarritoCompra
 from django.middleware import csrf
 from django.http import HttpResponse
+from django.contrib.auth import authenticate, login, logout
+from django.views.decorators.csrf import csrf_exempt
+import json
+
+# def my_view(request):
+#     response = HttpResponse()
+#     response["Access-Control-Allow-Origin"] = "*"
+#     response["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE"
+#     response["Access-Control-Allow-Headers"] = "Content-Type"
+#     response["Access-Control-Max-Age"] = "86400"  
+#     return response
 
 
 
-def my_view(request):
+class LoginView(APIView):
+    def post(self, request):
+        # Recuperamos las credenciales y autenticamos al usuario
+        email = request.data.get('email', None)
+        password = request.data.get('password', None)
+        user = authenticate(email=email, password=password)
 
-    response = HttpResponse()
-    response["Access-Control-Allow-Origin"] = "*"
-    response["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE"
-    response["Access-Control-Allow-Headers"] = "Content-Type"
-    response["Access-Control-Max-Age"] = "86400"  
+        # Si es correcto añadimos a la request la información de sesión
+        if user:
+            login(request, user)
+            return Response(
+                status=status.HTTP_200_OK)
 
-    
+        # Si no es correcto devolvemos un error en la petición
+        return Response(
+            status=status.HTTP_404_NOT_FOUND)
 
-    return response
 
+class LogoutView(APIView):
+    def post(self, request):
+        # Borramos de la request la información de sesión
+        logout(request)
 
+        # Devolvemos la respuesta al cliente
+        return Response(status=status.HTTP_200_OK)
 
 
 class RegisterUserView(APIView):
     def post(self, request):
-        serializer = UsuarioSerializer(data=request.data)
+        serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
             if user:
@@ -35,10 +58,9 @@ class RegisterUserView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-
 class UsuarioViewSet(viewsets.ModelViewSet):
-    queryset=Usuario.objects.all()
-    serializer_class=UsuarioSerializer
+    queryset=CustomUser.objects.all()
+    serializer_class=UserSerializer
 
 class PagosViewSet(viewsets.ModelViewSet):
     queryset=Pago.objects.all()

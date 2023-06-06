@@ -13,14 +13,14 @@
 
           <form [formGroup]="registrationForm" (ngSubmit)="validar_registro()">
             <div class="input-field">
-              <input type="text" formControlName="name" placeholder="Ingresá tu nombre y apellido" required minlength="3" maxlength="30" id="name_register">
+              <input type="text" formControlName="username" placeholder="Ingresá tu nombre y apellido" required minlength="3" maxlength="30" id="name_register">
               <i class="uil uil-user"></i>
             </div>
-            <div *ngIf="registrationForm.get('name').errors && registrationForm.get('name').touched" class="alert alert-danger">
-              <p *ngIf="registrationForm.get('name').hasError('required')">Tu nombre completo es requerido.</p>
-              <p *ngIf="registrationForm.get('name').errors?.['minlength']">Tu nombre completo debe ser de 2
+            <div *ngIf="registrationForm.get('username').errors && registrationForm.get('username').touched" class="alert alert-danger">
+              <p *ngIf="registrationForm.get('username').hasError('required')">Tu nombre completo es requerido.</p>
+              <p *ngIf="registrationForm.get('username').errors?.['minlength']">Tu nombre completo debe ser de 2
                 o más caracteres.</p>
-              <p *ngIf="registrationForm.get('name').errors?.['maxlength']">Tu nombre completo debe tener menos de 80 caracteres.</p>
+              <p *ngIf="registrationForm.get('username').errors?.['maxlength']">Tu nombre completo debe tener menos de 80 caracteres.</p>
             </div>
             <div class="input-field">
               <input type="email" formControlName="email" placeholder="Ingresá tu correo electrónico" required id="email_register">

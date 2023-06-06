@@ -17,9 +17,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registrationForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(14)]],
+      password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(14)]],
       confirmPassword: ['', [Validators.required]],
       term: [false, Validators.requiredTrue],
       termCon: [false],
@@ -37,12 +37,13 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    const url = 'http://127.0.0.1:8000/api/register/';
+    const url = 'http://localhost:8000/api/auth/signup/';
     const body = {
-      nombre_completo: this.registrationForm.value.name,
-      correo_electronico: this.registrationForm.value.email,
-      contrasena: this.registrationForm.value.password,
+      email: this.registrationForm.value.email,
+      username: this.registrationForm.value.username,
+      password: this.registrationForm.value.password,
     };
+    console.log(body);
 
     this.http.post(url, body).subscribe(
       (response: any) => {

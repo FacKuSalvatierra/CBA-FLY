@@ -1,72 +1,50 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/authentication.service';
-import { TokenService } from 'src/app/services/token.service';
-import { Usuario } from 'src/app/model/usuario';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
-  password: string;
+export class LoginComponent implements OnInit {
+  loginForm: FormGroup;
   passwordVisible: boolean = false;
 
-  isLogged = false;
-  isLogginFail = false;
-  loginUsuario!: Usuario;
-  nombreCompleto!: string;
-  correoElectronico!: string;
-  contrasena!: string;
-  errMsj!: string;
-  form: FormGroup;
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
 
-  constructor(
-    private tokenService: TokenService,
-    private authService: AuthService,
-    private router: Router,
-    private formBuilder: FormBuilder
-  ) {
-    this.form = this.formBuilder.group({
-      nombreCompleto: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(80)]],
-      correoElectronico: [
-        '',
-        [Validators.required, Validators.email, Validators.minLength(3)],
-      ],
-      contrasena: ['', [Validators.required, Validators.minLength(5)]],
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(14)]],
     });
-  }
-
-  submit() {
-    if (this.form.valid) {
-      alert(
-        'Por favor, verificá los campos requeridos y completalos según corresponda.'
-      );
-      return;
-    }
-    alert('Te has logeado correctamente.');
-    console.log(this.form.value);
-  }
-
-  get NombreCompleto() {
-    return this.form.get('nombreCompleto');
-  }
-
-  get Email() {
-    return this.form.get('correoElectronico');
-  }
-
-  get Password() {
-    return this.form.get('contrasena');
   }
 
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
-    const passwordField = document.getElementById(
-      'contrasena'
-    ) as HTMLInputElement;
-    passwordField.type = this.passwordVisible ? 'text' : 'password';
+  }
+
+  submit(): void{
+    if (this.loginForm.invalid) {
+      alert('Por favor, verifica los campos requeridos y completa correctamente los datos.');
+      return;
+    }
+
+    const url = 'http://localhost:8000/api/auth/login/';
+    const body = {
+      email: this.loginForm.value.email,
+      password: this.loginForm.value.password,
+    };
+    console.log(body)
+
+    this.http.post(url, body).subscribe(
+      (response: any) => {
+        alert('Inicio de sesión exitoso.');
+      },
+      (error: any) => {
+        console.error('Error al iniciar sesión:', error);
+        alert('Error al iniciar sesión. Por favor, inténtalo nuevamente.');
+      }
+    );
   }
 }
