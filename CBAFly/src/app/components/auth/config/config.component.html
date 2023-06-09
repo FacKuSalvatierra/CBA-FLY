@@ -7,7 +7,7 @@
                     <div class="box">
                         <h3 class="heading">Editar información</h3>
 
-                        <form class="mb-5" method="post" id="contactForm" name="contactForm" [formGroup]="form"
+                        <form class="mb-5" method="post" id="contactForm" name="contactForm" [formGroup]="configForm"
                             #f="ngForm" (ngSubmit)="submit()">
                             <div class="row justify-content-center">
                                 <div class="col-md-10">
@@ -17,27 +17,20 @@
                                                 <label class="labels">Nombre completo</label>
                                                 <input type="text" class="form-control" placeholder="Juana Romero"
 
-                                                    formControlName="nombreCompleto" value="" id="name_config"
-                                                    name="nombreCompleto" aria-describedby="NombreyApellidoHelp">
+                                                    formControlName="username" value="" id="username"
+                                                    name="username" aria-describedby="NombreyApellidoHelp">
                                             </div>
 
-                                            <div *ngIf="NombreCompleto.errors && NombreCompleto.touched"
+                                            <div *ngIf="configForm.get('username').errors && configForm.get('username').touched"
                                                 class="alert alert-danger">
-                                                <p *ngIf="NombreCompleto.hasError('required')">Tu nombre completo es
+                                                <p *ngIf="configForm.get('username').hasError('required')">Tu nombre completo es
                                                     requerido.</p>
-                                                <p *ngIf="NombreCompleto.errors?.['minlength']">Tu nombre completo debe
+                                                <p *ngIf="configForm.get('username').errors?.['minlength']">Tu nombre completo debe
                                                     ser de 2
                                                     o más caracteres.</p>
-                                                <p *ngIf="NombreCompleto.errors?.['maxlength']">Tu nombre completo debe
+                                                <p *ngIf="configForm.get('username').errors?.['maxlength']">Tu nombre completo debe
                                                     tener menos de 80 caracteres.</p>
                                             </div>
-
-                                            <div *ngIf="NombreCompleto.errors && NombreCompleto.touched" class="alert alert-danger">
-                                                <p *ngIf="NombreCompleto.hasError('required')">Tu nombre completo es requerido.</p>
-                                                <p *ngIf="NombreCompleto.errors?.['minlength']">Tu nombre completo debe ser de 2
-                                                  o más caracteres.</p>
-                                                <p *ngIf="NombreCompleto.errors?.['maxlength']">Tu nombre completo debe tener menos de 80 caracteres.</p>
-                                              </div>
                                         </div>
 
                                         <div class="row mt-4">
@@ -45,28 +38,28 @@
                                                 <label class="labels">E-Mail</label>
                                                 <input type="email" class="form-control"
                                                     placeholder="xentoasfi@email.com"
-                                                    formControlName="correoElectronico" name="correoElectronico"
-                                                    aria-describedby="EmailHelp" id="correoElectronico_config" value="">
+                                                    formControlName="correoElectronico" name="email"
+                                                    aria-describedby="EmailHelp" id="email" value="">
                                             </div>
-                                            <div *ngIf="Email.errors && Email.touched" class="alert alert-danger">
-                                                <p *ngIf="Email.hasError('required')">El Correo Electrónico es
+                                            <div *ngIf="configForm.get('email').errors && configForm.get('email').touched" class="alert alert-danger">
+                                                <p *ngIf="configForm.get('email').hasError('required')">El Correo Electrónico es
                                                     requerido.</p>
-                                                <p *ngIf="Email.errors?.['minlength']">El Correo Electrónico debe ser de
+                                                <p *ngIf="configForm.get('email').errors?.['minlength']">El Correo Electrónico debe ser de
                                                     3
                                                     o más caracteres.</p>
-                                                <p *ngIf="Email.errors?.['email']"> Ingrese un e-mail con formato
+                                                <p *ngIf="configForm.get('email').errors?.['email']"> Ingrese un e-mail con formato
                                                     válido.</p>
                                             </div>
                                             <div class="col-md-12">
                                                 <label class="labels">Teléfono</label>
                                                 <input type="tel" class="form-control" placeholder="+5403511234567"
                                                     formControlName="telefono" name="telefono"
-                                                    aria-describedby="TelefonoHelp" id="telefono_config" value="">
+                                                    aria-describedby="TelefonoHelp" id="telefono" value="">
                                             </div>
-                                            <div *ngIf="Telefono.errors && Telefono.touched" class="alert alert-danger">
-                                                <p *ngIf="Telefono.hasError('required')">El Telefono es
+                                            <div *ngIf="configForm.get('telefono').errors && configForm.get('telefono').touched" class="alert alert-danger">
+                                                <p *ngIf="configForm.get('telefono').hasError('required')">El Telefono es
                                                     requerido.</p>
-                                                <p *ngIf="Telefono.errors?.['minlength']">El Telefono debe ser de
+                                                <p *ngIf="configForm.get('telefono').errors?.['minlength']">El Telefono debe ser de
                                                     6
                                                     o más caracteres.</p>
                                             </div>
@@ -74,12 +67,12 @@
                                                 <label class="labels">DNI o ID</label>
                                                 <input type="number" class="form-control" placeholder="36484392"
                                                     formControlName="dni" name="dni" aria-describedby="DNIHelp"
-                                                    id="dni_config" value="">
+                                                    id="dni" value="">
                                             </div>
-                                            <div *ngIf="Dni.errors && Dni.touched" class="alert alert-danger">
-                                                <p *ngIf="Dni.hasError('required')">El DNI o ID es
+                                            <div *ngIf="configForm.get('dni').errors && configForm.get('dni').touched" class="alert alert-danger">
+                                                <p *ngIf="configForm.get('dni').hasError('required')">El DNI o ID es
                                                     requerido.</p>
-                                                <p *ngIf="Dni.errors?.['minlength']">El DNI o ID debe ser de
+                                                <p *ngIf="configForm.get('dni').errors?.['minlength']">El DNI o ID debe ser de
                                                     4
                                                     o más caracteres.</p>
                                             </div>
@@ -87,14 +80,14 @@
                                                 <label class="labels">Código postal</label>
                                                 <input type="number" class="form-control" placeholder="3050"
                                                     formControlName="codigoPostal" name="codigoPostal"
-                                                    aria-describedby="CodigoPostalHelp" id="codigoPostal_config"
+                                                    aria-describedby="CodigoPostalHelp" id="codigoPostal"
                                                     value="">
                                             </div>
-                                            <div *ngIf="CodigoPostal.errors && CodigoPostal.touched"
+                                            <div *ngIf="configForm.get('codigoPostal').errors && configForm.get('codigoPostal').touched"
                                                 class="alert alert-danger">
-                                                <p *ngIf="CodigoPostal.hasError('required')">El Codigo Postal es
+                                                <p *ngIf="configForm.get('codigoPostal').hasError('required')">El Codigo Postal es
                                                     requerido.</p>
-                                                <p *ngIf="CodigoPostal.errors?.['minlength']">El Codigo Postal debe ser
+                                                <p *ngIf="configForm.get('codigoPostal').errors?.['minlength']">El Codigo Postal debe ser
                                                     de 2
                                                     o más caracteres.</p>
                                             </div>
@@ -102,23 +95,23 @@
                                                 <label class="labels">País</label>
                                                 <input type="text" class="form-control" placeholder="Argentina"
                                                     formControlName="pais" name="pais" aria-describedby="PaisHelp"
-                                                    id="pais_config" value="">
+                                                    id="pais" value="">
                                             </div>
-                                            <div *ngIf="Pais.errors && Pais.touched" class="alert alert-danger">
-                                                <p *ngIf="Pais.hasError('required')">El Pais es requerido.</p>
-                                                <p *ngIf="Pais.errors?.['minlength']">El Pais debe ser de 1
+                                            <div *ngIf="configForm.get('pais').errors && configForm.get('pais').touched" class="alert alert-danger">
+                                                <p *ngIf="configForm.get('pais').hasError('required')">El Pais es requerido.</p>
+                                                <p *ngIf="configForm.get('pais').errors?.['minlength']">El Pais debe ser de 1
                                                     o más caracteres.</p>
                                             </div>
                                             <div class="col-md-6">
                                                 <label class="labels">Ciudad</label>
                                                 <input type="text" class="form-control" value=""
                                                     formControlName="ciudad" name="ciudad" aria-describedby="CiudadHelp"
-                                                    id="ciudad_config" placeholder="Córdoba">
+                                                    id="ciudad" placeholder="Córdoba">
                                             </div>
-                                            <div *ngIf="Ciudad.errors && Ciudad.touched" class="alert alert-danger">
-                                                <p *ngIf="Ciudad.hasError('required')">Tu Ciudad es
+                                            <div *ngIf="configForm.get('ciudad').errors && configForm.get('ciudad').touched" class="alert alert-danger">
+                                                <p *ngIf="configForm.get('ciudad').hasError('required')">Tu Ciudad es
                                                     requerida.</p>
-                                                <p *ngIf="Ciudad.errors?.['minlength']">Tu Ciudad debe ser de
+                                                <p *ngIf="configForm.get('ciudad').errors?.['minlength']">Tu Ciudad debe ser de
                                                     1
                                                     o más caracteres.</p>
                                             </div>

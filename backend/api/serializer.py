@@ -10,12 +10,19 @@ class UserSerializer(serializers.ModelSerializer):
     username = serializers.CharField(
         required=True)
     password = serializers.CharField(min_length=8)
+    direccion = serializers.CharField(required=False, allow_blank=True)
+    codigo_postal = serializers.CharField(required=False, allow_blank=True)
+    pais = serializers.CharField(required=False, allow_blank=True)
+    ciudad = serializers.CharField(required=False, allow_blank=True)
+    dni = serializers.CharField(required=False, allow_blank=True)
+    num_telefono = serializers.CharField(required=False, allow_blank=True)
+
     def validate_password(self, value):
         return make_password(value)
 
     class Meta:
         model = get_user_model()
-        fields = ('email', 'username', 'password')
+        fields = ('email', 'username', 'password', 'direccion', 'codigo_postal', 'pais', 'ciudad', 'dni', 'num_telefono')
 
 
 

@@ -101,7 +101,7 @@ section {
 
 .swiper-slide .text-content p {
   max-width: 500px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(122, 122, 122, 0.1);
   backdrop-filter: blur(10px);
   text-shadow: var(--text-shadow);
   padding: 10px;
@@ -121,6 +121,7 @@ section {
   transition: 1s ease;
   transition-delay: 0.3s;
   transition-property: transform, opacity;
+  color: #ffffff;
 }
 
 .swiper-slide .text-content .read-btn {
@@ -187,6 +188,7 @@ section {
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: var(--box-shadow);
 }
+
 
 .thumbs-container img {
   width: 50px;

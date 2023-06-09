@@ -5,19 +5,16 @@ class CustomUser(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'password']
     email = models.EmailField(max_length=150, unique=True)
+    direccion = models.CharField(max_length=255, blank=True)
+    codigo_postal = models.CharField(max_length=10, blank=True)
+    pais = models.CharField(max_length=255, blank=True)
+    ciudad = models.CharField(max_length=255, blank=True)
+    dni = models.CharField(max_length=20, blank=True)
+    num_telefono = models.CharField(max_length=20, blank=True)
 
     def __str__(self):
         return self.username
 
-
-
-# class Usuario(models.Model):
-#     nombre_completo = models.CharField(max_length=100)
-#     correo_electronico = models.EmailField(max_length=100, unique=True)
-#     contrasena = models.CharField(max_length=100)
-
-#     def __str__(self):
-#         return self.nombre_completo
 
 class Vuelo(models.Model):
     origen = models.CharField(max_length=100)
@@ -48,7 +45,7 @@ class Pago(models.Model):
     codigo_seguridad = models.CharField(max_length=4)
 
     def __str__(self):
-        return f"{self.usuario.nombre_completo} - {self.numero_tarjeta}"
+        return f"{self.usuario.username} - {self.numero_tarjeta}"
 
 class Compra(models.Model):
     usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
@@ -59,7 +56,7 @@ class Compra(models.Model):
     numero_tarjeta = models.CharField(max_length=16)
 
     def __str__(self):
-        return f"{self.usuario.nombre_completo} - {self.vuelo.numero_vuelo}"
+        return f"{self.usuario.username} - {self.vuelo.numero_vuelo}"
 
 class CarritoCompra(models.Model):
     usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
@@ -70,6 +67,6 @@ class CarritoCompra(models.Model):
         unique_together = [("usuario", "vuelo")]
 
     def __str__(self):
-        return f"{self.usuario.nombre_completo} - {self.vuelo.numero_vuelo}"
+        return f"{self.usuario.username} - {self.vuelo.numero_vuelo}"
 
 

@@ -23,6 +23,12 @@ export class RegisterComponent implements OnInit {
       confirmPassword: ['', [Validators.required]],
       term: [false, Validators.requiredTrue],
       termCon: [false],
+      direccion: [''],
+      codigo_postal: [''],
+      pais: [''],
+      ciudad: [''],
+      dni: [''],
+      num_telefono: ['']
     });
   }
 
@@ -42,6 +48,12 @@ export class RegisterComponent implements OnInit {
       email: this.registrationForm.value.email,
       username: this.registrationForm.value.username,
       password: this.registrationForm.value.password,
+      direccion: '',
+      codigo_postal: '',
+      pais: '',
+      ciudad: '',
+      dni: '',
+      num_telefono: ''
     };
     console.log(body);
 

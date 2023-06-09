@@ -3,32 +3,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/authentication.service';
 import { TokenService } from 'src/app/services/token.service';
-import { Configusuario } from 'src/app/model/configusuario';
+import { Usuario } from 'src/app/model/usuario';
 
 @Component({
   selector: 'app-config',
   templateUrl: './config.component.html',
   styleUrls: ['./config.component.css'],
 })
-export class ConfigComponent {
+export class ConfigComponent implements OnInit {
   password: string;
   passwordVisible: boolean = false;
 
   isLogged = false;
   isLogginFail = false;
-  configUsuario!: Configusuario;
+  configUsuario: Usuario;
 
-  nombreCompleto!: string;
-  correoElectronico!: string;
-  telefono: string;
-  dni: string;
-  codigoPostal: string;
-  pais: string;
-  ciudad: string;
-
-  contrasena!: string;
-  errMsj!: string;
-  form: FormGroup;
+  configForm: FormGroup;
 
   constructor(
     private tokenService: TokenService,
@@ -36,7 +26,7 @@ export class ConfigComponent {
     private router: Router,
     private formBuilder: FormBuilder
   ) {
-    this.form = this.formBuilder.group({
+    this.configForm = this.formBuilder.group({
       nombreCompleto: [
         '',
         [
@@ -58,54 +48,43 @@ export class ConfigComponent {
     });
   }
 
+  ngOnInit() {
+    this.authService.getUserData().subscribe(
+      (data: Usuario) => {
+        this.configUsuario = data;
+        this.configForm.patchValue({
+          nombreCompleto: this.configUsuario.nombreCompleto,
+          correoElectronico: this.configUsuario.correoElectronico,
+          // Otros campos
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
   submit() {
-    if (this.form.valid) {
+    if (this.configForm.invalid) {
       alert(
-        'Por favor, verificá los campos requeridos y completalos según corresponda.'
+        'Por favor, verifica los campos requeridos y complétalos según corresponda.'
       );
       return;
     }
-    alert('Te has logeado correctamente.');
-    console.log(this.form.value);
-  }
 
-  get NombreCompleto() {
-    return this.form.get('nombreCompleto');
-  }
+    // Obtener los valores del formulario
+    const formData = this.configForm.value;
 
-  get Email() {
-    return this.form.get('correoElectronico');
-  }
-
-  get Password() {
-    return this.form.get('contrasena');
-  }
-
-  get Telefono() {
-    return this.form.get('telefono');
-  }
-
-  get Dni() {
-    return this.form.get('dni');
-  }
-
-  get CodigoPostal() {
-    return this.form.get('codigoPostal');
-  }
-
-  get Pais() {
-    return this.form.get('pais');
-  }
-
-  get Ciudad() {
-    return this.form.get('ciudad');
-  }
-
-  togglePasswordVisibility() {
-    this.passwordVisible = !this.passwordVisible;
-    const passwordField = document.getElementById(
-      'contrasena'
-    ) as HTMLInputElement;
-    passwordField.type = this.passwordVisible ? 'text' : 'password';
+    // Enviar los datos actualizados al backend
+    this.authService.updateUserData(formData).subscribe(
+      (response) => {
+        alert('Los datos se han actualizado correctamente.');
+        console.log(response);
+      },
+      (error) => {
+        alert('Ha ocurrido un error al actualizar los datos.');
+        console.log(error);
+      }
+    );
   }
 }
