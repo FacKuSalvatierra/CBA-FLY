@@ -24,8 +24,7 @@ El equipo de trabajo es diverso tanto en género, edades y experiencia. Para muc
 * _Salvatierra_, Walter Facundo (Developer y Scrum Master)  
 * _Balduzzi_, Lucas Nicolás (Developer)  
 * _Giannantonio_, Elías (Developer)  
-* _Romero_, Lucas Emanuel (Developer)  
-* _Giannantonio_, Amadeo (Developer)  
+* _Romero_, Lucas Emanuel (Developer)
 * _Colman_, Maximiliano (Developer)  
 
 ## Tecnologías utilizadas
