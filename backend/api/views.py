@@ -67,7 +67,7 @@ class PagosViewSet(viewsets.ModelViewSet):
     serializer_class=PagoSerializer
     def perform_create(self, serializer):
         usuario_id = self.request.data.get('usuario') # aquí obtenemos el id del usuario
-        usuario = Usuario.objects.get(id=usuario_id) # y lo buscamos en la base de datos
+        usuario = CustomUser.objects.get(id=usuario_id) # y lo buscamos en la base de datos
         serializer.save(usuario=usuario) # pasamos el objeto encontrado al serializer
 
 class VueloViewSet(viewsets.ModelViewSet):

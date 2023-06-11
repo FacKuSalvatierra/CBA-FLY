@@ -659,48 +659,19 @@
         <i class="uil uil-search"></i>
         <input type="text" />
       </div>
-      <div class="card1">
-        <img class="foto_lugar" src="../../../../img/paris.jpg" alt="" />
-        <p class="ciudad">Paris</p>
-        <p class="ida"><i class="uil uil-info-circle"></i> Solo ida</p>
-        <p class="fecha_disp">Viaja el 27/11</p>
-        <p class="precio">ARS 300.500</p>
+      <div class="card" *ngFor="let item of getPaginatedData(); let index = index">
+        <div class="card-content">
+          <img class="foto_lugar" src="../../../../img/paris.jpg" alt="" />
+          <p class="card-title ciudad">{{ item.origen }} ➝ {{item.destino}}</p>
+          <p class="fecha_disp">Viaja el {{item.hora_salida | date:'dd-MM-yyyy' }}</p>
+          <p class="precio">ARS {{ item.precio }}</p>
+        </div>
       </div>
-      <div class="card2">
-        <img class="foto_lugar" src="../../../../img/dubai.jpg" alt="" />
-        <p class="ciudad">Dubai</p>
-        <p class="ida"><i class="uil uil-info-circle"></i> Solo ida</p>
-        <p class="fecha_disp">Viaja el 28/11</p>
-        <p class="precio">ARS 300.500</p>
-      </div>
-      <div class="card3">
-        <img class="foto_lugar" src="../../../../img/bangkok.jpg" alt="" />
-        <p class="ciudad">Bangkok</p>
-        <p class="ida"><i class="uil uil-info-circle"></i> Solo ida</p>
-        <p class="fecha_disp">Viaja el 29/11</p>
-        <p class="precio">ARS 300.500</p>
-      </div>
-      <div class="card4">
-        <img class="foto_lugar" src="../../../../img/singapur.jpg" alt="" />
-        <p class="ciudad">Singapur</p>
-        <p class="ida"><i class="uil uil-info-circle"></i> Solo ida</p>
-        <p class="fecha_disp">Viaja el 30/11</p>
-        <p class="precio">ARS 300.500</p>
-      </div>
-      <div class="card5">
-        <img class="foto_lugar" src="../../../../img/hongkong.jpg" alt="" />
-        <p class="ciudad">Hong Kong</p>
-        <p class="ida"><i class="uil uil-info-circle"></i> Solo ida</p>
-        <p class="fecha_disp">Viaja el 01/12</p>
-        <p class="precio">ARS 300.500</p>
-      </div>
-      <div class="card6">
-        <img class="foto_lugar" src="../../../../img/berlin.jpg" alt="" />
-        <p class="ciudad">Berlín</p>
-        <p class="ida"><i class="uil uil-info-circle"></i> Solo ida</p>
-        <p class="fecha_disp">Viaja el 02/12</p>
-        <p class="precio">ARS 300.500</p>
-      </div>
+    </div>
+    <div class="paginator">
+      <img src="../../../../img//flecha-izq.svg"(click)="previousPage()">
+      <p>{{ currentPage }}</p>
+      <img src="../../../../img//flecha-der.svg" (click)="nextPage()" />
     </div>
   </main>
 </body>

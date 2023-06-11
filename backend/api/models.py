@@ -24,6 +24,7 @@ class Vuelo(models.Model):
     duracion = models.PositiveIntegerField()
     numero_vuelo = models.CharField(max_length=100)
     tipo_avion = models.CharField(max_length=100)
+    precio = models.DecimalField(max_digits=10, decimal_places=3, blank=True)
 
     def __str__(self):
         return f"{self.numero_vuelo}: {self.origen} -> {self.destino}"
@@ -31,7 +32,6 @@ class Vuelo(models.Model):
 class Asiento(models.Model):
     numero_asiento = models.PositiveIntegerField()
     clase = models.CharField(max_length=100)
-    precio = models.DecimalField(max_digits=10, decimal_places=2)
     disponible = models.BooleanField(default=True)
     vuelo = models.ForeignKey(Vuelo, on_delete=models.CASCADE)
 
@@ -51,7 +51,7 @@ class Compra(models.Model):
     usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     vuelo = models.ForeignKey(Vuelo, on_delete=models.CASCADE)
     cantidad_asientos = models.PositiveIntegerField()
-    precio_total = models.DecimalField(max_digits=10, decimal_places=2)
+    precio_total = models.DecimalField(max_digits=10, decimal_places=3)
     fecha_compra = models.DateTimeField(auto_now_add=True)
     numero_tarjeta = models.CharField(max_length=16)
 

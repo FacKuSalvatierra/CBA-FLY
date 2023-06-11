@@ -61,6 +61,10 @@ export class AuthService {
     return this.httpA.get<Usuario>("http://127.0.0.1:8000/api/usuarios/");
   }
 
+  public getUserDataByEmail(email: string): Observable<Usuario> {
+    return this.httpA.get<Usuario>(`${this.url}/usuarios/?email=${email}`);
+  }
+
   public updateUserData(userData: Usuario): Observable<any> {
     return this.httpA.put<any>(this.url + '/userData', userData);
   }

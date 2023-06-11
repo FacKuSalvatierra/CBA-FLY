@@ -31,14 +31,14 @@ class UserSerializer(serializers.ModelSerializer):
 class VueloSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vuelo
-        fields = ('id', 'origen', 'destino', 'hora_salida', 'hora_llegada', 'duracion', 'numero_vuelo', 'tipo_avion')
+        fields = ('id', 'origen', 'destino', 'hora_salida', 'hora_llegada', 'precio','duracion', 'numero_vuelo', 'tipo_avion')
 
 class AsientoSerializer(serializers.ModelSerializer):
     vuelo = VueloSerializer()
 
     class Meta:
         model = Asiento
-        fields = ('id', 'numero_asiento', 'clase', 'precio', 'disponible', 'vuelo')
+        fields = ('id', 'numero_asiento', 'clase', 'disponible', 'vuelo')
 
 class PagoSerializer(serializers.ModelSerializer):
 

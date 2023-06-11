@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/authentication.service';
 import { TokenService } from 'src/app/services/token.service';
-import { Usuario } from 'src/app/model/usuario';
+import { Usuario } from '../../../model/usuario';
 
 @Component({
   selector: 'app-config',
@@ -11,13 +11,7 @@ import { Usuario } from 'src/app/model/usuario';
   styleUrls: ['./config.component.css'],
 })
 export class ConfigComponent implements OnInit {
-  password: string;
-  passwordVisible: boolean = false;
-
-  isLogged = false;
-  isLogginFail = false;
   configUsuario: Usuario;
-
   configForm: FormGroup;
 
   constructor(
@@ -53,7 +47,7 @@ export class ConfigComponent implements OnInit {
       (data: Usuario) => {
         this.configUsuario = data;
         this.configForm.patchValue({
-          nombreCompleto: this.configUsuario.nombreCompleto,
+          username: this.configUsuario.nombreCompleto,
           correoElectronico: this.configUsuario.correoElectronico,
           // Otros campos
         });
@@ -66,15 +60,13 @@ export class ConfigComponent implements OnInit {
 
   submit() {
     if (this.configForm.invalid) {
-      alert(
-        'Por favor, verifica los campos requeridos y complétalos según corresponda.'
-      );
+      alert('Por favor, verifica los campos requeridos y complétalos según corresponda.');
       return;
     }
-
+  
     // Obtener los valores del formulario
     const formData = this.configForm.value;
-
+  
     // Enviar los datos actualizados al backend
     this.authService.updateUserData(formData).subscribe(
       (response) => {
