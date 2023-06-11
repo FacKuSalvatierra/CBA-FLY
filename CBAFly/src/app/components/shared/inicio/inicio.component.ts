@@ -12,6 +12,7 @@ export class InicioComponent implements AfterViewInit, OnInit {
   catalogData: any[];
   currentPage: number = 1;
   totalPages: number = 0;
+  searchText: string = '';
 
   @ViewChild('swiperContainer') swiperContainer: any;
 
@@ -47,13 +48,16 @@ export class InicioComponent implements AfterViewInit, OnInit {
 
   getPaginatedData(): any[] {
     if (this.catalogData) {
+      const filteredData = this.catalogData.filter(item => item.destino.toLowerCase().includes(this.searchText.toLowerCase()));
       const startIndex = (this.currentPage - 1) * 6;
       const endIndex = startIndex + 6;
-      return this.catalogData.slice(startIndex, endIndex);
+      return filteredData.slice(startIndex, endIndex);
     }
     return []; // Retorna un array vacío si this.catalogData es undefined o nulo
   }
-
+  onSearch(): void {
+    this.currentPage = 1; 
+  }
   previousPage(): void {
     if (this.currentPage > 1) {
       this.currentPage--;

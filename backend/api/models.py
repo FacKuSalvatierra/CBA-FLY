@@ -25,6 +25,7 @@ class Vuelo(models.Model):
     numero_vuelo = models.CharField(max_length=100)
     tipo_avion = models.CharField(max_length=100)
     precio = models.DecimalField(max_digits=10, decimal_places=3, blank=True)
+    imagen = models.CharField(max_length=100)
 
     def __str__(self):
         return f"{self.numero_vuelo}: {self.origen} -> {self.destino}"

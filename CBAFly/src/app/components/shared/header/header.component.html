@@ -8,7 +8,7 @@
                 <a routerLink="/contacto" routerLinkActive="nav-link-active"><i class="uil uil-comment"></i> Contacto</a>
                 <a routerLink="/nosotros" routerLinkActive="nav-link-active"><i class="uil uil-users-alt"></i> Sobre Nosotros</a>
                 <a routerLink="/login" *ngIf="(isAuthenticated$ | async ) === false" routerLinkActive="nav-link-active"><i class="uil uil-signin"></i> Iniciar Sesion</a>
-                <a routerLink="/checkout" routerLinkActive="nav-link-active"><i class="bi bi-cart3"></i> Carrito</a>
+                <a routerLink="/checkout" routerLinkActive="nav-link-active">Carrito</a><i class="uil uil-shopping-cart-alt"></i>
                 <a><button *ngIf="(isAuthenticated$ | async ) === true" (click)="onLogout()">Cerrar sesión</button></a>
                 <a routerLink="/config" routerLinkActive="nav-link-active"><img *ngIf="(isAuthenticated$ | async ) === true" width="64" height="64" src="https://img.icons8.com/cotton/64/gender-neutral-user--v1.png" alt="Foto de perfil"><p id="nombre"></p></a>
             </div>

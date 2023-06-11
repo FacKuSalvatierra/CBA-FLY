@@ -657,11 +657,11 @@
       </div>
       <div class="busqueda">
         <i class="uil uil-search"></i>
-        <input type="text" />
+        <input type="text" [(ngModel)]="searchText" placeholder="Buscar por destino" (input)="onSearch()"/>
       </div>
       <div class="card" *ngFor="let item of getPaginatedData(); let index = index">
         <div class="card-content">
-          <img class="foto_lugar" src="../../../../img/paris.jpg" alt="" />
+          <img class="foto_lugar" src="{{ item.imagen}}" alt="" />
           <p class="card-title ciudad">{{ item.origen }} ➝ {{item.destino}}</p>
           <p class="fecha_disp">Viaja el {{item.hora_salida | date:'dd-MM-yyyy' }}</p>
           <p class="precio">ARS {{ item.precio }}</p>

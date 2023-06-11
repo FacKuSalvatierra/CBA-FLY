@@ -31,7 +31,7 @@ class UserSerializer(serializers.ModelSerializer):
 class VueloSerializer(serializers.ModelSerializer):
     class Meta:
         model = Vuelo
-        fields = ('id', 'origen', 'destino', 'hora_salida', 'hora_llegada', 'precio','duracion', 'numero_vuelo', 'tipo_avion')
+        fields = ('id', 'origen', 'destino', 'hora_salida', 'hora_llegada', 'precio','duracion', 'numero_vuelo', 'tipo_avion', 'imagen')
 
 class AsientoSerializer(serializers.ModelSerializer):
     vuelo = VueloSerializer()

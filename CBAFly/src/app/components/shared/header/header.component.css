@@ -99,6 +99,13 @@ a button{
   margin-right: 45px;
 }
 
+.uil-shopping-cart-alt{
+  filter: invert();
+  width: 1rem;
+  position: relative;
+  left: -40px;
+}
+
 #fotoperfil{
   width: 1.7rem;
   height: auto;
