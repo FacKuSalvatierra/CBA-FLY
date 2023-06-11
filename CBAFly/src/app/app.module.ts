@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { AuthGuard } from './auth/auth.guard';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/auth/login/login.component';
@@ -42,9 +42,10 @@ import { NavToggleDirective } from './nav-toggle-directive.directive';
     HttpClientModule
   
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
   
 })
 export class AppModule { }
+export class AuthModule {}
 register();

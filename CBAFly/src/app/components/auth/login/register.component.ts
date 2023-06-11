@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/authentication.service';
-import { TokenService } from 'src/app/services/token.service';
-import { Usuario } from 'src/app/model/usuario';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-register',
@@ -12,66 +9,80 @@ import { Usuario } from 'src/app/model/usuario';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  id: number = 0;
-
-  password: string;
+  id: number = 1;
+  registrationForm: FormGroup;
   passwordVisible: boolean = false;
 
-  isLogged = false;
-  isLogginFail = false;
-  loginUsuario!: Usuario;
-  nombreCompleto!: string;
-  correoElectronico!: string;
-  contrasena!: string;
-  errMsj!: string;
-  form: FormGroup;
-
-  constructor(
-    private tokenService: TokenService,
-    private authService: AuthService,
-    private router: Router,
-    private rutaActiva: ActivatedRoute,
-    private formBuilder: FormBuilder
-  ) {
-    this.form = this.formBuilder.group({
-      nombreCompleto: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(80)]],
-      correoElectronico: [
-        '',
-        [Validators.required, Validators.email, Validators.minLength(3)],
-      ],
-      contrasena: ['', [Validators.required, Validators.minLength(5)]],
-    });
-  }
-
-  submit() {
-    alert("Te registraste correctamente.")
-    console.log(this.form.value);
-  }
-
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.rutaActiva.params.subscribe((params: Params) => {
-      this.id = params['id'];
+    this.registrationForm = this.formBuilder.group({
+      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(14)]],
+      confirmPassword: ['', [Validators.required]],
+      term: [false, Validators.requiredTrue],
+      termCon: [false],
+      direccion: [''],
+      codigo_postal: [''],
+      pais: [''],
+      ciudad: [''],
+      dni: [''],
+      num_telefono: ['']
     });
-  }
-
-  get NombreCompleto() {
-    return this.form.get('nombreCompleto');
-  }
-
-  get Email() {
-    return this.form.get('correoElectronico');
-  }
-
-  get Password() {
-    return this.form.get('contrasena');
   }
 
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
-    const passwordField = document.getElementById(
-      'password'
-    ) as HTMLInputElement;
-    passwordField.type = this.passwordVisible ? 'text' : 'password';
+  }
+
+  register(): void {
+    if (this.registrationForm.invalid) {
+      
+      alert('Por favor, completa correctamente todos los campos.');
+      return;
+    }
+
+    const url = 'http://localhost:8000/api/auth/signup/';
+    const body = {
+      email: this.registrationForm.value.email,
+      username: this.registrationForm.value.username,
+      password: this.registrationForm.value.password,
+      direccion: '',
+      codigo_postal: '',
+      pais: '',
+      ciudad: '',
+      dni: '',
+      num_telefono: ''
+    };
+    console.log(body);
+
+    this.http.post(url, body).subscribe(
+      (response: any) => {
+
+        alert('Registro exitoso. Por favor inicia sesión.');
+      },
+      (error: any) => {
+        console.error('Error al registrar:', error);
+
+        alert('Error al registrar. Por favor inténtalo nuevamente.');
+      }
+    );
+  }
+
+  validar_registro() {
+
+    if (this.registrationForm.invalid) {
+      alert('Por favor completa todos los campos y acepta los términos y condiciones.');
+      return;
+    }
+
+    if (this.registrationForm.value.password !== this.registrationForm.value.confirmPassword) {
+      alert('Las contraseñas no coinciden.');
+      return;
+    }
+
+
+    this.register();
   }
 }

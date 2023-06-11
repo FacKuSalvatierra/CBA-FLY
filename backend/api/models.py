@@ -1,23 +1,20 @@
 from django.db import models
-# from django.contrib.auth.models import AbstractUser  ##creacion EndPoints :registro y login
+from django.contrib.auth.models import AbstractUser
 
-
-# class CustomUser(AbstractUser) :
-#     email=models.EmailField (max_length=150, unique=True)
-#     USERNAME_FIELD = 'email'
-#     REQUIRED_FIELDS = ['username' , 'password']
-
-
-
-
-# Create your models here.
-class Usuario(models.Model):
-    nombre_completo = models.CharField(max_length=100)
-    correo_electronico = models.EmailField(max_length=100, unique=True)
-    contrasena = models.CharField(max_length=100)
+class CustomUser(AbstractUser):
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username', 'password']
+    email = models.EmailField(max_length=150, unique=True)
+    direccion = models.CharField(max_length=255, blank=True)
+    codigo_postal = models.CharField(max_length=10, blank=True)
+    pais = models.CharField(max_length=255, blank=True)
+    ciudad = models.CharField(max_length=255, blank=True)
+    dni = models.CharField(max_length=20, blank=True)
+    num_telefono = models.CharField(max_length=20, blank=True)
 
     def __str__(self):
-        return self.nombre_completo
+        return self.username
+
 
 class Vuelo(models.Model):
     origen = models.CharField(max_length=100)
@@ -27,6 +24,8 @@ class Vuelo(models.Model):
     duracion = models.PositiveIntegerField()
     numero_vuelo = models.CharField(max_length=100)
     tipo_avion = models.CharField(max_length=100)
+    precio = models.DecimalField(max_digits=10, decimal_places=3, blank=True)
+    imagen = models.CharField(max_length=100)
 
     def __str__(self):
         return f"{self.numero_vuelo}: {self.origen} -> {self.destino}"
@@ -34,7 +33,6 @@ class Vuelo(models.Model):
 class Asiento(models.Model):
     numero_asiento = models.PositiveIntegerField()
     clase = models.CharField(max_length=100)
-    precio = models.DecimalField(max_digits=10, decimal_places=2)
     disponible = models.BooleanField(default=True)
     vuelo = models.ForeignKey(Vuelo, on_delete=models.CASCADE)
 
@@ -42,27 +40,27 @@ class Asiento(models.Model):
         return f"Asiento {self.numero_asiento} ({self.clase}) - Vuelo {self.vuelo.numero_vuelo}"
 
 class Pago(models.Model):
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     numero_tarjeta = models.CharField(max_length=16)
     fecha_expiracion = models.DateField()
     codigo_seguridad = models.CharField(max_length=4)
 
     def __str__(self):
-        return f"{self.usuario.nombre_completo} - {self.numero_tarjeta}"
+        return f"{self.usuario.username} - {self.numero_tarjeta}"
 
 class Compra(models.Model):
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     vuelo = models.ForeignKey(Vuelo, on_delete=models.CASCADE)
     cantidad_asientos = models.PositiveIntegerField()
-    precio_total = models.DecimalField(max_digits=10, decimal_places=2)
+    precio_total = models.DecimalField(max_digits=10, decimal_places=3)
     fecha_compra = models.DateTimeField(auto_now_add=True)
     numero_tarjeta = models.CharField(max_length=16)
 
     def __str__(self):
-        return f"{self.usuario.nombre_completo} - {self.vuelo.numero_vuelo}"
+        return f"{self.usuario.username} - {self.vuelo.numero_vuelo}"
 
 class CarritoCompra(models.Model):
-    usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     vuelo = models.ForeignKey(Vuelo, on_delete=models.CASCADE)
     cantidad_asientos = models.PositiveIntegerField()
 
@@ -70,6 +68,6 @@ class CarritoCompra(models.Model):
         unique_together = [("usuario", "vuelo")]
 
     def __str__(self):
-        return f"{self.usuario.nombre_completo} - {self.vuelo.numero_vuelo}"
+        return f"{self.usuario.username} - {self.vuelo.numero_vuelo}"
 
 

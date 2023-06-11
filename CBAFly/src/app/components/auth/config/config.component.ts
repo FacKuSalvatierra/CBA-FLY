@@ -3,32 +3,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/authentication.service';
 import { TokenService } from 'src/app/services/token.service';
-import { Configusuario } from 'src/app/model/configusuario';
+import { Usuario } from '../../../model/usuario';
 
 @Component({
   selector: 'app-config',
   templateUrl: './config.component.html',
   styleUrls: ['./config.component.css'],
 })
-export class ConfigComponent {
-  password: string;
-  passwordVisible: boolean = false;
-
-  isLogged = false;
-  isLogginFail = false;
-  configUsuario!: Configusuario;
-
-  nombreCompleto!: string;
-  correoElectronico!: string;
-  telefono: string;
-  dni: string;
-  codigoPostal: string;
-  pais: string;
-  ciudad: string;
-
-  contrasena!: string;
-  errMsj!: string;
-  form: FormGroup;
+export class ConfigComponent implements OnInit {
+  configUsuario: Usuario;
+  configForm: FormGroup;
 
   constructor(
     private tokenService: TokenService,
@@ -36,7 +20,7 @@ export class ConfigComponent {
     private router: Router,
     private formBuilder: FormBuilder
   ) {
-    this.form = this.formBuilder.group({
+    this.configForm = this.formBuilder.group({
       nombreCompleto: [
         '',
         [
@@ -50,57 +34,49 @@ export class ConfigComponent {
         [Validators.required, Validators.email, Validators.minLength(3)],
       ],
       contrasena: ['', [Validators.required, Validators.minLength(5)]],
+      telefono: ['', [Validators.required, Validators.minLength(6)]],
+      dni: ['', [Validators.required, Validators.minLength(4)]],
+      codigoPostal: ['', [Validators.required, Validators.minLength(2)]],
+      pais: ['', [Validators.required, Validators.minLength(1)]],
+      ciudad: ['', [Validators.required, Validators.minLength(1)]],
     });
   }
 
+  ngOnInit() {
+    this.authService.getUserData().subscribe(
+      (data: Usuario) => {
+        this.configUsuario = data;
+        this.configForm.patchValue({
+          username: this.configUsuario.nombreCompleto,
+          correoElectronico: this.configUsuario.correoElectronico,
+          // Otros campos
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
   submit() {
-    if (this.form.valid) {
-      alert(
-        'Por favor, verificá los campos requeridos y completalos según corresponda.'
-      );
+    if (this.configForm.invalid) {
+      alert('Por favor, verifica los campos requeridos y complétalos según corresponda.');
       return;
     }
-    alert('Te has logeado correctamente.');
-    console.log(this.form.value);
-  }
-
-  get NombreCompleto() {
-    return this.form.get('nombreCompleto');
-  }
-
-  get Email() {
-    return this.form.get('correoElectronico');
-  }
-
-  get Password() {
-    return this.form.get('contrasena');
-  }
-
-  get Telefono() {
-    return this.form.get('contrasena');
-  }
-
-  get Dni() {
-    return this.form.get('contrasena');
-  }
-
-  get CodigoPostal() {
-    return this.form.get('contrasena');
-  }
-
-  get Pais() {
-    return this.form.get('contrasena');
-  }
-
-  get Ciudad() {
-    return this.form.get('contrasena');
-  }
-
-  togglePasswordVisibility() {
-    this.passwordVisible = !this.passwordVisible;
-    const passwordField = document.getElementById(
-      'contrasena'
-    ) as HTMLInputElement;
-    passwordField.type = this.passwordVisible ? 'text' : 'password';
+  
+    // Obtener los valores del formulario
+    const formData = this.configForm.value;
+  
+    // Enviar los datos actualizados al backend
+    this.authService.updateUserData(formData).subscribe(
+      (response) => {
+        alert('Los datos se han actualizado correctamente.');
+        console.log(response);
+      },
+      (error) => {
+        alert('Ha ocurrido un error al actualizar los datos.');
+        console.log(error);
+      }
+    );
   }
 }

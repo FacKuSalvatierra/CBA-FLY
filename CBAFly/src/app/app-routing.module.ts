@@ -7,6 +7,7 @@ import { ContactoComponent } from './components/shared/contacto/contacto.compone
 import { InicioComponent } from './components/shared/inicio/inicio.component';
 import { NosotrosComponent } from './components/shared/nosotros/nosotros.component';
 import { RegisterComponent } from './components/auth/login/register.component';
+import { AuthGuard } from '../app/auth/auth.guard';
 
 const routes: Routes = [
   {path: 'inicio', component:InicioComponent},
