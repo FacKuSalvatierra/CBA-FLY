@@ -62,12 +62,10 @@
       <div class="sidebar">
         <p>Indique su lugar de origen</p>
         <select class="selectpicker" data-show-subtext="true" data-live-search="true" name="origin" [(ngModel)]="selectedOrigin" #originSelect>
-          <option value="Elegir">Elegir opción</option>
           <option *ngFor="let origin of origins" [value]="origin">{{ origin }}</option>
         </select>
         <p>Indique su lugar de destino</p>
         <select class="selectpicker" data-show-subtext="true" data-live-search="true" [(ngModel)]="selectedDestination" #destinationSelect>
-          <option value="Elegir">Elegir opción</option>
           <option *ngFor="let destination of destinations" [value]="destination">{{ destination }}</option>
         </select>
         <p>Numero de pasajeros</p>
@@ -88,12 +86,10 @@
         <input type="text" [(ngModel)]="searchText" placeholder="Buscar por destino" (input)="onSearch()"/>
       </div>
       <div class="card" *ngFor="let item of getPaginatedData(); let index = index">
-        <div class="card-content">
+          <p class="fecha_disp">Viaja el {{item.hora_salida | date:'dd-MM-yyyy' }}</p>
           <img class="foto_lugar" src="{{ item.imagen}}" alt="" />
           <p class="card-title ciudad">{{ item.origen }} ➝ {{item.destino}}</p>
-          <p class="fecha_disp">Viaja el {{item.hora_salida | date:'dd-MM-yyyy' }}</p>
           <p class="precio">ARS {{ item.precio }}</p>
-        </div>
       </div>
     </div>
     <div class="paginator">

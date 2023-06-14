@@ -106,6 +106,7 @@ a button{
   left: -40px;
 }
 
+
 #fotoperfil{
   width: 1.7rem;
   height: auto;
@@ -151,7 +152,7 @@ nav {
   }
 }
 /*======= Media queries (max-width: 785px) =======*/
-@media screen and (max-width: 785px) {
+@media screen and (max-width: 948px) {
   header .nav-bar {
     padding: 25px 20px;
   }
@@ -275,5 +276,12 @@ nav {
     grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
     align-content: space-around;
     justify-content: space-between;
+  }
+  .uil-shopping-cart-alt {
+    width: 1rem;
+    position: relative;
+    left: 122px !important;
+    bottom: 41px !important;
+    filter: none !important;
   }
 }
