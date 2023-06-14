@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\elias\OneDrive\Documentos\cba_fly_crud\cba_fly\.venv
+set VIRTUAL_ENV=C:\Users\L a p S h o p p\Desktop\Cursos Y capacitaciones\Tec Dess Web y App Dig\2do año - comision 5\02_Programador Web\06_Proyecto final\CBA-FLY\backend\.venv
 
 if not defined PROMPT set PROMPT=$P$G
 
