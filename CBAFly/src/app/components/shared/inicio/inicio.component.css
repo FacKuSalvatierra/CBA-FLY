@@ -101,7 +101,7 @@ section {
 
 .swiper-slide .text-content p {
   max-width: 500px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(122, 122, 122, 0.1);
   backdrop-filter: blur(10px);
   text-shadow: var(--text-shadow);
   padding: 10px;
@@ -121,6 +121,7 @@ section {
   transition: 1s ease;
   transition-delay: 0.3s;
   transition-property: transform, opacity;
+  color: #ffffff;
 }
 
 .swiper-slide .text-content .read-btn {
@@ -188,6 +189,7 @@ section {
   box-shadow: var(--box-shadow);
 }
 
+
 .thumbs-container img {
   width: 50px;
   height: 35px;
@@ -229,10 +231,7 @@ section {
 
 main {
   background: rgb(250, 255, 198);
-  background: linear-gradient(0deg,
-      rgba(250, 255, 198, 1) 0%,
-      rgba(84, 159, 175, 1) 52%,
-      rgba(12, 12, 62, 1) 100%);
+    background: linear-gradient(180deg, rgb(31 44 118) 0%, rgb(83 203 209) 100%);
 }
 
 .contenedor {
@@ -260,6 +259,8 @@ main {
 .sidebar {
   grid-area: sidebar;
   padding-top: 50px;
+  position: relative;
+  right: 13px;
 }
 
 .btn-group>.btn:first-child {
@@ -349,42 +350,100 @@ main {
   grid-area: card6;
 }
 
-.card1,
-.card2,
-.card3,
-.card4,
-.card5,
-.card6 {
-  background-color: rgba(30, 35, 67, 0.5);
-  border-radius: 50px;
+.card {
+  width: 300px;
+  height: 200px;
+  border-radius: 13px;
+  overflow: hidden;
+  position: relative;
+  perspective: 1000px;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+  cursor: pointer;
+  border-color: #4fadff69;
 }
+
+.foto_lugar{
+  position: relative;
+  bottom: 9rem;
+  filter: blur(10%);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+  z-index: 1;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover:before{
+  opacity: 1;
+}
+
+.card-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-transform: capitalize;
+}
+
+.card-content {
+  transform: translateY(50%);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+
 
 .foto_lugar {
   box-shadow: var(--box-shadow);
   width: 100%;
   height: 10em;
   object-fit: cover;
-  border-radius: 30px;
   cursor: pointer;
 }
 
 .ciudad {
+  position: relative;
+  bottom: 8.9rem;
   font-weight: 600;
-  font-size: 1.2rem;
-  margin-top: 5px;
+  font-size: 1rem;
+  position: relative;
+  bottom: 8.9rem;
+  color: black;
 }
+
 
 .precio {
   text-align: center;
   background-color: rgb(255, 118, 13);
   color: #fff;
   justify-content: space-around;
-  border-radius: 200px;
+  border-radius: 7px;
   cursor: pointer;
-  padding-top: 20px;
-  padding-bottom: 20px;
   position: relative;
-  top: 9px;
+  bottom: 11rem;
+}
+
+.fecha_disp {
+  position: relative;
+    bottom: 20.2rem;
+    background: #83838396;
+    color: white;
+    font-size: 0.9rem;
+    display: inline-block;
+    padding: 0 6px 0 6px;
+    left: 4.7rem;
+    border-radius: 7px;
 }
 
 .reveal {
@@ -392,6 +451,27 @@ main {
   transform: translateX(50px);
   opacity: 0;
   transition: 1s all ease;
+}
+
+.paginator{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.paginator p{
+  height: auto;
+  font-size: 1.5rem;
+  font-weight: 400;
+  position: relative;
+  bottom: -6px;
+}
+
+
+.paginator img{
+  width: 30px;
+  height: auto;
 }
 
 .reveal.active {
@@ -456,11 +536,6 @@ main {
     grid-template-areas:
       "busqueda"
       "sidebar"
-      "card1"
-      "card2"
-      "card3"
-      "card4"
-      "card5"
-      "card6";
   }
 }
+

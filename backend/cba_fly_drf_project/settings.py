@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,6 +28,22 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+JWT_AUTH = {
+    'JWT_SECRET_KEY': 'gx1i5*4ti-u@k!0qhym_orlj5nf3f47^=ojf1+xnb9i@o^@sff',  # Reemplaza <clave_secreta> con tu clave secreta
+    'JWT_PUBLIC_KEY': None,  
+    'JWT_PRIVATE_KEY': None,  
+    'JWT_ALGORITHM': 'HS256',
+    'JWT_VERIFY': True,
+    'JWT_VERIFY_EXPIRATION': True,
+    'JWT_LEEWAY': 0,
+    'JWT_EXPIRATION_DELTA': timedelta(days=1),
+    'JWT_AUDIENCE': None,
+    'JWT_ISSUER': None,
+    'JWT_ALLOW_REFRESH': False,
+    'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=7),
+    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+    'JWT_AUTH_COOKIE': None,
+}
 
 # Application definition
 
@@ -38,8 +55,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'api',
+    
 ]
+
+CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_HTTPONLY = True
+
+AUTH_USER_MODEL = "api.CustomUser"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -49,7 +73,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:4200',
+    # Otros dominios permitidos...
+]
+
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'cba_fly_drf_project.urls'
 
@@ -123,3 +155,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+DEFAULT_AUTHENTICATION_CLASSES = 'rest_framework_simplejwt.authentication.JWTAuthentication'
+
+
