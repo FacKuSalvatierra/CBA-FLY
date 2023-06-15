@@ -1,2 +1,3 @@
-*.pyc
-**/.venv
+/*.pyc
+/*.venv
+.venv/
