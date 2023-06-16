@@ -42,10 +42,9 @@ class PagoSerializer(serializers.ModelSerializer):
 class CarritoCompraSerializer(serializers.ModelSerializer):
     usuario = UserSerializer()
     vuelo = VueloSerializer()
-
     class Meta:
         model = CarritoCompra
-        fields = ('id', 'usuario', 'vuelo', 'cantidad_asientos')
+        fields = ('id','usuario','vuelo','cantidad_asientos')
         
 class CompraRealizadaSerializer(serializers.ModelSerializer):
     carrito_comprado = CarritoCompraSerializer()

@@ -62,14 +62,6 @@ class UsuarioViewSet(viewsets.ModelViewSet):
     queryset=CustomUser.objects.all()
     serializer_class=UserSerializer
 
-class PagosViewSet(viewsets.ModelViewSet):
-    queryset=Pago.objects.all()
-    serializer_class=PagoSerializer
-    def perform_create(self, serializer):
-        usuario_id = self.request.data.get('usuario') # aquí obtenemos el id del usuario
-        usuario = CustomUser.objects.get(id=usuario_id) # y lo buscamos en la base de datos
-        serializer.save(usuario=usuario) # pasamos el objeto encontrado al serializer
-
 class VueloViewSet(viewsets.ModelViewSet):
     queryset=Vuelo.objects.all()
     serializer_class=VueloSerializer
@@ -78,31 +70,21 @@ class CarritoCompraViewSet(viewsets.ModelViewSet):
     queryset=CarritoCompra.objects.all()
     serializer_class=CarritoCompraSerializer
 
+class PagosViewSet(viewsets.ModelViewSet):
+    queryset=Pago.objects.all()
+    serializer_class=PagoSerializer
+    def perform_create(self, serializer):
+        usuario_id = self.request.data.get('usuario') # aquí obtenemos el id del usuario
+        usuario = CustomUser.objects.get(id=usuario_id) # y lo buscamos en la base de datos
+        serializer.save(usuario=usuario) # pasamos el objeto encontrado al serializer
+
 class CompraRealizadaViewSet(viewsets.ModelViewSet):
     queryset=CompraRealizada.objects.all()
     serializer_class=CompraRealizadaSerializer
-
-#    def perform_create(self, serializer):
-#       
-#        usuario_id = self.request.data.get('usuario')
-#        usuario = CustomUser.objects.get(id=usuario_id)
-#        serializer.save(usuario=usuario)
-
-#        vuelo_id = self.request.data.get('vuelo')
-#        vuelo = Vuelo.objects.get(id=vuelo_id)
-#        serializer.save(vuelo=vuelo)
-
-        
-#        pago_id = self.request.data.get('pago')
-#        pago = Pago.objects.get(id=pago_id)
-#        serializer.save(pago=pago)
-
-        
-#        carrito_compra_id = self.request.data.get('carrito')
-#        carrito_compra = CarritoCompra.objects.get(id=carrito_compra_id)
-#        serializer.save(carrito_compra=carrito_compra)
-
-        
-#        compra_realizada_id = self.request.data.get('compra')
-#        compra_realizada = CustomUser.objects.get(id=compra_realizada_id)
-#        serializer.save(compra_realizada=compra_realizada)
+    def perform_create(self, serializer):
+        carrito_compra_id = self.request.data.get('carrito')
+        carrito_compra = CarritoCompra.objects.get(id=carrito_compra_id)
+        serializer.save(carrito_compra=carrito_compra)        
+        pago_id = self.request.data.get('pago')
+        pago = Pago.objects.get(id=pago_id)
+        serializer.save(pago=pago)

@@ -28,17 +28,15 @@ class Vuelo(models.Model):
     total_asientos = models.PositiveIntegerField(default=180)
     disponible = models.BooleanField(default=True)
     def asientos_disponibles(self):
-        if CompraRealizada.objects.filter(vuelo=self).exists():
-            total_asientos = self.total_asientos - CompraRealizada.objects.filter(vuelo=self).aggregate(Sum('cantidad_asientos'))['cantidad_asientos__sum']
+        compras_realizadas = CompraRealizada.objects.filter(carrito_comprado=self.id)
+        if compras_realizadas.exists():
+            total_asientos = self.total_asientos - CompraRealizada.objects.filter
             return total_asientos
         if self.total_asientos == 0:
             self.disponible = False
-            return self.disponible
+        return self.disponible
     def __str__(self):
         return f"{self.numero_vuelo}: {self.origen} -> {self.destino}"
-    def __str__(self):
-        return f"Vuelo {self.numero_vuelo}"
-
 class CarritoCompra(models.Model):
     usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     vuelo = models.ForeignKey(Vuelo, on_delete=models.CASCADE)
@@ -55,8 +53,6 @@ class CarritoCompra(models.Model):
         if precio != 0 and self.cantidad_asientos != 1:
             monto = precio * self.cantidad_asientos
             return monto
-    class Meta:
-        unique_together = [("usuario", "vuelo")]
     def __str__(self):
         return f"{self.usuario.username} - {self.vuelo.numero_vuelo} - {self.cantidad_asientos}"
 
@@ -75,4 +71,4 @@ class CompraRealizada(models.Model):
     pago_realizado = models.ForeignKey(Pago, on_delete=models.CASCADE)
     fecha_compra = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return f"{self.carrito_pago.usuario} - {self.pago_realizado.pk}"
+        return f"{self.carrito_comprado.usuario} - {self.pago_realizado.pk}"
