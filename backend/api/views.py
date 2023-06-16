@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from rest_framework import status , generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializer import UserSerializer, PagoSerializer,VueloSerializer, CarritoCompraSerializer
-from .models import CustomUser, Pago, Vuelo, CarritoCompra
+from .serializer import UserSerializer, PagoSerializer,VueloSerializer, CarritoCompraSerializer, CompraRealizadaSerializer
+from .models import CustomUser, Pago, Vuelo, CarritoCompra, CompraRealizada
 from django.middleware import csrf
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
@@ -77,6 +77,10 @@ class VueloViewSet(viewsets.ModelViewSet):
 class CarritoCompraViewSet(viewsets.ModelViewSet):
     queryset=CarritoCompra.objects.all()
     serializer_class=CarritoCompraSerializer
+
+class CompraRealizadaViewSet(viewsets.ModelViewSet):
+    queryset= CompraRealizada.objects.all()
+    serializer_class=CompraRealizadaSerializer
 
 #    def perform_create(self, serializer):
 #       

@@ -1,6 +1,7 @@
 from rest_framework import routers
 from api import views
 from .views import LoginView, LogoutView, RegisterUserView
+from django.urls import path, include
 
 router=routers.DefaultRouter()
 router.register(r'usuarios',views.UsuarioViewSet)

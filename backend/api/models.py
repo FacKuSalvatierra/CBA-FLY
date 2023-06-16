@@ -75,4 +75,4 @@ class CompraRealizada(models.Model):
     pago_realizado = models.ForeignKey(Pago, on_delete=models.CASCADE)
     fecha_compra = models.DateTimeField(auto_now_add=True)
     def __str__(self):
-        return f"{self.usuario.username} - {self.vuelo.numero_vuelo}"
+        return f"{self.carrito_pago.usuario} - {self.pago_realizado.pk}"

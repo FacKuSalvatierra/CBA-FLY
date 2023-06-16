@@ -40,8 +40,8 @@ class PagoSerializer(serializers.ModelSerializer):
         fields = ('id', 'usuario', 'numero_tarjeta', 'fecha_expiracion', 'codigo_seguridad')
 
 class CarritoCompraSerializer(serializers.ModelSerializer):
-    carrito_usuario = UserSerializer()
-    carrito_vuelo = VueloSerializer()
+    usuario = UserSerializer()
+    vuelo = VueloSerializer()
 
     class Meta:
         model = CarritoCompra
