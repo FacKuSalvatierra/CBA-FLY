@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -9,9 +10,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
-  
+  carritoItems: any[];
   tarjetaForm: FormGroup;
-  constructor(private formBuilder: FormBuilder)  { }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient)  { }
 
 ngOnInit(): void {
   this.tarjetaForm = this.formBuilder.group({
@@ -20,6 +21,24 @@ ngOnInit(): void {
     fechaVencimiento: ['', [Validators.required, Validators.pattern('^((0[1-9])|(1[0-2]))/?([0-9]{4}|[0-9]{2})$')]],
     codigoSeguridad: ['', [Validators.required, Validators.pattern('[0-9]{3,4}')]],
   });
+  this.http.get<any>('http://127.0.0.1:8000/api/carrito/').subscribe(
+    (data) => {
+      this.carritoItems = data; // Almacenar los datos del carrito en una variable
+    },
+    (error) => {
+      console.log(error);
+    }
+  );
+}
+actualizarCarrito() {
+  this.http.get<any>('http://127.0.0.1:8000/api/carrito/').subscribe(
+    (data) => {
+      this.carritoItems = data; // Actualizar los datos del carrito en la variable
+    },
+    (error) => {
+      console.log(error);
+    }
+  );
 }
 
 submitForm(): void {
@@ -38,7 +57,6 @@ submitForm(): void {
   }
   
 }
-
 detectarTipoTarjeta(): string {
   const numeroTarjeta = this.tarjetaForm.value ["numeroTarjeta"];
   
@@ -62,5 +80,4 @@ detectarTipoTarjeta(): string {
   return tipoTarjeta;
 }
 }
-
 // Nota: El button de pago no se habilita hasta que esten todos los campos validados correctamente
