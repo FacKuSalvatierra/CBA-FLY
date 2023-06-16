@@ -52,4 +52,4 @@ class CompraRealizadaSerializer(serializers.ModelSerializer):
     pago_realizado= PagoSerializer()
     class Meta:
         model = CompraRealizada
-        fields = ('id', 'usuario', 'vuelo', 'cantidad_asientos', 'precio_total', 'fecha_compra', 'numero_tarjeta')        
+        fields = ('id', 'carrito_comprado','pago_realizado')        

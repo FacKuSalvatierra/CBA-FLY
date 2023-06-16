@@ -79,7 +79,7 @@ class CarritoCompraViewSet(viewsets.ModelViewSet):
     serializer_class=CarritoCompraSerializer
 
 class CompraRealizadaViewSet(viewsets.ModelViewSet):
-    queryset= CompraRealizada.objects.all()
+    queryset=CompraRealizada.objects.all()
     serializer_class=CompraRealizadaSerializer
 
 #    def perform_create(self, serializer):

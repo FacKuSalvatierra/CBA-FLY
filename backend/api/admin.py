@@ -9,6 +9,7 @@ admin.site.unregister(Group)
 admin.site.register(Pago)
 admin.site.register(Vuelo)
 admin.site.register(CarritoCompra)
+admin.site.register(CompraRealizada)
 
 @admin.register(get_user_model())
 class CustomUserAdmin(UserAdmin):

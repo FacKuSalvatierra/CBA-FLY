@@ -37,7 +37,7 @@ class Vuelo(models.Model):
     def __str__(self):
         return f"{self.numero_vuelo}: {self.origen} -> {self.destino}"
     def __str__(self):
-        return f"Vuelo {self.vuelo.numero_vuelo}"
+        return f"Vuelo {self.numero_vuelo}"
 
 class CarritoCompra(models.Model):
     usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
@@ -71,7 +71,7 @@ class Pago(models.Model):
         return f"{self.usuario.username} - {self.numero_tarjeta}"
 
 class CompraRealizada(models.Model):
-    carrito_pago = models.ForeignKey(CarritoCompra, on_delete=models.CASCADE)
+    carrito_comprado = models.ForeignKey(CarritoCompra, on_delete=models.CASCADE)
     pago_realizado = models.ForeignKey(Pago, on_delete=models.CASCADE)
     fecha_compra = models.DateTimeField(auto_now_add=True)
     def __str__(self):

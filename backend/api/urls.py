@@ -7,8 +7,8 @@ router=routers.DefaultRouter()
 router.register(r'usuarios',views.UsuarioViewSet)
 router.register(r'pagos',views.PagosViewSet)
 router.register(r'vuelo',views.VueloViewSet)
-router.register(r'carrito',views.CarritoCompraViewSet)
-router.register(r'Compra',views.CompraRealizadaViewSet)
+router.register(r'carritocompra',views.CarritoCompraViewSet)
+router.register(r'comprasRealizadas',views.CompraRealizadaViewSet)
 
 urlpatterns = [
     path('',include(router.urls)),
