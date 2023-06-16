@@ -7,15 +7,34 @@
         <div class="form login">
           <span class="title">Iniciar Sesión</span>
 
-          <form action="#">
+          <form [formGroup]="loginForm" #f="ngForm" (ngSubmit)="submit()">
             <div class="input-field">
-              <input type="email" placeholder="Ingresa tu correo electrónico" required id="email_login">
+              <input type="email" formControlName="email" placeholder="xentoasfi@gmail.com"
+
+                name="email" aria-describedby="EmailHelp" required
+                id="correoElectronico_login">
               <i class="uil uil-envelope icon"></i>
             </div>
+            
+            <div *ngIf="loginForm.get('email').errors && loginForm.get('email').touched" class="alert alert-danger">
+              <p *ngIf="loginForm.get('email').hasError('required')">El Correo Electrónico es requerido.</p>
+              <p *ngIf="loginForm.get('email').errors?.['minlength']">El Correo Electrónico debe ser de 3
+                o más caracteres.</p>
+              <p *ngIf="loginForm.get('email').errors?.['email']"> Ingrese un e-mail con formato válido.</p>
+            </div>
+
             <div class="input-field">
-              <input type="password" id="password" [(ngModel)]="password" placeholder="Ingresa tu contraseña" required [type]="passwordVisible ? 'text' : 'password'">
+              <input type="password" formControlName="password" id="password" name="password"
+                placeholder="********" required [type]="passwordVisible ? 'text' : 'password'">
               <i class="uil uil-lock icon"></i>
-              <i class="uil showHidePw" [ngClass]="passwordVisible ? 'uil-eye' : 'uil-eye-slash'" (click)="togglePasswordVisibility()"></i>
+              <i class="uil showHidePw" [ngClass]="passwordVisible ? 'uil-eye' : 'uil-eye-slash'"
+                (click)="togglePasswordVisibility()"></i>
+            </div>
+
+            <div *ngIf="loginForm.get('password').errors && loginForm.get('password').touched" class="alert alert-danger">
+              <div *ngIf="loginForm.get('password').hasError('required')">La contraseña es requerida.</div>
+              <div *ngIf="loginForm.get('password').errors?.['minlength']">La contraseña debe ser de 5 o más
+                caracteres</div>
             </div>
 
             <div class="checkbox-text">
@@ -24,17 +43,22 @@
                 <label for="logCheck" class="text">Recordarme</label>
               </div>
 
-              <a href="#" class="text">Olvidé mi contraseña</a>
+              <a routerLink="/login" class="text passwordForgot">Olvidé mi contraseña</a>
             </div>
 
             <div class="input-field button">
-              <input type="button" value="Iniciar sesión" (click)="validar_inicio()">
+              <input type="submit" value="Iniciar sesión">
             </div>
           </form>
 
           <div class="login-signup">
             <span class="text">¿No tenés cuenta?
               <a class="text signup-link" routerLink="/login/1">¡Registrate ahora!</a>
+            </span>
+          </div>
+          <div class="login-signup">
+            <span class="text">¿Ya iniciaste sesión?
+              <a class="text signup-link" routerLink="/config">¡Editá tus datos acá!</a>
             </span>
           </div>
         </div>

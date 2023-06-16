@@ -101,7 +101,24 @@
   align-items: center;
   justify-items: center;
 }
-.tarjeta_integrante .foto_perfil {
+.foto_perfil {
+  height: 99%;
+  width: 60%;
+  border-radius: 50%;
+  align-self: center;
+  justify-self: center;
+}
+.foto_perfil_facu {
+  margin-top: 0.2em;
+  height: 91%;
+  width: 60%;
+  border-radius: 50%;
+  align-self: center;
+  justify-self: center;
+}
+.foto_perfil_romi{
+  margin-top: 0.2em;
+  height: 90%;
   width: 60%;
   border-radius: 50%;
   align-self: center;
@@ -118,6 +135,7 @@
   font-weight: 400;
 }
 .tarjeta_integrante .nombre {
+  margin-bottom: 0.2em;
   max-height: 35px;
   max-width: 300px;
 }
@@ -127,6 +145,18 @@
 @media screen and (max-width: 1100px) {
   .avion {
     width: 300px;
+  }
+  .foto_perfil_facu {
+    margin-top: 0.3em;
+    height: 90%;
+  }
+  .foto_perfil_romi{
+    margin-top: 0.3em;
+    height: 80%;
+    width: 55%;
+  }
+  .nombre {
+    margin-bottom: 0.3em;
   }
 }
 @media screen and (max-width: 785px) {
@@ -156,5 +186,19 @@
     grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
     align-content: space-around;
     justify-content: space-between;
+  }
+  .foto_perfil_facu {
+    margin-top: 0.4em;
+    height: 89%;
+  }
+  .foto_perfil_romi{
+    margin-top: 1em;
+    height: 65%;
+    width: 50%;
+  }
+}
+@media screen and (max-width: 250px) {
+  .foto_perfil_romi{
+    margin-top: 1.5em;
   }
 }

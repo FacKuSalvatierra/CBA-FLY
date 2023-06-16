@@ -18,7 +18,7 @@ main {
   justify-content: center;
   align-items: center;
   margin-top: 130px;
-  margin-bottom: 160px;
+  margin-bottom: 100px;
 }
 body::before {
   content: " ";
@@ -58,7 +58,7 @@ section {
 .container .forms {
   display: flex;
   align-items: center;
-  height: 346px;
+  height: 400px;
   width: 200%;
   transition: height 0.2s ease 0s;
   justify-content: flex-start;
@@ -199,3 +199,22 @@ section {
     align-content: center;
   }
 }
+@media screen and (max-width: 280px) {
+  .container .forms {
+    height: 545px;
+  }
+  .checkbox-text {
+    display: block;
+  }
+  .form .button {
+    width: 95%;
+    align-items: justify;
+    display: flex;
+  }
+  .form .button input {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+  }
+}
+

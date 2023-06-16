@@ -5,9 +5,6 @@
   font-family: "Poppins", sans-serif;
 }
 
-p {
-  margin-bottom: 0.5rem !important;
-}
 
 body {
   background: var(--body-bg-color);
@@ -101,7 +98,7 @@ section {
 
 .swiper-slide .text-content p {
   max-width: 500px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(122, 122, 122, 0.1);
   backdrop-filter: blur(10px);
   text-shadow: var(--text-shadow);
   padding: 10px;
@@ -121,6 +118,7 @@ section {
   transition: 1s ease;
   transition-delay: 0.3s;
   transition-property: transform, opacity;
+  color: #ffffff;
 }
 
 .swiper-slide .text-content .read-btn {
@@ -188,6 +186,7 @@ section {
   box-shadow: var(--box-shadow);
 }
 
+
 .thumbs-container img {
   width: 50px;
   height: 35px;
@@ -229,37 +228,24 @@ section {
 
 main {
   background: rgb(250, 255, 198);
-  background: linear-gradient(0deg,
-      rgba(250, 255, 198, 1) 0%,
-      rgba(84, 159, 175, 1) 52%,
-      rgba(12, 12, 62, 1) 100%);
+  background: linear-gradient(180deg, rgb(31 44 118) 0%, rgb(83 203 209) 100%);
 }
 
 .contenedor {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  /*grid-template-rows: 0.1fr 1fr 1fr 1fr;*/
-  grid-auto-columns: 1fr;
-  gap: 10px 10px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "sidebar busqueda busqueda busqueda"
-    "sidebar card1 card2 card3"
-    "sidebar card4 card5 card6";
-  color: #ffffff;
-  text-align: center;
-  column-gap: 43px;
-  row-gap: 30px;
-  padding-top: 20px;
-  width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 0.3fr repeat(2, 0.7fr);
+  grid-column-gap: 30px;
+  grid-row-gap: 16px;
+  padding: 2rem;
 }
 
 .sidebar {
-  grid-area: sidebar;
-  padding-top: 50px;
+  grid-area: 1 / 1 / 5 / 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: bisque;
 }
 
 .btn-group>.btn:first-child {
@@ -302,16 +288,14 @@ main {
 }
 
 .busqueda {
-  grid-area: busqueda;
-  width: 100%;
-  height: 55px;
+  grid-area: 1 / 2 / 2 / 5;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: baseline;
 }
 
 .busqueda i {
-  position: relative;
-  left: 43%;
   height: 50px;
-  top: 34px;
   color: rgb(255, 255, 255);
 }
 
@@ -325,66 +309,89 @@ main {
   text-align: center;
 }
 
-.card1 {
-  grid-area: card1;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  border-radius: 13px;
+  overflow: hidden;
+  height: 12rem;
+  perspective: 1000px;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+  cursor: pointer;
+  border-color: #4fadff69;
+  align-items: stretch;
+  justify-content: flex-end;
 }
 
-.card2 {
-  grid-area: card2;
+.foto_lugar {
+  position: relative;
+  bottom: 0rem;
+  filter: blur(10%);
 }
 
-.card3 {
-  grid-area: card3;
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-.card4 {
-  grid-area: card4;
+.card:hover:before {
+  opacity: 1;
 }
 
-.card5 {
-  grid-area: card5;
+.card-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  text-transform: capitalize;
 }
 
-.card6 {
-  grid-area: card6;
-}
 
-.card1,
-.card2,
-.card3,
-.card4,
-.card5,
-.card6 {
-  background-color: rgba(30, 35, 67, 0.5);
-  border-radius: 50px;
-}
+
 
 .foto_lugar {
   box-shadow: var(--box-shadow);
   width: 100%;
   height: 10em;
   object-fit: cover;
-  border-radius: 30px;
   cursor: pointer;
 }
 
 .ciudad {
+  position: relative;
+  bottom: 8.9rem;
   font-weight: 600;
-  font-size: 1.2rem;
-  margin-top: 5px;
+  font-size: calc(0.9em + 0.2vw);
+  position: relative;
+  bottom: 0rem;
+  color: black;
+  text-align: center;
 }
+
 
 .precio {
   text-align: center;
   background-color: rgb(255, 118, 13);
   color: #fff;
   justify-content: space-around;
-  border-radius: 200px;
+  border-radius: 7px;
   cursor: pointer;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  position: relative;
-  top: 9px;
+}
+
+.fecha_disp {
+  background: #83838396;
+  color: white;
+  font-size: 0.9rem;
+  display: inline-block;
+  padding: 0 6px 0 6px;
+  border-radius: 7px;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
 }
 
 .reveal {
@@ -394,12 +401,38 @@ main {
   transition: 1s all ease;
 }
 
+.paginator {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.paginator p {
+  height: auto;
+  font-size: 1.5rem;
+  font-weight: 400;
+  position: relative;
+  bottom: -6px;
+}
+
+
+.paginator img {
+  width: 30px;
+  height: auto;
+}
+
 .reveal.active {
   transform: translateX(0);
   opacity: 1;
 }
 
 @media screen and (max-width: 1100px) {
+
+  .ciudad {
+    font-size: 0.75rem;
+  }
+
   .section {
     padding: 25px 50px;
   }
@@ -419,6 +452,17 @@ main {
 }
 
 @media screen and (max-width: 786px) {
+
+  .contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card{
+    width: 22rem;
+  }
+
   .section {
     padding: 25px 20px;
   }
@@ -450,17 +494,9 @@ main {
 
 
 @media only screen and (max-width: 715px) {
-  .contenedor {
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.05fr 0.4fr 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr 0.6fr;
-    grid-template-areas:
-      "busqueda"
-      "sidebar"
-      "card1"
-      "card2"
-      "card3"
-      "card4"
-      "card5"
-      "card6";
+
+  .bootstrap-select:not([class*=col-]):not([class*=form-control]):not(.input-group-btn) {
+    width: 491px !important;
   }
+
 }
