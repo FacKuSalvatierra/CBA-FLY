@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Sum
 from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
@@ -11,11 +12,9 @@ class CustomUser(AbstractUser):
     ciudad = models.CharField(max_length=255, blank=True)
     dni = models.CharField(max_length=20, blank=True)
     num_telefono = models.CharField(max_length=20, blank=True)
-
     def __str__(self):
         return self.username
-
-
+    
 class Vuelo(models.Model):
     origen = models.CharField(max_length=100)
     destino = models.CharField(max_length=100)
@@ -26,49 +25,54 @@ class Vuelo(models.Model):
     tipo_avion = models.CharField(max_length=100)
     precio = models.DecimalField(max_digits=10, decimal_places=3, blank=True)
     imagen = models.CharField(max_length=100)
-    asientos_disponibles = models.PositiveIntegerField()
-
+    total_asientos = models.PositiveIntegerField(default=180)
+    disponible = models.BooleanField(default=True)
+    def asientos_disponibles(self):
+        if CompraRealizada.objects.filter(vuelo=self).exists():
+            total_asientos = self.total_asientos - CompraRealizada.objects.filter(vuelo=self).aggregate(Sum('cantidad_asientos'))['cantidad_asientos__sum']
+            return total_asientos
+        if self.total_asientos == 0:
+            self.disponible = False
+            return self.disponible
     def __str__(self):
         return f"{self.numero_vuelo}: {self.origen} -> {self.destino}"
-
-class Asiento(models.Model):
-    numero_asiento = models.PositiveIntegerField()
-    clase = models.CharField(max_length=100)
-    disponible = models.BooleanField(default=True)
-    vuelo = models.ForeignKey(Vuelo, on_delete=models.CASCADE)
-
     def __str__(self):
-        return f"Asiento {self.numero_asiento} ({self.clase}) - Vuelo {self.vuelo.numero_vuelo}"
+        return f"Vuelo {self.vuelo.numero_vuelo}"
+
+class CarritoCompra(models.Model):
+    usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    vuelo = models.ForeignKey(Vuelo, on_delete=models.CASCADE)
+    cantidad_asientos = models.PositiveIntegerField(default=1)
+    monto = models.PositiveIntegerField(default=0)
+    def asientos_a_reservar(self):
+        cantidad_asientos = self.vuelo.asientos_disponibles()
+        if cantidad_asientos != 1:
+            cantidad_asientos *= self.cantidad_asientos
+            return cantidad_asientos
+
+    def monto_acumulado(self):
+        precio = self.vuelo.precio
+        if precio != 0 and self.cantidad_asientos != 1:
+            monto = precio * self.cantidad_asientos
+            return monto
+    class Meta:
+        unique_together = [("usuario", "vuelo")]
+    def __str__(self):
+        return f"{self.usuario.username} - {self.vuelo.numero_vuelo} - {self.cantidad_asientos}"
 
 class Pago(models.Model):
     usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     numero_tarjeta = models.CharField(max_length=16)
     fecha_expiracion = models.DateField()
     codigo_seguridad = models.CharField(max_length=4)
+    
 
     def __str__(self):
         return f"{self.usuario.username} - {self.numero_tarjeta}"
 
-class Compra(models.Model):
-    usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    vuelo = models.ForeignKey(Vuelo, on_delete=models.CASCADE)
-    cantidad_asientos = models.PositiveIntegerField()
-    precio_total = models.DecimalField(max_digits=10, decimal_places=3)
+class CompraRealizada(models.Model):
+    carrito_pago = models.ForeignKey(CarritoCompra, on_delete=models.CASCADE)
+    pago_realizado = models.ForeignKey(Pago, on_delete=models.CASCADE)
     fecha_compra = models.DateTimeField(auto_now_add=True)
-    numero_tarjeta = models.CharField(max_length=16)
-
     def __str__(self):
         return f"{self.usuario.username} - {self.vuelo.numero_vuelo}"
-
-class CarritoCompra(models.Model):
-    usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    vuelo = models.ForeignKey(Vuelo, on_delete=models.CASCADE)
-    cantidad_asientos = models.PositiveIntegerField()
-
-    class Meta:
-        unique_together = [("usuario", "vuelo")]
-
-    def __str__(self):
-        return f"{self.usuario.username} - {self.vuelo.numero_vuelo}"
-
-

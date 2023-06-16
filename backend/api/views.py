@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from rest_framework import status , generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializer import UserSerializer, PagoSerializer,VueloSerializer, AsientoSerializer, CarritoCompraSerializer
-from .models import CustomUser, Pago, Vuelo, Asiento, CarritoCompra
+from .serializer import UserSerializer, PagoSerializer,VueloSerializer, CarritoCompraSerializer
+from .models import CustomUser, Pago, Vuelo, CarritoCompra
 from django.middleware import csrf
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
@@ -74,11 +74,31 @@ class VueloViewSet(viewsets.ModelViewSet):
     queryset=Vuelo.objects.all()
     serializer_class=VueloSerializer
 
-
-class AsientoViewSet(viewsets.ModelViewSet):
-    queryset=Asiento.objects.all()
-    serializer_class=AsientoSerializer
-
 class CarritoCompraViewSet(viewsets.ModelViewSet):
     queryset=CarritoCompra.objects.all()
     serializer_class=CarritoCompraSerializer
+
+#    def perform_create(self, serializer):
+#       
+#        usuario_id = self.request.data.get('usuario')
+#        usuario = CustomUser.objects.get(id=usuario_id)
+#        serializer.save(usuario=usuario)
+
+#        vuelo_id = self.request.data.get('vuelo')
+#        vuelo = Vuelo.objects.get(id=vuelo_id)
+#        serializer.save(vuelo=vuelo)
+
+        
+#        pago_id = self.request.data.get('pago')
+#        pago = Pago.objects.get(id=pago_id)
+#        serializer.save(pago=pago)
+
+        
+#        carrito_compra_id = self.request.data.get('carrito')
+#        carrito_compra = CarritoCompra.objects.get(id=carrito_compra_id)
+#        serializer.save(carrito_compra=carrito_compra)
+
+        
+#        compra_realizada_id = self.request.data.get('compra')
+#        compra_realizada = CustomUser.objects.get(id=compra_realizada_id)
+#        serializer.save(compra_realizada=compra_realizada)
