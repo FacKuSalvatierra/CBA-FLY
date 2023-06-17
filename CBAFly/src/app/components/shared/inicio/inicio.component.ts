@@ -1,6 +1,8 @@
 import { Component, ViewChild, AfterViewInit, OnInit, ElementRef  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../../services/authentication.service';
 import Swiper from 'swiper';
+import { Usuario } from 'src/app/model/usuario';
 declare var $: any;
 
 @Component({
@@ -9,6 +11,7 @@ declare var $: any;
   styleUrls: ['./inicio.component.css'],
 })
 export class InicioComponent implements AfterViewInit, OnInit {
+  currentUser: Usuario | null;
   catalogData: any[];
   currentPage: number = 1;
   totalPages: number = 0;
@@ -25,9 +28,13 @@ export class InicioComponent implements AfterViewInit, OnInit {
 
   @ViewChild('swiperContainer') swiperContainer: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
   
   ngOnInit() {
+    this.authService.currentUser.subscribe(user => {
+      this.currentUser = user;
+      // Aquí puedes hacer cualquier otra lógica necesaria cuando el usuario cambie
+    });
     this.http.get<any>('http://127.0.0.1:8000/api/vuelo/').subscribe(
       (data) => {
         this.catalogData = data; 
@@ -48,6 +55,26 @@ export class InicioComponent implements AfterViewInit, OnInit {
         console.log(error);
       }
     );
+  }
+  agregarAlCarrito(item: any) {
+    console.log('Usuario actual:', this.currentUser);
+    if (this.currentUser) {
+      const vuelo = {
+        vuelo: item,
+        cantidad_asientos: 1,
+        usuario: this.currentUser
+      };
+      this.http.post('http://127.0.0.1:8000/api/carrito/', vuelo).subscribe(
+        (response) => {
+          // Aquí puedes realizar alguna acción después de agregar al carrito exitosamente
+          console.log('Vuelo agregado al carrito');
+        },
+        (error) => {
+          // Aquí puedes manejar errores en caso de que ocurra alguno durante la solicitud HTTP
+          console.error('Error al agregar vuelo al carrito', error);
+        }
+      );
+    }
   }
   refreshSelectPicker() {
     $(this.originSelect.nativeElement).selectpicker('refresh');
