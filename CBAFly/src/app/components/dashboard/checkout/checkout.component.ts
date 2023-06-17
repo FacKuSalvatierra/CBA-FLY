@@ -30,10 +30,24 @@ ngOnInit(): void {
     }
   );
 }
+calcularSubtotal(): string {
+  let subtotal = 0;
+  for (const item of this.carritoItems) {
+    subtotal += item.vuelo.precio * item.cantidad_asientos;
+  }
+  return subtotal.toFixed(3);
+}
+
+calcularTotal(): string {
+  const subtotal = Number(this.calcularSubtotal());
+  const cargosAplicados = 3.250; // Coloca el valor de los cargos aplicados aquí
+  const total = subtotal + cargosAplicados;
+  return total.toFixed(3); 
+}
 actualizarCarrito() {
   this.http.get<any>('http://127.0.0.1:8000/api/carrito/').subscribe(
     (data) => {
-      this.carritoItems = data; // Actualizar los datos del carrito en la variable
+      this.carritoItems = data;
     },
     (error) => {
       console.log(error);
