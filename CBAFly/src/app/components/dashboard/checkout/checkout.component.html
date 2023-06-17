@@ -17,7 +17,7 @@
                   <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
                       <p class="mb-1">Carrito de compras</p>
-                      <p class="mb-0">Tenés 2 items en tu carrito</p>
+                      <p class="mb-0">Tenés {{ carritoItems.length }} items en tu carrito</p>
                     </div>
                     <div>
                       <p class="mb-0"><span class="text-muted">Ordenado por: </span> <a href="#!"
@@ -25,25 +25,25 @@
                     </div>
                   </div>
 
-                  <div class="card mb-3">
+                  <div class="card mb-3" *ngFor="let item of carritoItems">
                     <div class="card-body">
                       <div class="d-flex justify-content-between">
                         <div class="d-flex flex-row align-items-center">
                           <div>
-                            <img src="../../../../img/fondo1.jpg" class="img-fluid rounded-3" alt="Shopping item"
+                            <img [src]="item.vuelo.imagen" class="img-fluid rounded-3" alt="Shopping item"
                               style="width: 65px;">
                           </div>
                           <div class="ms-3">
-                            <h5>Vuelo a Paris</h5>
+                            <h5>{{ item.vuelo.origen }} -> {{ item.vuelo.destino }}</h5>
                             <p class="small mb-0">Solo IDA</p>
                           </div>
                         </div>
                         <div class="d-flex flex-row align-items-center">
                           <div style="width: 50px;">
-                            <h5 class="fw-normal mb-0">2</h5>
+                            <h5 class="fw-normal mb-0">{{ item.cantidad_asientos }}</h5>
                           </div>
                           <div style="width: 80px;">
-                            <h5 class="mb-00">$601.000,00</h5>
+                            <h5 class="mb-00">${{ item.vuelo.precio }}</h5>
                           </div>
                           <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
                         </div>
@@ -51,31 +51,6 @@
                     </div>
                   </div>
 
-                  <div class="card mb-3">
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between">
-                        <div class="d-flex flex-row align-items-center">
-                          <div>
-                            <img src="../../../../img/fondo2.jpg" class="img-fluid rounded-3" alt="Shopping item"
-                              style="width: 65px;">
-                          </div>
-                          <div class="ms-3">
-                            <h5> Vuelo a Dubai </h5>
-                            <p class="small mb-0">Solo VUELTA</p>
-                          </div>
-                        </div>
-                        <div class="d-flex flex-row align-items-center">
-                          <div style="width: 50px;">
-                            <h5 class="fw-normal mb-0">2</h5>
-                          </div>
-                          <div style="width: 80px;">
-                            <h5 class="mb-00">$300.500,00</h5>
-                          </div>
-                          <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
                 </div>
                 <div class="col-lg-5">
@@ -159,7 +134,7 @@
 
                       <div class="d-flex justify-content-between">
                         <p class="mb-2">Subtotal</p>
-                        <p class="mb-2">$901.500,00</p>
+                        <p class="mb-2">${{ calcularSubtotal() }}</p>
                       </div>
 
                       <div class="d-flex justify-content-between">
@@ -169,7 +144,7 @@
 
                       <div class="d-flex justify-content-between mb-4">
                         <p class="mb-2">Total (incluye cargos)</p>
-                        <p class="mb-2">$904.750,00</p>
+                        <p class="mb-2">${{ calcularTotal() }}</p>
                       </div>
 
                       <div class="d-grid gap-2">
@@ -178,7 +153,12 @@
                           <div class="d-flex justify-content-between">
                             <span>COMPRAR</span>
                             <span>|</span>
-                            <span>$904.750,00</span>
+                            <span>${{ calcularTotal() }}</span>
+                          </div>
+                        </button>
+                        <button type="button" type="submit" class="btn btn-info mercadopago">
+                          <div class="d-flex justify-content-between">
+                            <span><a href="#">Pagá con MercadoPago</a></span>
                           </div>
                         </button>
 
