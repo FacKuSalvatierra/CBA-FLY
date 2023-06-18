@@ -25,6 +25,31 @@ section {
   font-size: 20px;
 }
 
+.contienecomprar {
+  display: flex;
+  justify-content: center;
+}
+
+.botoncomprar {
+  border: 2px solid #5141e3;
+  padding: 15px 15px;
+  font-size: 0.8rem;
+  position: relative;
+  margin: 5px;
+  border-radius: 7px;
+  width: 60%;
+  background: linear-gradient(to right,  #5141e3 50%, transparent 50%);
+  background-size: 200%;
+  background-position: right;
+  transition: background-position 0.5s;
+}
+
+.botoncomprar:hover {
+  background-position: left;
+  color: white;
+  font-weight: 700;
+}
+
 
 /*Coleres para validar o no los imputs de formulario tarjeta*/
 
