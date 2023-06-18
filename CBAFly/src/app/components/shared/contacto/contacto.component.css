@@ -46,6 +46,7 @@ h2 {
   font-weight: 700;
 }
 h3 {
+  color: #000000;
   font-size: 2rem;
   font-weight: 700;
 }
@@ -80,13 +81,13 @@ h3 {
 }
 
 .botonenviarmensaje {
-  border: 2px solid #ffffff;
+  border: 2px solid #d9d9d9;
   padding: 15px 15px;
-  font-size: 0.8rem;
+  font-size: 1rem;
   position: relative;
   margin: 5px;
   border-radius: 7px;
-  width: 78%;
+  width: 45%;
   background: linear-gradient(to right,  #63c7ef 50%, transparent 50%);
   background-size: 200%;
   background-position: right;
