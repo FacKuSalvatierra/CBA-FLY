@@ -49,17 +49,6 @@ class Pago(models.Model):
     def __str__(self):
         return f"{self.usuario.username} - {self.numero_tarjeta}"
 
-class Compra(models.Model):
-    usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    vuelo = models.ForeignKey(Vuelo, on_delete=models.CASCADE)
-    cantidad_asientos = models.PositiveIntegerField()
-    precio_total = models.DecimalField(max_digits=10, decimal_places=3)
-    fecha_compra = models.DateTimeField(auto_now_add=True)
-    numero_tarjeta = models.CharField(max_length=16)
-
-    def __str__(self):
-        return f"{self.usuario.username} - {self.vuelo.numero_vuelo}"
-
 class CarritoCompra(models.Model):
     usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     vuelo = models.ForeignKey(Vuelo, on_delete=models.CASCADE)
@@ -81,3 +70,15 @@ class CarritoCompra(models.Model):
 
     def __str__(self):
         return f"{self.usuario.username} - {self.vuelo.numero_vuelo} - {self.cantidad_asientos}" 
+    
+class Compra(models.Model):
+    usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    vuelo = models.ForeignKey(Vuelo, on_delete=models.CASCADE)
+    Asiento = models.ForeignKey(Asiento, on_delete=models.CASCADE)
+    cantidad_asientos = models.ForeignKey(CarritoCompra, on_delete=models.CASCADE)
+    precio_total = models.DecimalField(max_digits=10, decimal_places=3)
+    fecha_compra = models.DateTimeField(auto_now_add=True)
+    numero_tarjeta = models.CharField(max_length=16)
+
+    def __str__(self):
+        return f"{self.usuario.username} - {self.vuelo.numero_vuelo}"
