@@ -3,13 +3,14 @@ from django.contrib.auth.models import User
 from rest_framework import status , generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializer import UserSerializer, PagoSerializer,VueloSerializer, AsientoSerializer, CarritoCompraSerializer
+from .serializer import UserSerializer, PagoSerializer,VueloSerializer, AsientoSerializer, CarritoCompraSerializer, CompraSerializer
 from .models import CustomUser, Pago, Vuelo, Asiento, CarritoCompra
 from django.middleware import csrf
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 import json
+from django.shortcuts import render
 
 # def my_view(request):
 #     response = HttpResponse()
@@ -79,10 +80,11 @@ class AsientoViewSet(viewsets.ModelViewSet):
     queryset=Asiento.objects.all()
     serializer_class=AsientoSerializer
 
-class CarritoCompraViewSet(viewsets.ModelViewSet):
-    queryset=CarritoCompra.objects.all()
-    serializer_class=CarritoCompraSerializer
+    
+class CarritoCompraListCreateView(generics.ListCreateAPIView):
+    queryset = CarritoCompra.objects.all()
+    serializer_class = CarritoCompraSerializer
 
-
-def checkout(request):
-    return render(request, 'store/checkout.html')
+class CompraViewSet(viewsets.ModelViewSet):
+    queryset=Asiento.objects.all()
+    serializer_class=CompraSerializer

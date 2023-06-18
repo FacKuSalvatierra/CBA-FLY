@@ -65,10 +65,19 @@ class CarritoCompra(models.Model):
     vuelo = models.ForeignKey(Vuelo, on_delete=models.CASCADE)
     cantidad_asientos = models.PositiveIntegerField()
 
+    @classmethod
+    def agregar_al_carrito(cls, usuario, vuelo, cantidad):
+        carrito, created = cls.objects.get_or_create(usuario=usuario, vuelo=vuelo)
+        if not created:
+            carrito.cantidad_asientos += cantidad
+            carrito.save()
+        return carrito
+    @classmethod
+    def eliminar_del_carrito(cls, usuario, vuelo):
+        cls.objects.filter(usuario=usuario, vuelo=vuelo).delete()
+
     class Meta:
         unique_together = [("usuario", "vuelo")]
 
     def __str__(self):
-        return f"{self.usuario.username} - {self.vuelo.numero_vuelo}"
-
-
+        return f"{self.usuario.username} - {self.vuelo.numero_vuelo} - {self.cantidad_asientos}" 
