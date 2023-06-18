@@ -31,14 +31,15 @@ section {
 }
 
 .botoncomprar {
-  border: 2px solid #5141e3;
+  color: white;
+  border: 2px solid white;
   padding: 15px 15px;
-  font-size: 0.8rem;
+  font-size: 1.1rem;
   position: relative;
-  margin: 5px;
+  margin: 3px;
   border-radius: 7px;
   width: 60%;
-  background: linear-gradient(to right,  #5141e3 50%, transparent 50%);
+  background: linear-gradient(to right,  #29216e 50%, transparent 50%);
   background-size: 200%;
   background-position: right;
   transition: background-position 0.5s;
