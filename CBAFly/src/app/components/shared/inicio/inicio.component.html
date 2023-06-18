@@ -90,7 +90,9 @@
           <img class="foto_lugar" src="{{ item.imagen}}" alt="" />
           <p class="card-title ciudad">{{ item.origen }} ➝ {{item.destino}}</p>
           <p class="precio">ARS {{ item.precio }}</p>
-          <button (click)="agregarAlCarrito(item)">Agregar al carrito</button>
+          <div class="botonviaje">
+            <button class="agregaviaje uil uil-shopping-cart-alt" (click)="agregarAlCarrito(item)"> Agregar al carrito</button>
+          </div>
       </div>
     </div>
     <div class="paginator">

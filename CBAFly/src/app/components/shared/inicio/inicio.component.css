@@ -381,6 +381,21 @@ main {
   cursor: pointer;
 }
 
+.botonviaje {
+  display: flex;
+  justify-content: center;
+}
+
+.agregaviaje {
+  padding: 10px 10px;
+  font-size: 0.8rem;
+  position: relative;
+  margin: 5px;
+  border-radius: 7px;
+  width: 80%;
+}
+
+
 .fecha_disp {
   background: #83838396;
   color: white;
