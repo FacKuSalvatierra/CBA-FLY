@@ -371,14 +371,19 @@ main {
   text-align: center;
 }
 
+.agregaprecio {
+  display: flex;
+  justify-content: center;
+}
 
 .precio {
   text-align: center;
   background-color: rgb(255, 118, 13);
-  color: #fff;
+  color: black;
   justify-content: space-around;
   border-radius: 7px;
   cursor: pointer;
+  width: 65%;
 }
 
 .agregaviaje {
@@ -387,20 +392,20 @@ main {
 }
 
 .botonviaje {
-  padding: 10px 10px;
+  padding: 7px 7px;
   font-size: 0.8rem;
   position: relative;
   margin: 5px;
   border-radius: 7px;
-  width: 80%;
-  background: linear-gradient(to right, transparent 50%, #eeb675 50%);
+  width: 65%;
+  background: linear-gradient(to right,  #efca63 50%, transparent 50%);
   background-size: 200%;
-  background-position: left;
+  background-position: right;
   transition: background-position 0.5s;
 }
 
 .botonviaje:hover {
-  background-position: right;
+  background-position: left;
   color: black;
   font-weight: 700;
 }

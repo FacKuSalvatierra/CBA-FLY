@@ -89,7 +89,9 @@
           <p class="fecha_disp">Viaja el {{item.hora_salida | date:'dd-MM-yyyy' }}</p>
           <img class="foto_lugar" src="{{ item.imagen}}" alt="" />
           <p class="card-title ciudad">{{ item.origen }} ➝ {{item.destino}}</p>
-          <p class="precio">ARS {{ item.precio }}</p>
+          <div class="agregaprecio">
+            <p class="precio">ARS {{ item.precio }}</p>
+          </div>
           <div class="agregaviaje">
             <button class="botonviaje uil uil-shopping-cart-alt" (click)="agregarAlCarrito(item)"> Agregar al carrito</button>
           </div>
