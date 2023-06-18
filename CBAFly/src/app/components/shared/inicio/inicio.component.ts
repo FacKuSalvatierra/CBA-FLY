@@ -94,8 +94,6 @@ export class InicioComponent implements AfterViewInit, OnInit {
         swiper: swiper,
       },
     });
-    this.originSelect.refresh();
-    this.destinationSelect.refresh();
   }
 
   getPaginatedData(): any[] {
