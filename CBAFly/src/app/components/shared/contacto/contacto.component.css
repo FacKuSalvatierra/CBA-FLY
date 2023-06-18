@@ -73,6 +73,32 @@ h3 {
   text-transform: uppercase;
   font-weight: 400;
 }
+
+.contenedorbotonenviar {
+  display: flex;
+  justify-content: center;
+}
+
+.botonenviarmensaje {
+  border: 2px solid #ffffff;
+  padding: 15px 15px;
+  font-size: 0.8rem;
+  position: relative;
+  margin: 5px;
+  border-radius: 7px;
+  width: 78%;
+  background: linear-gradient(to right,  #63c7ef 50%, transparent 50%);
+  background-size: 200%;
+  background-position: right;
+  transition: background-position 0.5s;
+}
+
+.botonenviarmensaje:hover {
+  background-position: left;
+  color: black;
+  font-weight: 700;
+}
+
 .btn {
   color: #fff;
   border: none;

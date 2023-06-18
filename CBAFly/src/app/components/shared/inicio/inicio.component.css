@@ -392,6 +392,7 @@ main {
 }
 
 .botonviaje {
+  border: 2px solid #ffffff;
   padding: 7px 7px;
   font-size: 0.8rem;
   position: relative;
