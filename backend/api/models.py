@@ -76,3 +76,5 @@ class CarritoCompra(models.Model):
 
     def __str__(self):
         return f"{self.usuario.username} - {self.vuelo.numero_vuelo}"
+
+
