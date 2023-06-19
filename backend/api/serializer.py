@@ -1,4 +1,4 @@
-from rest_framework import serializers
+from rest_framework import serializers, generics
 from django.contrib.auth import get_user_model
 from .models import CustomUser, Vuelo, Asiento, Pago, Compra, CarritoCompra
 from django.contrib.auth.hashers import make_password
@@ -44,6 +44,13 @@ class PagoSerializer(serializers.ModelSerializer):
         model = Pago
         fields = ('id', 'usuario', 'numero_tarjeta', 'fecha_expiracion', 'codigo_seguridad')
 
+class CarritoCompraSerializer(serializers.ModelSerializer):
+    usuario = serializers.StringRelatedField()
+    vuelo = serializers.StringRelatedField()
+    class Meta:
+        model = CarritoCompra
+        fields = ['id', 'usuario', 'vuelo', 'cantidad_asientos']
+
 class CompraSerializer(serializers.ModelSerializer):
     usuario = UserSerializer()
     vuelo = VueloSerializer()
@@ -52,9 +59,6 @@ class CompraSerializer(serializers.ModelSerializer):
         model = Compra
         fields = ('id', 'usuario', 'vuelo', 'cantidad_asientos', 'precio_total', 'fecha_compra', 'numero_tarjeta')
 
-class CarritoCompraSerializer(serializers.ModelSerializer):
-    usuario = UserSerializer()
-    vuelo = VueloSerializer()
 
     def create(self, validated_data):
         usuario_data = validated_data.pop('usuario')
