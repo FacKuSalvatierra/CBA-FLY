@@ -1,6 +1,5 @@
 <app-header></app-header>
 <main>
-
   <section class="h-100 h-custom">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -18,7 +17,7 @@
                   <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
                       <p class="mb-1">Carrito de compras</p>
-                      <p class="mb-0">Tenés 2 items en tu carrito</p>
+                      <p class="mb-0">Tenés {{ carritoItems.length }} items en tu carrito</p>
                     </div>
                     <div>
                       <p class="mb-0"><span class="text-muted">Ordenado por: </span> <a href="#!"
@@ -26,57 +25,32 @@
                     </div>
                   </div>
 
-                  <div class="card mb-3">
+                  <div class="card mb-3" *ngFor="let item of carritoItems; let i = index">
                     <div class="card-body">
                       <div class="d-flex justify-content-between">
                         <div class="d-flex flex-row align-items-center">
                           <div>
-                            <img src="../../../../img/fondo1.jpg" class="img-fluid rounded-3" alt="Shopping item"
+                            <img [src]="item.vuelo.imagen" class="img-fluid rounded-3" alt="Shopping item"
                               style="width: 65px;">
                           </div>
                           <div class="ms-3">
-                            <h5>Vuelo a Paris</h5>
+                            <h5>{{ item.vuelo.origen }} -> {{ item.vuelo.destino }}</h5>
                             <p class="small mb-0">Solo IDA</p>
                           </div>
                         </div>
                         <div class="d-flex flex-row align-items-center">
                           <div style="width: 50px;">
-                            <h5 class="fw-normal mb-0">2</h5>
+                            <h5 class="fw-normal mb-0">{{ item.cantidad_asientos }}</h5>
                           </div>
                           <div style="width: 80px;">
-                            <h5 class="mb-00">$601.000,00</h5>
+                            <h5 class="mb-00">${{ item.vuelo.precio }}</h5>
                           </div>
-                          <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                          <i class="fas fa-trash-alt" (click)="eliminarItemCarrito(i)"></i>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <div class="card mb-3">
-                    <div class="card-body">
-                      <div class="d-flex justify-content-between">
-                        <div class="d-flex flex-row align-items-center">
-                          <div>
-                            <img src="../../../../img/fondo2.jpg" class="img-fluid rounded-3" alt="Shopping item"
-                              style="width: 65px;">
-                          </div>
-                          <div class="ms-3">
-                            <h5> Vuelo a Dubai </h5>
-                            <p class="small mb-0">Solo VUELTA</p>
-                          </div>
-                        </div>
-                        <div class="d-flex flex-row align-items-center">
-                          <div style="width: 50px;">
-                            <h5 class="fw-normal mb-0">2</h5>
-                          </div>
-                          <div style="width: 80px;">
-                            <h5 class="mb-00">$300.500,00</h5>
-                          </div>
-                          <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
                 </div>
                 <div class="col-lg-5">
@@ -85,35 +59,43 @@
                     <div class="card-body">
                       <div class="d-flex justify-content-between align-items-center mb-4">
                         <h5 class="mb-01">Detalles de tu tarjeta</h5>
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" class="img-fluid rounded-3"
-                          style="width: 45px;" alt="Avatar">
                       </div>
 
                       <p class="small mb-2">Tipo de tarjeta</p>
-                      <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-mastercard fa-2x me-2" *ngIf="detectarTipoTarjeta() === 'Mastercard' || detectarTipoTarjeta() === ''  "></i></a>
-                      <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-visa fa-2x me-2" *ngIf="detectarTipoTarjeta() === 'Visa' || detectarTipoTarjeta() === ''  " ></i></a>
-                      <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-amex fa-2x me-2" *ngIf="detectarTipoTarjeta() === 'American Express' || detectarTipoTarjeta() === ''  "></i></a>
-                      <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-discover fa-2x me-2" *ngIf="detectarTipoTarjeta() === 'Discover' || detectarTipoTarjeta() === ''  "></i></a>   
+                      <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-mastercard fa-2x me-2"
+                          *ngIf="detectarTipoTarjeta() === 'Mastercard' || detectarTipoTarjeta() === ''  "></i></a>
+                      <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-visa fa-2x me-2"
+                          *ngIf="detectarTipoTarjeta() === 'Visa' || detectarTipoTarjeta() === ''  "></i></a>
+                      <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-amex fa-2x me-2"
+                          *ngIf="detectarTipoTarjeta() === 'American Express' || detectarTipoTarjeta() === ''  "></i></a>
+                      <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-discover fa-2x me-2"
+                          *ngIf="detectarTipoTarjeta() === 'Discover' || detectarTipoTarjeta() === ''  "></i></a>
 
                       <form class="mt-4" [formGroup]="tarjetaForm" (ngSubmit)="submitForm()">
                         <div class="form-outline form-white mb-4">
                           <input type="text" id="typeName" class="form-control form-control-lg" size="17"
                             placeholder="Nombre como figura en la tarjeta" formControlName="nombreTitular" />
-                          <div *ngIf="tarjetaForm.controls['nombreTitular'].invalid && tarjetaForm.controls['nombreTitular'].touched">
-                            <div class="error" *ngIf="tarjetaForm.controls['nombreTitular'].errors['required']">El nombre es requerido.</div>
-                            <div class="error" *ngIf="tarjetaForm.controls['nombreTitular'].errors['pattern']">Ingrese nombre como esta en la tarjeta.</div>
+                          <div
+                            *ngIf="tarjetaForm.controls['nombreTitular'].invalid && tarjetaForm.controls['nombreTitular'].touched">
+                            <div class="error" *ngIf="tarjetaForm.controls['nombreTitular'].errors['required']">El
+                              nombre es requerido.</div>
+                            <div class="error" *ngIf="tarjetaForm.controls['nombreTitular'].errors['pattern']">Ingrese
+                              su nombre tal cual aparece en la tarjeta.</div>
                           </div>
                           <label class="form-label" for="typeName">Titular de la tarjeta</label>
                         </div>
 
                         <div class="form-outline form-white mb-4">
                           <input type="number" id="typeText" class="form-control form-control-lg" size="17"
-                            placeholder="1234 5678 9012 3457" formControlName="numeroTarjeta"/>
-                          <div *ngIf="tarjetaForm.controls['numeroTarjeta'].invalid && tarjetaForm.controls['numeroTarjeta'].touched">
-                            <div class="error" *ngIf="tarjetaForm.controls['numeroTarjeta'].errors['required']">N° de tarjeta equerido.</div>
-                            <div class="error" *ngIf="tarjetaForm.controls['numeroTarjeta'].errors['pattern']">Ingrese un número de tarjeta válido.</div>
+                            placeholder="1234 5678 9012 3457" formControlName="numeroTarjeta" />
+                          <div
+                            *ngIf="tarjetaForm.controls['numeroTarjeta'].invalid && tarjetaForm.controls['numeroTarjeta'].touched">
+                            <div class="error" *ngIf="tarjetaForm.controls['numeroTarjeta'].errors['required']">Número
+                              de tarjeta requerido.</div>
+                            <div class="error" *ngIf="tarjetaForm.controls['numeroTarjeta'].errors['pattern']">Ingrese
+                              un número de tarjeta válido.</div>
                           </div>
-                            <label class="form-label" for="typeText" >Número de la tarjeta</label>
+                          <label class="form-label" for="typeText">Número de la tarjeta</label>
                         </div>
 
                         <div class="row mb-4">
@@ -121,9 +103,12 @@
                             <div class="form-outline form-white">
                               <input type="text" id="typeExp" class="form-control form-control-lg" placeholder="MM/YY"
                                 size="7" id="exp" formControlName="fechaVencimiento" />
-                              <div *ngIf="tarjetaForm.controls['fechaVencimiento'].invalid && tarjetaForm.controls['fechaVencimiento'].touched">
-                                <div class="error" *ngIf="tarjetaForm.controls['fechaVencimiento'].errors['required']">Fecha de vencimiento requerida.</div>
-                                <div class="error" *ngIf="tarjetaForm.controls['fechaVencimiento'].errors['pattern']">Ingrese fecha de vencimiento valida.</div>
+                              <div
+                                *ngIf="tarjetaForm.controls['fechaVencimiento'].invalid && tarjetaForm.controls['fechaVencimiento'].touched">
+                                <div class="error" *ngIf="tarjetaForm.controls['fechaVencimiento'].errors['required']">
+                                  Fecha de vencimiento requerida.</div>
+                                <div class="error" *ngIf="tarjetaForm.controls['fechaVencimiento'].errors['pattern']">
+                                  Ingrese fecha de vencimiento válida.</div>
                               </div>
                               <label class="form-label" for="typeExp">Fecha de vencimiento</label>
                             </div>
@@ -132,11 +117,14 @@
                             <div class="form-outline form-white">
                               <input type="password" id="typeCVV" class="form-control form-control-lg"
                                 placeholder="&#9679;&#9679;&#9679;" size="1" formControlName="codigoSeguridad" />
-                              <div *ngIf="tarjetaForm.controls['codigoSeguridad'].invalid && tarjetaForm.controls['codigoSeguridad'].touched">
-                                <div class="error" *ngIf="tarjetaForm.controls['codigoSeguridad'].errors['required']">Codigo de seguridad requerido.</div>
-                                <div class="error" *ngIf="tarjetaForm.controls['codigoSeguridad'].errors['pattern']">Ingrese codigo de seguridad valido.</div>
+                              <div
+                                *ngIf="tarjetaForm.controls['codigoSeguridad'].invalid && tarjetaForm.controls['codigoSeguridad'].touched">
+                                <div class="error" *ngIf="tarjetaForm.controls['codigoSeguridad'].errors['required']">
+                                  Código de seguridad requerido.</div>
+                                <div class="error" *ngIf="tarjetaForm.controls['codigoSeguridad'].errors['pattern']">
+                                  Ingrese código de seguridad válido.</div>
                               </div>
-                                <label class="form-label" for="typeText">CVV</label>
+                              <label class="form-label" for="typeText">CVV</label>
                             </div>
                           </div>
                         </div>
@@ -146,25 +134,26 @@
 
                       <div class="d-flex justify-content-between">
                         <p class="mb-2">Subtotal</p>
-                        <p class="mb-2">$901.500,00</p>
+                        <p class="mb-2">${{ calcularSubtotal() }}</p>
                       </div>
 
                       <div class="d-flex justify-content-between">
                         <p class="mb-2">Cargos aplicados</p>
-                        <p class="mb-2">$3250,00</p>
+                        <p class="mb-2">$3.250</p>
                       </div>
 
                       <div class="d-flex justify-content-between mb-4">
                         <p class="mb-2">Total (incluye cargos)</p>
-                        <p class="mb-2">$904.750,00</p>
+                        <p class="mb-2">${{ calcularTotal()}}</p>
                       </div>
 
-                      <div class="d-grid gap-2">
-                        <button type="button" type="submit" [disabled]="tarjetaForm.invalid" class="btn btn-info" (click)="submitForm() ">Enviar>
+                      <div class="contienecomprar">
+                        <button type="button" type="submit" [disabled]="tarjetaForm.invalid" class="botoncomprar uil uil-shopping-cart-alt"
+                          (click)="submitForm()">
+                        </button>
+                        <button type="button" type="submit" class="btn btn-info mercadopago">
                           <div class="d-flex justify-content-between">
-                            <span>COMPRAR</span>
-                            <span>|</span>
-                            <span>$904.750,00</span>
+                            <span><a routerLink="/mercadopago" >Pagá con MercadoPago</a></span>
                           </div>
                         </button>
 

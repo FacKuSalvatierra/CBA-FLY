@@ -17,7 +17,8 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 113vh;
+  height: 105vh;
+  margin-top: 60px;
 }
 body::before {
   content: " ";
@@ -46,6 +47,7 @@ body::before {
   margin: 0 20px;
   padding: 25px;
   margin-top: 30px;
+  margin-bottom: 10px;
 }
 .container .forms2 {
   display: flex;
@@ -177,11 +179,32 @@ body::before {
   margin-top: 11px;
   text-align: center;
 }
+.alert {
+  font-size: 0.9em;
+}
 @media screen and (max-width: 785px) {
   .container-body {
     display: flex;
     justify-content: space-around;
     align-items: center;
     align-content: center;
+  }
+}
+@media screen and (max-width: 407px) {
+  main {
+    height: 145vh;
+    margin-top: 30px;
+  }
+  body::before {
+    height: 155vh;
+  }
+}
+@media screen and (max-width: 270px) {
+  main {
+    height: 155vh;
+    margin-top: 70px;
+  }
+  body::before {
+    height: 165vh;
   }
 }
