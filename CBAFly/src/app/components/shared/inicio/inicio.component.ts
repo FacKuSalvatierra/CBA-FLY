@@ -33,7 +33,6 @@ export class InicioComponent implements AfterViewInit, OnInit {
   ngOnInit() {
     this.authService.currentUser.subscribe(user => {
       this.currentUser = user;
-      // Aquí puedes hacer cualquier otra lógica necesaria cuando el usuario cambie
     });
     this.http.get<any>('http://127.0.0.1:8000/api/vuelo/').subscribe(
       (data) => {
@@ -56,13 +55,26 @@ export class InicioComponent implements AfterViewInit, OnInit {
       }
     );
   }
+
+  agregarAlCarritoConAlert(item: any) {
+    if (this.authService.isAuthenticated) {
+      // Usuario autenticado, agregar al carrito
+      this.agregarAlCarrito(item);
+    } else {
+      // Mostrar alerta si el usuario no está autenticado
+      alert('Debes iniciar sesión para agregar al carrito.');
+    }
+  }
   agregarAlCarrito(item: any) {
     console.log('Usuario actual:', this.currentUser);
-    if (this.currentUser) {
+    if (this.currentUser && this.currentUser.email && this.currentUser.password) {
       const vuelo = {
         vuelo: item,
         cantidad_asientos: 1,
-        usuario: this.currentUser
+        usuario: {
+          email: this.currentUser.email,
+          password: this.currentUser.password
+        }
       };
       this.http.post('http://127.0.0.1:8000/api/carrito/', vuelo).subscribe(
         (response) => {
@@ -94,8 +106,7 @@ export class InicioComponent implements AfterViewInit, OnInit {
         swiper: swiper,
       },
     });
-    this.originSelect.refresh();
-    this.destinationSelect.refresh();
+    this.refreshSelectPicker();
   }
 
   getPaginatedData(): any[] {

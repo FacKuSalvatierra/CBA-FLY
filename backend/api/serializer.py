@@ -5,10 +5,8 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth import get_user_model
 
 class UserSerializer(serializers.ModelSerializer):
-    email = serializers.EmailField(
-        required=True)
-    username = serializers.CharField(
-        required=True)
+    email = serializers.EmailField(required=True)
+    username = serializers.CharField(required=False, allow_blank=True)
     password = serializers.CharField(min_length=8)
     direccion = serializers.CharField(required=False, allow_blank=True)
     codigo_postal = serializers.CharField(required=False, allow_blank=True)
@@ -58,8 +56,33 @@ class CarritoCompraSerializer(serializers.ModelSerializer):
     usuario = UserSerializer()
     vuelo = VueloSerializer()
 
+    def create(self, validated_data):
+        usuario_data = validated_data.pop('usuario')
+        vuelo_data = validated_data.pop('vuelo')
+
+        # Obtén el correo electrónico del usuario
+        email = usuario_data.get('email')
+
+        try:
+            usuario = CustomUser.objects.get(email=email)
+        except CustomUser.DoesNotExist:
+            raise serializers.ValidationError('El usuario no existe')
+
+        # Crea el objeto Vuelo
+        vuelo_serializer = VueloSerializer(data=vuelo_data)
+        vuelo_serializer.is_valid(raise_exception=True)
+        vuelo = vuelo_serializer.save()
+
+        # Crea el objeto CarritoCompra
+        carrito_compra = CarritoCompra.objects.create(
+            usuario=usuario,
+            vuelo=vuelo,
+            **validated_data
+        )
+
+        return carrito_compra
+
     class Meta:
         model = CarritoCompra
         fields = ('id', 'usuario', 'vuelo', 'cantidad_asientos')
-        
-        
+    

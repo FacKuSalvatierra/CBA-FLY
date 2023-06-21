@@ -3,14 +3,20 @@ from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'password']
+    REQUIRED_FIELDS = []
     email = models.EmailField(max_length=150, unique=True)
+    username = models.CharField(max_length=150, blank=True)  # Agregamos el campo username con blank=True
     direccion = models.CharField(max_length=255, blank=True)
     codigo_postal = models.CharField(max_length=10, blank=True)
     pais = models.CharField(max_length=255, blank=True)
     ciudad = models.CharField(max_length=255, blank=True)
     dni = models.CharField(max_length=20, blank=True)
     num_telefono = models.CharField(max_length=20, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.username:  # Si el campo username no se proporciona, establece el valor predeterminado como el valor del campo email
+            self.username = self.email
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.username
