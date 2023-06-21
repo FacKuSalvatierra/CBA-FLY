@@ -77,9 +77,9 @@
                             placeholder="Nombre como figura en la tarjeta" formControlName="nombreTitular" />
                           <div
                             *ngIf="tarjetaForm.controls['nombreTitular'].invalid && tarjetaForm.controls['nombreTitular'].touched">
-                            <div class="error" *ngIf="tarjetaForm.controls['nombreTitular'].errors['required']">El
+                            <div class="error" *ngIf="tarjetaForm.controls['nombreTitular'].errors['required']" class="alert alert-danger">El
                               nombre es requerido.</div>
-                            <div class="error" *ngIf="tarjetaForm.controls['nombreTitular'].errors['pattern']">Ingrese
+                            <div class="error" *ngIf="tarjetaForm.controls['nombreTitular'].errors['pattern']" class="alert alert-danger">Ingrese
                               su nombre tal cual aparece en la tarjeta.</div>
                           </div>
                           <label class="form-label" for="typeName">Titular de la tarjeta</label>
@@ -90,9 +90,9 @@
                             placeholder="1234 5678 9012 3457" formControlName="numeroTarjeta" />
                           <div
                             *ngIf="tarjetaForm.controls['numeroTarjeta'].invalid && tarjetaForm.controls['numeroTarjeta'].touched">
-                            <div class="error" *ngIf="tarjetaForm.controls['numeroTarjeta'].errors['required']">Número
+                            <div class="error" *ngIf="tarjetaForm.controls['numeroTarjeta'].errors['required']" class="alert alert-danger">Número
                               de tarjeta requerido.</div>
-                            <div class="error" *ngIf="tarjetaForm.controls['numeroTarjeta'].errors['pattern']">Ingrese
+                            <div class="error" *ngIf="tarjetaForm.controls['numeroTarjeta'].errors['pattern']" class="alert alert-danger">Ingrese
                               un número de tarjeta válido.</div>
                           </div>
                           <label class="form-label" for="typeText">Número de la tarjeta</label>
@@ -105,9 +105,9 @@
                                 size="7" id="exp" formControlName="fechaVencimiento" />
                               <div
                                 *ngIf="tarjetaForm.controls['fechaVencimiento'].invalid && tarjetaForm.controls['fechaVencimiento'].touched">
-                                <div class="error" *ngIf="tarjetaForm.controls['fechaVencimiento'].errors['required']">
+                                <div class="error" *ngIf="tarjetaForm.controls['fechaVencimiento'].errors['required']" class="alert alert-danger">
                                   Fecha de vencimiento requerida.</div>
-                                <div class="error" *ngIf="tarjetaForm.controls['fechaVencimiento'].errors['pattern']">
+                                <div class="error" *ngIf="tarjetaForm.controls['fechaVencimiento'].errors['pattern']" class="alert alert-danger">
                                   Ingrese fecha de vencimiento válida.</div>
                               </div>
                               <label class="form-label" for="typeExp">Fecha de vencimiento</label>
@@ -119,9 +119,9 @@
                                 placeholder="&#9679;&#9679;&#9679;" size="1" formControlName="codigoSeguridad" />
                               <div
                                 *ngIf="tarjetaForm.controls['codigoSeguridad'].invalid && tarjetaForm.controls['codigoSeguridad'].touched">
-                                <div class="error" *ngIf="tarjetaForm.controls['codigoSeguridad'].errors['required']">
+                                <div class="error" *ngIf="tarjetaForm.controls['codigoSeguridad'].errors['required']" class="alert alert-danger">
                                   Código de seguridad requerido.</div>
-                                <div class="error" *ngIf="tarjetaForm.controls['codigoSeguridad'].errors['pattern']">
+                                <div class="error" *ngIf="tarjetaForm.controls['codigoSeguridad'].errors['pattern']" class="alert alert-danger">
                                   Ingrese código de seguridad válido.</div>
                               </div>
                               <label class="form-label" for="typeText">CVV</label>
