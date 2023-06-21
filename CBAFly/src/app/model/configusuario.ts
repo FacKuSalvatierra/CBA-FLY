@@ -1,6 +1,6 @@
 export class Configusuario {
-  nombreCompleto: string;
-  correoElectronico: string;
+  username: string;
+  email: string;
   telefono: string;
   dni: string;
   codigoPostal: string;
@@ -8,16 +8,16 @@ export class Configusuario {
   ciudad: string;
 
   constructor(
-    nombreCompleto: string,
-    correoElectronico: string,
+    username: string,
+    email: string,
     telefono: string,
     dni: string,
     codigoPostal: string,
     pais: string,
     ciudad: string
   ) {
-    this.nombreCompleto = nombreCompleto;
-    this.correoElectronico = correoElectronico;
+    this.username = username;
+    this.email = email;
     this.telefono = telefono;
     this.dni = dni;
     this.codigoPostal = codigoPostal;
