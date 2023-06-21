@@ -371,16 +371,46 @@ main {
   text-align: center;
 }
 
+.agregaprecio {
+  display: flex;
+  justify-content: center;
+}
 
 .precio {
+  width: 100%;
   text-align: center;
   background-color: rgb(255, 118, 13);
-  color: #fff;
+  color: white;
   justify-content: space-around;
   border-radius: 7px;
   cursor: pointer;
 }
 
+
+.agregaviaje {
+  display: flex;
+  justify-content: center;
+}
+
+.botonviaje {
+  border: 2px solid #ffffff;
+  padding: 7px 7px;
+  font-size: 0.8rem;
+  position: relative;
+  margin: 5px;
+  border-radius: 7px;
+  width: 100%;
+  background: linear-gradient(to right,  #efca63 50%, transparent 50%);
+  background-size: 200%;
+  background-position: right;
+  transition: background-position 0.5s;
+}
+
+.botonviaje:hover {
+  background-position: left;
+  color: black;
+  font-weight: 700;
+}
 .fecha_disp {
   background: #83838396;
   color: white;

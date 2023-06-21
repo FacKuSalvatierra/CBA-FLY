@@ -82,3 +82,7 @@ class AsientoViewSet(viewsets.ModelViewSet):
 class CarritoCompraViewSet(viewsets.ModelViewSet):
     queryset=CarritoCompra.objects.all()
     serializer_class=CarritoCompraSerializer
+
+
+def checkout(request):
+    return render(request, 'store/checkout.html')

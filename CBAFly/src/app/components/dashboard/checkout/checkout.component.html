@@ -17,7 +17,7 @@
                   <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
                       <p class="mb-1">Carrito de compras</p>
-                      <p class="mb-0">Tenés 2 items en tu carrito</p>
+                      <p class="mb-0">Tenés {{ carritoItems.length }} items en tu carrito</p>
                     </div>
                     <div>
                       <p class="mb-0"><span class="text-muted">Ordenado por: </span> <a href="#!"
@@ -25,7 +25,7 @@
                     </div>
                   </div>
 
-                  <div class="card mb-3" *ngFor="let item of carritoItems">
+                  <div class="card mb-3" *ngFor="let item of carritoItems; let i = index">
                     <div class="card-body">
                       <div class="d-flex justify-content-between">
                         <div class="d-flex flex-row align-items-center">
@@ -45,7 +45,7 @@
                           <div style="width: 80px;">
                             <h5 class="mb-00">${{ item.vuelo.precio }}</h5>
                           </div>
-                          <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
+                          <i class="fas fa-trash-alt" (click)="eliminarItemCarrito(i)"></i>
                         </div>
                       </div>
                     </div>
@@ -134,26 +134,26 @@
 
                       <div class="d-flex justify-content-between">
                         <p class="mb-2">Subtotal</p>
-                        <p class="mb-2">$901.500,00</p>
+                        <p class="mb-2">${{ calcularSubtotal() }}</p>
                       </div>
 
                       <div class="d-flex justify-content-between">
                         <p class="mb-2">Cargos aplicados</p>
-                        <p class="mb-2">$3250,00</p>
+                        <p class="mb-2">$3.250</p>
                       </div>
 
                       <div class="d-flex justify-content-between mb-4">
                         <p class="mb-2">Total (incluye cargos)</p>
-                        <p class="mb-2">$904.750,00</p>
+                        <p class="mb-2">${{ calcularTotal()}}</p>
                       </div>
 
-                      <div class="d-grid gap-2">
-                        <button type="button" type="submit" [disabled]="tarjetaForm.invalid" class="btn btn-info"
+                      <div class="contienecomprar">
+                        <button type="button" type="submit" [disabled]="tarjetaForm.invalid" class="botoncomprar uil uil-shopping-cart-alt"
                           (click)="submitForm()">
+                        </button>
+                        <button type="button" type="submit" class="btn btn-info mercadopago">
                           <div class="d-flex justify-content-between">
-                            <span>COMPRAR</span>
-                            <span>|</span>
-                            <span>$904.750,00</span>
+                            <span><a routerLink="/mercadopago" >Pagá con MercadoPago</a></span>
                           </div>
                         </button>
 

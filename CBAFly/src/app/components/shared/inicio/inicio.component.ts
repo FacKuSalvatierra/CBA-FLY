@@ -1,6 +1,8 @@
 import { Component, ViewChild, AfterViewInit, OnInit, ElementRef  } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../../../services/authentication.service';
 import Swiper from 'swiper';
+import { Usuario } from 'src/app/model/usuario';
 declare var $: any;
 
 @Component({
@@ -9,6 +11,7 @@ declare var $: any;
   styleUrls: ['./inicio.component.css'],
 })
 export class InicioComponent implements AfterViewInit, OnInit {
+  currentUser: Usuario | null;
   catalogData: any[];
   currentPage: number = 1;
   totalPages: number = 0;
@@ -25,9 +28,12 @@ export class InicioComponent implements AfterViewInit, OnInit {
 
   @ViewChild('swiperContainer') swiperContainer: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
   
   ngOnInit() {
+    this.authService.currentUser.subscribe(user => {
+      this.currentUser = user;
+    });
     this.http.get<any>('http://127.0.0.1:8000/api/vuelo/').subscribe(
       (data) => {
         this.catalogData = data; 
@@ -49,6 +55,39 @@ export class InicioComponent implements AfterViewInit, OnInit {
       }
     );
   }
+
+  agregarAlCarritoConAlert(item: any) {
+    if (this.authService.isAuthenticated) {
+      // Usuario autenticado, agregar al carrito
+      this.agregarAlCarrito(item);
+    } else {
+      // Mostrar alerta si el usuario no está autenticado
+      alert('Debes iniciar sesión para agregar al carrito.');
+    }
+  }
+  agregarAlCarrito(item: any) {
+    console.log('Usuario actual:', this.currentUser);
+    if (this.currentUser && this.currentUser.email && this.currentUser.password) {
+      const vuelo = {
+        vuelo: item,
+        cantidad_asientos: 1,
+        usuario: {
+          email: this.currentUser.email,
+          password: this.currentUser.password
+        }
+      };
+      this.http.post('http://127.0.0.1:8000/api/carrito/', vuelo).subscribe(
+        (response) => {
+          // Aquí puedes realizar alguna acción después de agregar al carrito exitosamente
+          console.log('Vuelo agregado al carrito');
+        },
+        (error) => {
+          // Aquí puedes manejar errores en caso de que ocurra alguno durante la solicitud HTTP
+          console.error('Error al agregar vuelo al carrito', error);
+        }
+      );
+    }
+  }
   refreshSelectPicker() {
     $(this.originSelect.nativeElement).selectpicker('refresh');
   }
@@ -67,8 +106,7 @@ export class InicioComponent implements AfterViewInit, OnInit {
         swiper: swiper,
       },
     });
-    this.originSelect.refresh();
-    this.destinationSelect.refresh();
+    this.refreshSelectPicker();
   }
 
   getPaginatedData(): any[] {

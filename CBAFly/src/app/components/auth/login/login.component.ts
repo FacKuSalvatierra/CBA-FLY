@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(14)]],
     });
   }
+  
 
   togglePasswordVisibility() {
     this.passwordVisible = !this.passwordVisible;
@@ -42,9 +43,9 @@ export class LoginComponent implements OnInit {
     console.log(body);
   
     const loginUsuario: Usuario = { 
-      nombreCompleto: "",
-      correoElectronico: body.email,
-      contrasena: body.password
+      username: null,
+      email: body.email,
+      password: body.password
     };
   
     this.http.post(url, body).subscribe(
@@ -58,5 +59,16 @@ export class LoginComponent implements OnInit {
         alert('Error al iniciar sesión. Por favor, inténtalo nuevamente.');
       }
     );
+    this.authService.getUserDataByEmail(this.loginForm.value.email).subscribe(
+      (userData) => {
+        // Aquí puedes utilizar los datos del usuario, incluido el campo de username
+        console.log('Usuario actual:', userData);
+        // Continuar con las acciones necesarias después de obtener los datos del usuario
+      },
+      (error) => {
+        console.error('Error al obtener los datos del usuario', error);
+      }
+    );
   }
+  
 }

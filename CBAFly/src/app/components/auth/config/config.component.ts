@@ -21,7 +21,7 @@ export class ConfigComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
     this.configForm = this.formBuilder.group({
-      nombreCompleto: [
+      username: [
         '',
         [
           Validators.required,
@@ -47,8 +47,8 @@ export class ConfigComponent implements OnInit {
       (data: Usuario) => {
         this.configUsuario = data;
         this.configForm.patchValue({
-          username: this.configUsuario.nombreCompleto,
-          correoElectronico: this.configUsuario.correoElectronico,
+          username: this.configUsuario.username,
+          correoElectronico: this.configUsuario.email,
           // Otros campos
         });
       },
