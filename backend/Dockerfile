@@ -10,4 +10,4 @@ RUN pip install -r requirements.txt
 
 COPY ./ ./
 
-CMD [ "python","manage.py","runserver","https://cba-fly-backend.onrender.com/" ]
+CMD [ "python","manage.py","runserver","cba-fly-backend.onrender.com" ]
