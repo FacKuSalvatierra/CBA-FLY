@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-##4)nsp*16aj$&p(pnnew6ae2cxp_6x#a3%rx4d=to1hev7hkf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['cba-fly-backend.onrender.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'cba-fly-backend.onrender.com']
 
 JWT_AUTH = {
     'JWT_SECRET_KEY': 'gx1i5*4ti-u@k!0qhym_orlj5nf3f47^=ojf1+xnb9i@o^@sff',  # Reemplaza <clave_secreta> con tu clave secreta
