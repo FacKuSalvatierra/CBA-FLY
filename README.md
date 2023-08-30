@@ -1,5 +1,5 @@
 # Aerolíneas CBA FLY
-## _ISPC - Proyecto integrador fullstack - Grupo 98_
+## _ISPC - Proyecto Integrador FullStack - Grupo 98_
 
 ## Continuacion del proyecto: 👉🏻👉 https://github.com/FacKuSalvatierra/Aerolineas-ISPC
 
