@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['username']
     email = models.EmailField(max_length=150, unique=True)
     username = models.CharField(max_length=150, blank=True)  # Agregamos el campo username con blank=True
     direccion = models.CharField(max_length=255, blank=True)
@@ -32,7 +32,7 @@ class Vuelo(models.Model):
     tipo_avion = models.CharField(max_length=100)
     precio = models.DecimalField(max_digits=10, decimal_places=3, blank=True)
     imagen = models.CharField(max_length=100)
-    asientos_disponibles = models.PositiveIntegerField()
+    asientos_disponibles = models.PositiveIntegerField( default=0)
 
     def __str__(self):
         return f"{self.numero_vuelo}: {self.origen} -> {self.destino}"
