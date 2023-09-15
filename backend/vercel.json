@@ -1,0 +1,15 @@
+{
+  "builds": [
+    {
+      "src": "cba_fly_drf_project/wsgi.py",
+      "use": "@vercel/python",
+      "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "cba_fly_drf_project/wsgi.py"
+    }
+  ]
+}
