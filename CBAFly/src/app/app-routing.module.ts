@@ -9,6 +9,7 @@ import { NosotrosComponent } from './components/shared/nosotros/nosotros.compone
 import { RegisterComponent } from './components/auth/login/register.component';
 import { AuthGuard } from '../app/auth/auth.guard';
 import { MercadoPagoComponent } from './components/dashboard/checkout/mercadopago.component';
+import { ApplandingComponent } from './components/shared/applanding/applanding.component';
 
 const routes: Routes = [
   {path: 'inicio', component:InicioComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'mercadopago', component:MercadoPagoComponent},
   {path: 'config', component:ConfigComponent},
   {path: 'login/:id', component:RegisterComponent},
+  {path: 'app', component:ApplandingComponent},
   {path: '', redirectTo:'inicio', pathMatch:'full'}
 ];
 

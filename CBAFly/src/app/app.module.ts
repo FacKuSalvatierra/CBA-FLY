@@ -14,10 +14,12 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { ContactoComponent } from './components/shared/contacto/contacto.component';
 import { NosotrosComponent } from './components/shared/nosotros/nosotros.component';
 import { RegisterComponent } from './components/auth/login/register.component';
+import { ApplandingComponent } from './components/shared/applanding/applanding.component';
 
 import { register } from 'swiper/element/bundle';
 import { StickyHeaderDirective } from './sticky-header.directive';
 import { NavToggleDirective } from './nav-toggle-directive.directive';
+
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { NavToggleDirective } from './nav-toggle-directive.directive';
     ContactoComponent,
     NosotrosComponent,
     RegisterComponent,
+    ApplandingComponent,
     StickyHeaderDirective,
     NavToggleDirective,
   ],
