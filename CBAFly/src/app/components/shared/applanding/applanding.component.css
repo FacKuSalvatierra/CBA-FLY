@@ -13,19 +13,22 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 1.2em 2em 1em 2em;
+  align-content: center;
+  margin: 2em 2em 1.2em 2em;
 }
 
 .appTitle {
   text-align: center;
   font-weight: bold;
   font-size: 42px;
+  margin: 0em 0em 0.5em 0em;
 }
 
 .appDescription {
   text-align: center;
   font-size: 22px;
-  margin: 0.5em 0em 0em 0em;
+  margin: 1em 0em 0.5em 0em;
+  line-height: 2;
 }
 
 .appView {
@@ -38,6 +41,7 @@ body {
 
 .appView:hover {
   transform: scale(1.1);
+  margin: 2em 0em 2em 0em;
 }
 
 .boxImages {
@@ -68,19 +72,21 @@ body {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
   margin: 1em 2em 0em 2em;
 }
 
 .textQr {
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
+  line-height: 2;
 }
 
 .qrCode {
   width: 200px;
   height: auto;
   margin: 0.2em 0.1em 0em 0.1em;
+  align-self: center;
 }
 
 .boxList {
@@ -88,12 +94,12 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-evenly;
-  margin: 0.5em 2em 1em 2em;
+  margin: 1.5em 2em 1em 2em;
 }
 
 .titleList {
   text-align: center;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
 }
 
@@ -118,6 +124,7 @@ body {
 
 .androidText {
   text-shadow: 5px 5px 10px #095484;
+  line-height: 2;
 }
 
 @media screen and (max-width: 520px) {
@@ -126,5 +133,19 @@ body {
   }
   .androidLogo {
     width: 50px;
+  }
+}
+@media (min-width: 1300px) {
+  .boxTitle {
+    display: block;
+  }
+  .qrCode {
+    width: 100%;
+  }
+  .appView {
+    width: 300px;
+  }
+  .boxList {
+    display: grid;
   }
 }
